@@ -3,6 +3,8 @@
 
 	export let icon: string;
 	export let inline = false;
+	let className = '';
+	export { className as class };
 </script>
 
-<Icon {icon} {inline} class={inline ? 'inline' : ''} />
+<Icon {icon} {inline} class={(inline ? 'inline ' : '') + className} {...$$restProps} />
