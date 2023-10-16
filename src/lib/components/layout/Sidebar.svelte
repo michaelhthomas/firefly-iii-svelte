@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	import Icon from '$lib/components/Icon.svelte';
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Search from './Search.svelte';
@@ -190,9 +192,18 @@
 			href: '/logout'
 		}
 	];
+
+	$: isActive = (item: SidebarItem | NestedSidebarItem): boolean => {
+		if ('children' in item) return item.children.some(isActive);
+
+		return item.href === $page.url.pathname;
+	};
+
+	$: classesActive = (item: SidebarItem | NestedSidebarItem) =>
+		isActive(item) ? '!bg-primary-500' : '';
 </script>
 
-<section class="sidebar p-4 bg-surface-100-800-token min-h-full space-y-4">
+<section class="sidebar p-4 bg-surface-100-800-token min-h-full w-full space-y-4">
 	<Search />
 	<nav class="list-nav">
 		<ul>
@@ -201,7 +212,7 @@
 					<li>
 						{#if 'children' in item}
 							<Accordion>
-								<AccordionItem>
+								<AccordionItem regionControl={classesActive(item)} open={isActive(item)}>
 									<svelte:fragment slot="lead">
 										<Icon icon={item.icon} />
 									</svelte:fragment>
@@ -212,7 +223,7 @@
 										<ul>
 											{#each item.children as child}
 												<li>
-													<a href={child.href}>{child.label}</a>
+													<a href={child.href} class={classesActive(child)}>{child.label}</a>
 												</li>
 											{/each}
 										</ul>
@@ -220,7 +231,7 @@
 								</AccordionItem>
 							</Accordion>
 						{:else}
-							<a href={item.href}>
+							<a href={item.href} class={classesActive(item)}>
 								<Icon icon={item.icon} />
 								<span class="flex-auto">{item.label}</span>
 							</a>
