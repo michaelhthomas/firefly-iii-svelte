@@ -112,8 +112,8 @@
 		"width",
 		"zIndex"
 	],
-	"tailwindCSS.includeLanguages": {
-		"svelte": "html"
+	"editor.quickSuggestions": {
+		"strings": true
 	},
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
