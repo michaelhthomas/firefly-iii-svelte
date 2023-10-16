@@ -41,6 +41,7 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
+    "@iconify/svelte": "^3.1.4",
     "@tanstack/svelte-query": "^4.36.1",
     "firefly-iii-typescript-sdk-fetch": "^1.0.0"
   }
