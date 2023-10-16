@@ -8,12 +8,15 @@ dependencies:
   '@floating-ui/dom':
     specifier: 1.5.3
     version: 1.5.3
+  '@iconify/svelte':
+    specifier: ^3.1.4
+    version: 3.1.4(svelte@4.2.1)
   '@tanstack/svelte-query':
     specifier: ^4.36.1
     version: 4.36.1(svelte@4.2.1)
   firefly-iii-typescript-sdk-fetch:
-    specifier: ^1.0.0
-    version: 1.0.0
+    specifier: github:michaelhthomas/firefly-iii-typescript-sdk-fetch#fix-summary-api
+    version: github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/911a655f7ac6585d96e89aac5a0a21f345966e9b
 
 devDependencies:
   '@skeletonlabs/skeleton':
@@ -23,10 +26,10 @@ devDependencies:
     specifier: 0.2.2
     version: 0.2.2(tailwindcss@3.3.3)
   '@sveltejs/adapter-auto':
-    specifier: ^2.0.0
+    specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.25.2)
   '@sveltejs/kit':
-    specifier: ^1.20.4
+    specifier: ^1.25.2
     version: 1.25.2(svelte@4.2.1)(vite@4.4.11)
   '@tailwindcss/forms':
     specifier: 0.5.6
@@ -38,55 +41,58 @@ devDependencies:
     specifier: 20.8.6
     version: 20.8.6
   '@typescript-eslint/eslint-plugin':
-    specifier: ^6.0.0
+    specifier: ^6.7.5
     version: 6.7.5(@typescript-eslint/parser@6.7.5)(eslint@8.51.0)(typescript@5.2.2)
   '@typescript-eslint/parser':
-    specifier: ^6.0.0
+    specifier: ^6.7.5
     version: 6.7.5(eslint@8.51.0)(typescript@5.2.2)
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   eslint:
-    specifier: ^8.28.0
+    specifier: ^8.51.0
     version: 8.51.0
   eslint-config-prettier:
-    specifier: ^8.5.0
+    specifier: ^8.10.0
     version: 8.10.0(eslint@8.51.0)
   eslint-plugin-svelte:
-    specifier: ^2.30.0
+    specifier: ^2.34.0
     version: 2.34.0(eslint@8.51.0)(svelte@4.2.1)
   postcss:
     specifier: 8.4.31
     version: 8.4.31
   prettier:
-    specifier: ^2.8.0
+    specifier: ^2.8.8
     version: 2.8.8
   prettier-plugin-svelte:
     specifier: ^2.10.1
     version: 2.10.1(prettier@2.8.8)(svelte@4.2.1)
   svelte:
-    specifier: ^4.0.5
+    specifier: ^4.2.1
     version: 4.2.1
   svelte-check:
-    specifier: ^3.4.3
+    specifier: ^3.5.2
     version: 3.5.2(postcss@8.4.31)(svelte@4.2.1)
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
   tslib:
-    specifier: ^2.4.1
+    specifier: ^2.6.2
     version: 2.6.2
   typescript:
-    specifier: ^5.0.0
+    specifier: ^5.2.2
     version: 5.2.2
   vite:
-    specifier: ^4.4.2
+    specifier: ^4.4.11
     version: 4.4.11(@types/node@20.8.6)
   vite-plugin-tailwind-purgecss:
     specifier: 0.1.3
     version: 0.1.3(vite@4.4.11)
   vitest:
-    specifier: ^0.34.0
+    specifier: ^0.34.6
     version: 0.34.6
 
 packages:
@@ -384,6 +390,19 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
+
+  /@iconify/svelte@3.1.4(svelte@4.2.1):
+    resolution: {integrity: sha512-YDwQlN46ka8KPRayDb7TivmkAPizfTXi6BSRNqa1IV0+byA907n8JcgQafA7FD//pW5XCuuAhVx6uRbKTo+CfA==}
+    peerDependencies:
+      svelte: '*'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 4.2.1
+    dev: false
+
+  /@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: false
 
   /@jest/schemas@29.6.3:
     resolution: {integrity: sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA==}
@@ -1107,6 +1126,11 @@ packages:
       esutils: 2.0.3
     dev: true
 
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: true
+
   /electron-to-chromium@1.4.554:
     resolution: {integrity: sha512-Q0umzPJjfBrrj8unkONTgbKQXzXRrH7sVV7D9ea2yBV3Oaogz991yhbpfvo2LMNkJItmruXTEzVpP9cp7vaIiQ==}
     dev: true
@@ -1343,10 +1367,6 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
-
-  /firefly-iii-typescript-sdk-fetch@1.0.0:
-    resolution: {integrity: sha512-qOTfpoQ38rFvnNIYOchn8A2PdQgvhNETYQnMmRfpYy2dDpgRgBaYVUoYHf5ShW8kP7fhGq54pFalLcU9d0dJuw==}
-    dev: false
 
   /flat-cache@3.1.1:
     resolution: {integrity: sha512-/qM2b3LUIaIgviBQovTLvijfyOQXPtSRnRK26ksj2J7rzPIecePUIpJsZ4T02Qg+xiAEKIs5K8dsHEd+VaKa/Q==}
@@ -2717,3 +2737,9 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/911a655f7ac6585d96e89aac5a0a21f345966e9b:
+    resolution: {tarball: https://codeload.github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/tar.gz/911a655f7ac6585d96e89aac5a0a21f345966e9b}
+    name: firefly-iii-typescript-sdk-fetch
+    version: 1.0.0
+    dev: false
