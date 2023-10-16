@@ -9,6 +9,7 @@
 	import Sidebar from '$lib/components/layout/Sidebar.svelte';
 
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 
 	const queryClient = new QueryClient({
@@ -21,6 +22,10 @@
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
+
+<svelte:head>
+	<title>{$page.data.meta ? `${$page.data.meta.title} » ` : ''}Firefly III</title>
+</svelte:head>
 
 <!-- App Shell -->
 <QueryClientProvider client={queryClient}>
