@@ -69,7 +69,7 @@
 			children: [
 				{
 					label: 'Expenses',
-					href: '/transactions/withdrawl'
+					href: '/transactions/withdrawal'
 				},
 				{
 					label: 'Revenue / Income',
