@@ -13,7 +13,7 @@ const configuration = new Configuration({
 });
 
 export function useService<T extends typeof BaseAPI>(ApiService: T): InstanceType<T> {
-	const key = ApiService.constructor.name;
+	const key = ApiService.name;
 
 	if (serviceRepository.has(key)) return serviceRepository.get(key) as InstanceType<T>;
 
