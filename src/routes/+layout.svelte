@@ -8,23 +8,25 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/layout/Sidebar.svelte';
 
-	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
-
-	const queryClient = new QueryClient({
-		defaultOptions: {
-			queries: {
-				enabled: browser
-			}
-		}
-	});
+	import { QueryClientProvider } from '@tanstack/svelte-query';
+	import type { PageMeta } from '$lib/models/PageMeta';
+	import { queryClient } from '$lib/client';
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+	function renderTitle(title: PageMeta['title'] | undefined) {
+		let arr: string[] = [];
+
+		if (typeof title === 'string') arr = [title];
+		else if (Array.isArray(title)) arr = title;
+
+		return [...arr, 'Firefly III'].join(' » ');
+	}
 </script>
 
 <svelte:head>
-	<title>{$page.data.meta ? `${$page.data.meta.title} » ` : ''}Firefly III</title>
+	<title>{renderTitle($page.data.meta?.title)}</title>
 </svelte:head>
 
 <!-- App Shell -->

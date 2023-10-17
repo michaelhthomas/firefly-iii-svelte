@@ -17,6 +17,7 @@
 		"@floating-ui/dom": "1.5.3",
 		"@iconify/svelte": "^3.1.4",
 		"@tanstack/svelte-query": "^4.36.1",
+		"dayjs": "^1.11.10",
 		"firefly-iii-typescript-sdk-fetch": "github:michaelhthomas/firefly-iii-typescript-sdk-fetch#fix-summary-api"
 	},
 	"devDependencies": {
