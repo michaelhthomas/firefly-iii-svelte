@@ -7,4 +7,4 @@
 	export { className as class };
 </script>
 
-<Icon {icon} {inline} class={(inline ? 'inline ' : '') + className} {...$$restProps} />
+<Icon {icon} {inline} class={(inline ? 'inline-block ' : '') + className} {...$$restProps} />
