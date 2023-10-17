@@ -1,8 +1,10 @@
 <script lang="ts">
 	export let title: string | null = null;
+	let className = '';
+	export { className as class };
 </script>
 
-<div class="card p-4">
+<div class={`card p-4 ${className}`} {...$$restProps}>
 	{#if $$slots.header || $$slots.title || title}
 		<header class="card-header">
 			<slot name="header">
