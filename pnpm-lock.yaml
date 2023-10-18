@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.11.10
     version: 1.11.10
   firefly-iii-typescript-sdk-fetch:
-    specifier: github:michaelhthomas/firefly-iii-typescript-sdk-fetch#fix-summary-api
-    version: github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/911a655f7ac6585d96e89aac5a0a21f345966e9b
+    specifier: github:michaelhthomas/firefly-iii-typescript-sdk-fetch#main
+    version: github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/70f794d824bd19dfaaa482710ef40e76984b8910
 
 devDependencies:
   '@skeletonlabs/skeleton':
@@ -2756,8 +2756,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/911a655f7ac6585d96e89aac5a0a21f345966e9b:
-    resolution: {tarball: https://codeload.github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/tar.gz/911a655f7ac6585d96e89aac5a0a21f345966e9b}
+  github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/70f794d824bd19dfaaa482710ef40e76984b8910:
+    resolution: {tarball: https://codeload.github.com/michaelhthomas/firefly-iii-typescript-sdk-fetch/tar.gz/70f794d824bd19dfaaa482710ef40e76984b8910}
     name: firefly-iii-typescript-sdk-fetch
     version: 1.0.0
     dev: false
