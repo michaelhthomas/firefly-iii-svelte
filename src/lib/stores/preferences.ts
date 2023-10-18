@@ -2,7 +2,8 @@ import dayjs from 'dayjs';
 
 import type { DateRange } from '$lib/models/DateRange';
 import { writable } from 'svelte/store';
-import { deserialize } from '$lib/utils/deserialize';
+import { deserialize, serialize } from '$lib/utils/serializer';
+import { createUseWrapper } from './store-helpers';
 
 interface PreferencesStoreProps {
 	range: DateRange;
@@ -29,9 +30,11 @@ function loadPreferences(): PreferencesStoreProps {
 }
 
 function storePreferences(preferences: PreferencesStoreProps) {
-	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(preferences));
+	localStorage.setItem(LOCAL_STORAGE_KEY, serialize(preferences));
 }
 
-export const PreferencesStore = writable(loadPreferences());
-
-PreferencesStore.subscribe((value) => storePreferences(value));
+export const usePreferencesStore = createUseWrapper('preferences', () => {
+	const store = writable(loadPreferences());
+	store.subscribe((value) => storePreferences(value));
+	return store;
+});
