@@ -11,6 +11,7 @@
 	import type { PageMeta } from '$lib/models/PageMeta';
 	import { queryClient } from '$lib/client';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
+	import LocalizationProvider from '$lib/components/providers/LocalizationProvider.svelte';
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
@@ -30,15 +31,17 @@
 
 <!-- App Shell -->
 <QueryClientProvider client={queryClient}>
-	<AppShell>
-		<svelte:fragment slot="header">
-			<!-- App Bar -->
-			<Navbar />
-		</svelte:fragment>
-		<svelte:fragment slot="sidebarLeft">
-			<Sidebar />
-		</svelte:fragment>
-		<!-- Page Route Content -->
-		<slot />
-	</AppShell>
+	<LocalizationProvider>
+		<AppShell>
+			<svelte:fragment slot="header">
+				<!-- App Bar -->
+				<Navbar />
+			</svelte:fragment>
+			<svelte:fragment slot="sidebarLeft">
+				<Sidebar />
+			</svelte:fragment>
+			<!-- Page Route Content -->
+			<slot />
+		</AppShell>
+	</LocalizationProvider>
 </QueryClientProvider>
