@@ -41,7 +41,7 @@
 	}
 
 	$: summary = createQuery({
-		queryKey: ['period-summary', range],
+		queryKey: ['period-summary', type, range],
 		queryFn: async () => {
 			const { start, end } = range;
 
@@ -55,10 +55,7 @@
 
 			const transactionCount = transactions.meta.pagination?.total ?? 0;
 
-			const expenseTotal = await insightsService.insightExpenseTotal({
-				start,
-				end
-			});
+			const expenseTotal = await getTotal(range);
 
 			return { transactionCount, total: expenseTotal[0].differenceFloat ?? 0 };
 		}
