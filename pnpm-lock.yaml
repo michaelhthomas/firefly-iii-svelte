@@ -14,6 +14,12 @@ dependencies:
   '@tanstack/svelte-query':
     specifier: ^4.36.1
     version: 4.36.1(svelte@4.2.1)
+  ag-grid-community:
+    specifier: ^30.2.0
+    version: 30.2.0
+  ag-grid-svelte:
+    specifier: ^0.3.0
+    version: 0.3.0(ag-grid-community@30.2.0)(svelte@4.2.1)
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -824,6 +830,20 @@ packages:
     resolution: {integrity: sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  /ag-grid-community@30.2.0:
+    resolution: {integrity: sha512-Gd6GXmtzEQSCDloBdRxxCDqnjTBRAOf/zzlaxxyyVBJgc+cePuNgGdplRUhT/rwIiDwvyuoynvxelVE/iYdXsA==}
+    dev: false
+
+  /ag-grid-svelte@0.3.0(ag-grid-community@30.2.0)(svelte@4.2.1):
+    resolution: {integrity: sha512-jaEwHqhZPeNtPgXTlUQ7URVbuU1eGqkGs4L7S7aLPzfDJORmAOZQYmWmHEulTN9WpbGQstScS+ACyT07uUMXwQ==}
+    peerDependencies:
+      ag-grid-community: ^28 || ^29 || ^30
+      svelte: ^3
+    dependencies:
+      ag-grid-community: 30.2.0
+      svelte: 4.2.1
+    dev: false
 
   /ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}

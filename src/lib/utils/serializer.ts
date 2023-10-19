@@ -1,4 +1,4 @@
-const dateFormat = /^Date (?<date>\d{4}-\d{2}-\d{2}T.*Z)$/;
+const dateFormat = /^(?<date>\d{4}-\d{2}-\d{2}T.*Z)$/;
 
 function reviver(key: string, value: unknown) {
 	if (typeof value === 'string' && dateFormat.test(value)) {
@@ -14,15 +14,8 @@ function reviver(key: string, value: unknown) {
 	return value;
 }
 
-function replacer(key: string, value: unknown) {
-	if (typeof value === 'object' && value instanceof Date) {
-		return `Date ${value.toISOString()}`;
-	}
-	return value;
-}
-
 export function serialize(obj: unknown) {
-	return JSON.stringify(obj, replacer);
+	return JSON.stringify(obj);
 }
 
 export function deserialize(json: string) {

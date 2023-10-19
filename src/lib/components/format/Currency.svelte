@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { formatCurrency } from '$lib/utils/format';
+	import { useFormat } from '$lib/utils/format';
 
 	export let amount: number;
 	export let color: boolean = true;
 	export let currency: string | undefined = undefined;
 	export let locale: string | undefined = undefined;
 
-	const formatted = formatCurrency(amount, currency, locale);
+	const format = useFormat();
+
+	const formatted = format.formatCurrency(amount, currency, locale);
 </script>
 
 {#if color}

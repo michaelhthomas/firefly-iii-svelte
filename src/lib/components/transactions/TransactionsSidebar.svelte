@@ -1,0 +1,20 @@
+<script lang="ts">
+	import dayjs from 'dayjs';
+	import PeriodSummary from './PeriodSummary.svelte';
+	import type { DateRange } from '$lib/models/DateRange';
+	import type { TransactionCategory } from '$lib/models/TransactionCategory';
+
+	const periods = [...Array(5).keys()].map((offset) => {
+		const start = dayjs().startOf('month').subtract(offset, 'months');
+		const end = start.endOf('month');
+		return { start: start.toDate(), end: end.toDate() } as DateRange;
+	});
+
+	export let category: TransactionCategory;
+</script>
+
+<div class="space-y-4">
+	{#each periods as period}
+		<PeriodSummary range={period} {category} />
+	{/each}
+</div>
