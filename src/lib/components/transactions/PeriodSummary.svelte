@@ -57,26 +57,30 @@
 
 			const expenseTotal = await getTotal(range);
 
-			return { transactionCount, total: expenseTotal[0].differenceFloat ?? 0 };
+			return { transactionCount, total: expenseTotal[0]?.differenceFloat ?? 0 };
 		}
 	});
 </script>
 
-<Section class="!space-y-2">
-	<h6 slot="header" class="font-bold">
+<Section class="!space-y-2 !p-0 grow">
+	<h6 slot="header" class="font-bold pt-3 px-3">
 		{dayjs(range.start).format('MMMM YYYY')}
 	</h6>
 
 	{#if $summary.isSuccess}
-		<div class="text-sm">
-			<p>
-				Transactions
-				<span class="float-right">{$summary.data.transactionCount}</span>
-			</p>
-			<p>
-				{totalRowName}
-				<span class="float-right"><Currency amount={$summary.data.total} /></span>
-			</p>
+		<div class="table-container w-full">
+			<table class="w-full table table-compact table-hover">
+				<tbody>
+					<tr>
+						<td>Transactions</td>
+						<td class="text-right">{$summary.data.transactionCount}</td>
+					</tr>
+					<tr>
+						<td>{totalRowName}</td>
+						<td class="text-right"><Currency amount={$summary.data.total} /></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	{/if}
 </Section>

@@ -13,7 +13,7 @@
 	export let category: TransactionCategory;
 </script>
 
-<div class="space-y-4">
+<div class="flex gap-4 flex-row 2xl:flex-col">
 	{#each periods as period}
 		<PeriodSummary range={period} {category} />
 	{/each}
