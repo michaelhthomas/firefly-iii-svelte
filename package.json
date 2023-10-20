@@ -20,6 +20,7 @@
 		"ag-grid-community": "^30.2.0",
 		"ag-grid-svelte": "^0.3.0",
 		"chart.js": "^4.4.0",
+		"d3-scale-chromatic": "^3.0.0",
 		"dayjs": "^1.11.10",
 		"firefly-iii-typescript-sdk-fetch": "github:michaelhthomas/firefly-iii-typescript-sdk-fetch#main",
 		"svelte-chartjs": "^3.1.2"
@@ -32,6 +33,7 @@
 		"@sveltejs/kit": "^1.25.2",
 		"@tailwindcss/forms": "0.5.6",
 		"@tailwindcss/typography": "0.5.10",
+		"@types/d3-scale-chromatic": "^3.0.1",
 		"@types/node": "20.8.6",
 		"@typescript-eslint/eslint-plugin": "^6.7.5",
 		"@typescript-eslint/parser": "^6.7.5",

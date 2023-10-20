@@ -8,6 +8,8 @@
 	import { Pie } from 'svelte-chartjs';
 	import { useFormat } from '$lib/utils/format';
 	import { asyncGeneratorToList } from '$lib/utils/async-generator';
+	import { interpolateColors } from '$lib/utils/color-generator';
+	import { interpolateViridis } from 'd3-scale-chromatic';
 
 	export let category: InsightCategory;
 	export let emptyLabel = '(no name)';
@@ -38,6 +40,7 @@
 					datasets: [
 						{
 							label: 'Expenses',
+							backgroundColor: interpolateColors(insightsSorted.length, interpolateViridis),
 							data: insightsSorted.map((insight) => ({
 								amount: insight.differenceFloat!,
 								currency: insight.currencyCode
