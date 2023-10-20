@@ -19,8 +19,10 @@
 		"@tanstack/svelte-query": "^4.36.1",
 		"ag-grid-community": "^30.2.0",
 		"ag-grid-svelte": "^0.3.0",
+		"chart.js": "^4.4.0",
 		"dayjs": "^1.11.10",
-		"firefly-iii-typescript-sdk-fetch": "github:michaelhthomas/firefly-iii-typescript-sdk-fetch#main"
+		"firefly-iii-typescript-sdk-fetch": "github:michaelhthomas/firefly-iii-typescript-sdk-fetch#main",
+		"svelte-chartjs": "^3.1.2"
 	},
 	"devDependencies": {
 		"@skeletonlabs/skeleton": "2.3.0",
