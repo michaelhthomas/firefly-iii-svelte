@@ -12,11 +12,16 @@
 <DashboardPage>
 	<div class="transactions-grid grid grid-cols-12 gap-4">
 		<Section title="Categories" class="col-span-4">
-			<InsightChart category={InsightCategory.ExpenseCategory} class="max-h-[15em]" />
+			<InsightChart
+				category={InsightCategory.ExpenseCategory | InsightCategory.ExpenseNoCategory}
+				emptyLabel="(no category)"
+				class="max-h-[15em]"
+			/>
 		</Section>
 		<Section title="Budgets" class="col-span-4">
 			<InsightChart
 				category={InsightCategory.ExpenseBudget | InsightCategory.ExpenseNoBudget}
+				emptyLabel="(no budget)"
 				class="max-h-[15em]"
 			/>
 		</Section>
