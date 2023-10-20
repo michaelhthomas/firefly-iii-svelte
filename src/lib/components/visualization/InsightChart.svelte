@@ -10,6 +10,7 @@
 	import { asyncGeneratorToList } from '$lib/utils/async-generator';
 
 	export let category: InsightCategory;
+	export let emptyLabel = '(no name)';
 
 	let preferences = usePreferencesStore();
 	let format = useFormat();
@@ -22,36 +23,52 @@
 		queryFn: () => asyncGeneratorToList(insightCategoryQuery(insightService, category, range))
 	});
 
-	$: insightsSorted = $insights.data?.toSorted((a, b) => a.differenceFloat! - b.differenceFloat!);
+	$: insightsSorted = $insights.data?.toSorted(
+		(a, b) => Math.abs(b.differenceFloat!) - Math.abs(a.differenceFloat!)
+	);
+
+	type PieData = { amount: number; currency?: string };
 
 	$: data =
 		$insights.isSuccess && insightsSorted
 			? ({
 					labels: insightsSorted.map((insight) =>
-						'name' in insight ? (insight.name as string) : 'No name.'
+						'name' in insight ? (insight.name as string) : emptyLabel
 					),
 					datasets: [
 						{
 							label: 'Expenses',
-							data: insightsSorted.map((insight) => insight.differenceFloat!)
+							data: insightsSorted.map((insight) => ({
+								amount: insight.differenceFloat!,
+								currency: insight.currencyCode
+							}))
 						}
 					]
-			  } satisfies ChartData<'pie', number[], string>)
+			  } satisfies ChartData<'pie', PieData[], string>)
 			: null;
 
 	let options: Pie['$$prop_def']['options'] = {
+		parsing: {
+			key: 'amount'
+		},
 		plugins: {
 			tooltip: {
 				callbacks: {
 					label: function (context) {
-						return format.formatCurrency(Math.abs(context.parsed));
+						return format.formatCurrency(
+							Math.abs(context.parsed),
+							(context.raw as PieData).currency
+						);
 					}
 				}
 			}
 		}
 	};
+
+	// hack for type coercion, required as `parsing` property of options is not properly applied to dataset type
+	$: parsedData = data as unknown as Pie['$$prop_def']['data'] | undefined;
 </script>
 
-{#if data}
-	<Pie {data} {options} {...$$restProps} />
+{#if parsedData}
+	<Pie data={parsedData} {options} {...$$restProps} />
 {/if}
