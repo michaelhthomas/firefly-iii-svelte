@@ -1,4 +1,4 @@
-import type { InsightApi } from 'firefly-iii-typescript-sdk-fetch';
+import type { InsightApi, InsightTotalEntry } from 'firefly-iii-typescript-sdk-fetch';
 import type { DateRange } from './DateRange';
 
 export enum InsightCategory {
@@ -41,7 +41,14 @@ export enum InsightCategory {
 	/** Insight into total income. */
 	IncomeTotal = 1 << 18,
 	/** Insight into total transfers. */
-	TransferTotal = 1 << 19
+	TransferTotal = 1 << 19,
+
+	// Added sub-categories not present in API
+
+	/** Insight into transfers, grouped by source account. */
+	TransferSourceAccount = 1 << 20,
+	/** Insight into transfers, grouped by destination account. */
+	TransferDestinationAccount = 1 << 21
 }
 
 export function hasFlag<T extends number>(flag: T, traits: number) {
@@ -131,5 +138,40 @@ export async function* insightCategoryQuery(
 
 	if (hasFlag(InsightCategory.TransferTotal, category)) {
 		yield* await insightService.insightTransferTotal(range);
+	}
+
+	// Custom queries
+	if (hasFlag(InsightCategory.TransferDestinationAccount, category)) {
+		const allTransfers = await insightService.insightTransfers(range);
+
+		yield* allTransfers
+			.filter((transfer) => transfer.inFloat && transfer.inFloat != 0)
+			.map(
+				(transfer) =>
+					({
+						name: transfer.name,
+						difference: transfer._in,
+						differenceFloat: transfer.inFloat,
+						currencyId: transfer.currencyId,
+						currencyCode: transfer.currencyCode
+					} as InsightTotalEntry)
+			);
+	}
+
+	if (hasFlag(InsightCategory.TransferSourceAccount, category)) {
+		const allTransfers = await insightService.insightTransfers(range);
+
+		yield* allTransfers
+			.filter((transfer) => transfer.outFloat && transfer.outFloat != 0)
+			.map(
+				(transfer) =>
+					({
+						name: transfer.name,
+						difference: transfer.out,
+						differenceFloat: transfer.outFloat,
+						currencyId: transfer.currencyId,
+						currencyCode: transfer.currencyCode
+					} as InsightTotalEntry)
+			);
 	}
 }
