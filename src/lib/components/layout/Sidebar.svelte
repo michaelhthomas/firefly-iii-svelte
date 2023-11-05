@@ -2,7 +2,14 @@
 	import { page } from '$app/stores';
 
 	import Icon from '$lib/components/Icon.svelte';
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import {
+		Sidebar,
+		SidebarDropdownItem,
+		SidebarDropdownWrapper,
+		SidebarGroup,
+		SidebarItem,
+		SidebarWrapper
+	} from 'flowbite-svelte';
 	import Search from './Search.svelte';
 
 	type NestedSidebarItem = {
@@ -203,48 +210,44 @@
 		isActive(item) ? '!bg-primary-500' : '';
 </script>
 
-<section class="sidebar p-4 bg-surface-100-800-token min-h-full w-full space-y-4">
-	<Search />
-	<nav class="list-nav">
-		<ul>
+<Sidebar asideClass="w-auto" activeUrl={$page.url.pathname}>
+	<SidebarWrapper divClass="overflow-y-auto overflow-x-hidden py-4 px-3 h-full">
+		<SidebarGroup>
+			<Search />
+		</SidebarGroup>
+
+		<SidebarGroup border borderClass="pt-4">
 			{#each sidebarItems as item}
 				{#if item.type === 'item'}
-					<li>
-						{#if 'children' in item}
-							<Accordion>
-								<AccordionItem regionControl={classesActive(item)} open={isActive(item)}>
-									<svelte:fragment slot="lead">
-										<Icon icon={item.icon} />
-									</svelte:fragment>
-									<svelte:fragment slot="summary">
-										{item.label}
-									</svelte:fragment>
-									<svelte:fragment slot="content">
-										<ul>
-											{#each item.children as child}
-												<li>
-													<a href={child.href} class={classesActive(child)}>{child.label}</a>
-												</li>
-											{/each}
-										</ul>
-									</svelte:fragment>
-								</AccordionItem>
-							</Accordion>
-						{:else}
-							<a href={item.href} class={classesActive(item)}>
+					{#if 'children' in item}
+						<SidebarDropdownWrapper label={item.label}>
+							<svelte:fragment slot="icon">
 								<Icon icon={item.icon} />
-								<span class="flex-auto">{item.label}</span>
-							</a>
-						{/if}
-					</li>
+							</svelte:fragment>
+
+							{#each item.children as child}
+								<SidebarDropdownItem
+									label={child.label}
+									href={child.href}
+									active={isActive(child)}
+								/>
+							{/each}
+						</SidebarDropdownWrapper>
+					{:else}
+						<SidebarItem label={item.label} href={item.href}>
+							<svelte:fragment slot="icon">
+								<Icon icon={item.icon} />
+							</svelte:fragment>
+						</SidebarItem>
+					{/if}
 				{:else if item.type === 'group'}
 					<li
-						class="py-3 px-4 -mx-4 bg-surface-backdrop-token uppercase text-xs text-gray-800 dark:text-gray-200"
+						class="py-3 px-4 -mx-4 bg-gray-100 dark:bg-gray-900 uppercase text-xs text-gray-800 dark:text-gray-200"
 					>
 						{item.label}
 					</li>
 				{/if}
 			{/each}
-		</ul>
-	</nav>
-</section>
+		</SidebarGroup>
+	</SidebarWrapper>
+</Sidebar>

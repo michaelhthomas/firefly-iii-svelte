@@ -14,6 +14,7 @@
 		TransactionCategory,
 		getTransactionCategoryTypeFilter
 	} from '$lib/models/TransactionCategory';
+	import { Table, TableBody, TableBodyCell, TableBodyRow } from 'flowbite-svelte';
 
 	export let range: DateRange;
 	export let category: TransactionCategory;
@@ -68,19 +69,30 @@
 	</h6>
 
 	{#if $summary.isSuccess}
-		<div class="table-container w-full">
-			<table class="w-full table table-compact table-hover">
-				<tbody>
-					<tr>
-						<td>Transactions</td>
-						<td class="text-right">{$summary.data.transactionCount}</td>
-					</tr>
-					<tr>
-						<td>{totalRowName}</td>
-						<td class="text-right"><Currency amount={$summary.data.total} /></td>
-					</tr>
-				</tbody>
-			</table>
+		{@const tdClass = 'px-4 py-2 whitespace-nowrap font-medium !text-inherit'}
+		<div class="table-container w-full pb-2">
+			<Table class="table w-full" color="custom">
+				<TableBody>
+					<TableBodyRow>
+						<TableBodyCell {tdClass}>Transactions</TableBodyCell>
+						<TableBodyCell tdClass={`${tdClass} text-right`}>
+							{$summary.data.transactionCount}
+						</TableBodyCell>
+					</TableBodyRow>
+					<TableBodyRow>
+						<TableBodyCell {tdClass}>{totalRowName}</TableBodyCell>
+						<TableBodyCell tdClass={`${tdClass} text-right`}>
+							<Currency amount={$summary.data.total} />
+						</TableBodyCell>
+					</TableBodyRow>
+				</TableBody>
+			</Table>
 		</div>
 	{/if}
 </Section>
+
+<style lang="postcss">
+	.table tbody tr {
+		@apply border-b-gray-50 dark:border-b-gray-900;
+	}
+</style>

@@ -7,7 +7,7 @@
 	import Section from '$lib/components/layout/Section.svelte';
 	import { createMutation } from '@tanstack/svelte-query';
 	import { downloadBlob } from '$lib/utils/download';
-	import { ProgressRadial } from '@skeletonlabs/skeleton';
+	import { Button, Spinner } from 'flowbite-svelte';
 
 	const exportService = useService(DataApi);
 
@@ -30,20 +30,22 @@
 			the help (top right (?)-icon) for more information about the process.
 		</p>
 
-		<button
-			class="btn btn-lg variant-filled"
-			class:!bg-primary-500={$exportTransactions.isSuccess}
+		<Button
+			size="lg"
+			color={$exportTransactions.isSuccess ? 'green' : 'primary'}
 			on:click={() => $exportTransactions.mutate()}
 		>
 			{#if $exportTransactions.isLoading}
-				<ProgressRadial width="w-5" />
+				<Spinner size="6" />
 			{:else if $exportTransactions.isSuccess}
-				<Icon icon="bx-check" />
+				<Icon icon="bx-check" class="w-6 h-6" />
 			{:else}
-				<span><Icon icon="bx:data" inline /></span>
-				<span>Export all transactions</span>
+				<span class="inline-flex gap-2">
+					<Icon icon="bx:data" class="w-6 h-6" inline />
+					<span>Export all transactions</span>
+				</span>
 			{/if}
-		</button>
+		</Button>
 
 		<p>
 			If you need a more advanced or specific type of export, read the help on how to use the

@@ -110,7 +110,8 @@
 		"text",
 		"track",
 		"width",
-		"zIndex"
+		"zIndex",
+		"asideClass"
 	],
 	"editor.quickSuggestions": {
 		"strings": true

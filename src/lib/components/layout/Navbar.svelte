@@ -1,48 +1,48 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
 	import { DateFormat } from '$lib/models/DateFormat';
 	import { userQuery } from '$lib/queries';
 	import { usePreferencesStore } from '$lib/stores/preferences';
 	import Icon from '@iconify/svelte';
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 	import { createQuery } from '@tanstack/svelte-query';
 	import dayjs from 'dayjs';
 	import DateDropdown from './DateDropdown.svelte';
+	import { Button, NavHamburger, DarkMode } from 'flowbite-svelte';
+	import { formatDateRange } from '$lib/models/DateRange';
 
-	const PreferencesStore = usePreferencesStore();
+	const preferences = usePreferencesStore();
 
 	const user = createQuery(userQuery);
+
+	function toggleSidebar() {
+		dispatch('toggleSidebar');
+	}
 </script>
 
-<AppBar>
-	<svelte:fragment slot="lead">
-		<strong class="text-xl">Firefly III</strong>
-	</svelte:fragment>
-	<svelte:fragment slot="trail">
-		<LightSwitch />
-		<button class="btn btn-sm variant-ghost-surface">
-			{dayjs($PreferencesStore.range.start).format(DateFormat.Full)} - {dayjs(
-				$PreferencesStore.range.end
-			).format(DateFormat.Full)}
-		</button>
-		<DateDropdown />
-
-		{#if $user.isSuccess}
-			<a
-				class="btn btn-sm variant-ghost-surface"
-				href="https://twitter.com/SkeletonUI"
-				target="_blank"
-				rel="noreferrer"
-			>
-				{$user.data.data.attributes.email}
-			</a>
-		{/if}
-		<a
-			class="btn btn-sm variant-ghost-surface"
-			href="https://github.com/skeletonlabs/skeleton"
-			target="_blank"
-			rel="noreferrer"
-		>
-			<Icon icon="bx:plus" />
-		</a>
-	</svelte:fragment>
-</AppBar>
+<nav
+	class="bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-100 dark:border-gray-700 divide-gray-100 dark:divide-gray-700 px-2 sm:px-4 py-2.5 w-full h-14"
+>
+	<div class="flex justify-between h-full">
+		<div class="flex">
+			<NavHamburger onClick={toggleSidebar} />
+		</div>
+		<div class="flex gap-2">
+			<DarkMode />
+			<Button size="sm" pill color="light">
+				{formatDateRange($preferences.range)}
+			</Button>
+			<DateDropdown />
+			{#if $user.isSuccess}
+				<Button size="sm" pill color="light" class="hidden lg:block">
+					{$user.data.data.attributes.email}
+				</Button>
+			{/if}
+			<Button size="sm" pill color="light">
+				<Icon icon="bx:plus" />
+			</Button>
+		</div>
+	</div>
+</nav>

@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@floating-ui/dom':
-    specifier: 1.5.3
-    version: 1.5.3
   '@iconify/svelte':
     specifier: ^3.1.4
     version: 3.1.4(svelte@4.2.1)
@@ -49,12 +46,6 @@ dependencies:
     version: 2.0.0
 
 devDependencies:
-  '@skeletonlabs/skeleton':
-    specifier: 2.3.0
-    version: 2.3.0(svelte@4.2.1)
-  '@skeletonlabs/tw-plugin':
-    specifier: 0.2.2
-    version: 0.2.2(tailwindcss@3.3.3)
   '@sveltejs/adapter-auto':
     specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.25.2)
@@ -517,23 +508,6 @@ packages:
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
-    dev: true
-
-  /@skeletonlabs/skeleton@2.3.0(svelte@4.2.1):
-    resolution: {integrity: sha512-qXzm1ETXJ7uCmeX/OWp5IK7kRRYLmTqcTv0uM/GXrwuYn/CZ4CZtGP31amVtsphVLWBBKWf4uzIZgg+2KKzd4w==}
-    peerDependencies:
-      svelte: ^3.56.0 || ^4.0.0
-    dependencies:
-      esm-env: 1.0.0
-      svelte: 4.2.1
-    dev: true
-
-  /@skeletonlabs/tw-plugin@0.2.2(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-Q1GPWXh+9Ing1378pPFu2uryfJYtHx+6CQjH5fnV043DYf1Ui2OozJPB9HsTsRCV2bcX5nksHJlgUAz2pypY9A==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0'
-    dependencies:
-      tailwindcss: 3.3.3
     dev: true
 
   /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.25.2):

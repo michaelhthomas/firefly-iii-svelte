@@ -3,13 +3,13 @@
 	import Icon from '$lib/components/Icon.svelte';
 </script>
 
-<div class="container h-full mx-auto py-6 px-5">
+<div class="container mx-auto py-6 px-5">
 	<div class="space-y-6">
 		<slot name="header">
 			{#if $page.data.meta}
 				<h1 class="h3">
 					<slot name="icon">
-						<Icon icon={$page.data.meta.icon} inline class="pr-1" />
+						<Icon icon={$page.data.meta.icon} inline class="pr-1 text-2xl" />
 					</slot>
 					<slot name="title">
 						{$page.data.meta.title}

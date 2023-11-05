@@ -12,12 +12,12 @@
 <DashboardPage>
 	<div class="transactions-grid grid grid-cols-12 gap-4">
 		<slot name="charts" />
-		<Section title={$page.data.meta?.description} class="col-span-12 2xl:col-span-10 ">
+		<Section title={$page.data.meta?.description} class="col-span-12 2xl:col-span-10">
 			<div class="-mx-4 -mb-4">
 				<TransactionsGrid />
 			</div>
 		</Section>
-		<div class="col-span-12 2xl:col-span-2">
+		<div class="col-span-12 2xl:col-span-2 overflow-y-scroll">
 			<TransactionsSidebar {category} />
 		</div>
 	</div>

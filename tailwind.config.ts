@@ -3,17 +3,12 @@ import resolve from 'resolve/sync';
 import type { Config } from 'tailwindcss';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import { skeleton } from '@skeletonlabs/tw-plugin';
 import flowbite from 'flowbite/plugin';
 
 export default {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
-		join(
-			resolve('@skeletonlabs/skeleton/package.json', { basedir: __dirname }),
-			'../**/*.{html,js,svelte,ts}'
-		),
 		join(
 			resolve('flowbite-svelte/package.json', { basedir: __dirname }),
 			'../**/*.{html,js,svelte,ts}'
@@ -38,19 +33,5 @@ export default {
 			}
 		}
 	},
-	plugins: [
-		forms,
-		typography,
-		skeleton({
-			themes: {
-				preset: [
-					{
-						name: 'skeleton',
-						enhancements: true
-					}
-				]
-			}
-		}),
-		flowbite
-	]
+	plugins: [forms, typography, flowbite]
 } satisfies Config;
