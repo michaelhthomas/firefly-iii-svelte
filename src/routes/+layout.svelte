@@ -1,14 +1,16 @@
 <script lang="ts">
 	import '../app.postcss';
+
+	import AppShell from '$lib/components/layout/AppShell.svelte';
+	import AppModals from '$lib/components/layout/AppModals.svelte';
+	import LocalizationProvider from '$lib/components/providers/LocalizationProvider.svelte';
 	import Sidebar from '$lib/components/layout/Sidebar.svelte';
+	import Navbar from '$lib/components/layout/Navbar.svelte';
 
 	import { page } from '$app/stores';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import type { PageMeta } from '$lib/models/PageMeta';
 	import { queryClient } from '$lib/client';
-	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import LocalizationProvider from '$lib/components/providers/LocalizationProvider.svelte';
-	import AppShell from '$lib/components/layout/AppShell.svelte';
 
 	function renderTitle(title: PageMeta['title'] | undefined) {
 		let arr: string[] = [];
@@ -49,5 +51,7 @@
 			<!-- Page Route Content -->
 			<slot />
 		</AppShell>
+
+		<AppModals />
 	</LocalizationProvider>
 </QueryClientProvider>
