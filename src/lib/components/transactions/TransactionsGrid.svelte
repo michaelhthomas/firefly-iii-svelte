@@ -15,7 +15,6 @@
 	import { createSvelteCellRenderer } from '$lib/utils/grid/cell-renderer';
 	import type { TransactionMeta } from '$lib/models/TransactionMeta';
 	import { getAllContexts } from 'svelte';
-	import type { InsightCategory } from '$lib/models/InsightCategory';
 
 	let preferences = usePreferencesStore();
 	let formatter = useFormat();
@@ -45,7 +44,7 @@
 			// splits
 			...splits.map((split) => ({
 				...split,
-				isGroup: false as false,
+				isGroup: false as const,
 				group: transaction.attributes
 			}))
 		];
