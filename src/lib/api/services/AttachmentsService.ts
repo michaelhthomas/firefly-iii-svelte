@@ -17,17 +17,27 @@ export class AttachmentsService {
      * List all attachments.
      * This endpoint lists all attachments.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments.
      * @throws ApiError
      */
-    public static listAttachment(
+    public static listAttachment({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/attachments',
@@ -51,15 +61,22 @@ export class AttachmentsService {
      * Store a new attachment.
      * Creates a new attachment. The data required can be submitted as a JSON body or as a list of parameters. You cannot use this endpoint to upload the actual file data (see below). This endpoint only creates the attachment object.
      *
-     * @param requestBody JSON array or key=value pairs with the necessary attachment information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns AttachmentSingle New attachment stored, result in response.
      * @throws ApiError
      */
-    public static storeAttachment(
+    public static storeAttachment({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary attachment information. See the model for the exact specifications.
+         */
         requestBody: AttachmentStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<AttachmentSingle> {
+    }): CancelablePromise<AttachmentSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/attachments',
@@ -82,15 +99,22 @@ export class AttachmentsService {
      * Get a single attachment.
      * Get a single attachment. This endpoint only returns the available metadata for the attachment. Actual file data is handled in two other endpoints (see below).
      *
-     * @param id The ID of the attachment.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns AttachmentSingle The requested attachment
      * @throws ApiError
      */
-    public static getAttachment(
+    public static getAttachment({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the attachment.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<AttachmentSingle> {
+    }): CancelablePromise<AttachmentSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/attachments/{id}',
@@ -113,17 +137,27 @@ export class AttachmentsService {
      * Update existing attachment.
      * Update the meta data for an existing attachment. This endpoint does not allow you to upload or download data. For that, see below.
      *
-     * @param id The ID of the attachment.
-     * @param requestBody JSON array with updated attachment information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns AttachmentSingle Updated attachment stored, result in response
      * @throws ApiError
      */
-    public static updateAttachment(
+    public static updateAttachment({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the attachment.
+         */
         id: string,
+        /**
+         * JSON array with updated attachment information. See the model for the exact specifications.
+         */
         requestBody: AttachmentUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<AttachmentSingle> {
+    }): CancelablePromise<AttachmentSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/attachments/{id}',
@@ -149,15 +183,22 @@ export class AttachmentsService {
      * Delete an attachment.
      * With this endpoint you delete an attachment, including any stored file data.
      *
-     * @param id The ID of the single attachment.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteAttachment(
+    public static deleteAttachment({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the single attachment.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/attachments/{id}',
@@ -180,15 +221,22 @@ export class AttachmentsService {
      * Download a single attachment.
      * This endpoint allows you to download the binary content of a transaction. It will be sent to you as a download, using the content type "application/octet-stream" and content disposition "attachment; filename=example.pdf".
      *
-     * @param id The ID of the attachment.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns binary The requested attachment
      * @throws ApiError
      */
-    public static downloadAttachment(
+    public static downloadAttachment({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the attachment.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/attachments/{id}/download',
@@ -211,17 +259,24 @@ export class AttachmentsService {
      * Upload an attachment.
      * Use this endpoint to upload (and possible overwrite) the file contents of an attachment. Simply put the entire file in the body as binary data.
      *
-     * @param id The ID of the attachment.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param requestBody
      * @returns void
      * @throws ApiError
      */
-    public static uploadAttachment(
+    public static uploadAttachment({
+        id,
+        xTraceId,
+        requestBody,
+    }: {
+        /**
+         * The ID of the attachment.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
         requestBody?: Blob,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/attachments/{id}/upload',

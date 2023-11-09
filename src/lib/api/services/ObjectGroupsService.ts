@@ -18,19 +18,32 @@ export class ObjectGroupsService {
      * List all piggy banks related to the object group.
      * This endpoint returns a list of all the piggy banks connected to the object group.
      *
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PiggyBankArray A list of piggy banks
      * @throws ApiError
      */
-    public static listPiggyBankByObjectGroup(
+    public static listPiggyBankByObjectGroup({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PiggyBankArray> {
+    }): CancelablePromise<PiggyBankArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/object-groups/{id}/piggy-banks',
@@ -56,19 +69,32 @@ export class ObjectGroupsService {
     /**
      * List all bills with this object group.
      * List all bills with this object group.
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns BillArray A list of bills.
      * @throws ApiError
      */
-    public static listBillByObjectGroup(
+    public static listBillByObjectGroup({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<BillArray> {
+    }): CancelablePromise<BillArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/object-groups/{id}/bills',
@@ -94,17 +120,27 @@ export class ObjectGroupsService {
     /**
      * List all oject groups.
      * List all oject groups.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns ObjectGroupArray A list of object groups
      * @throws ApiError
      */
-    public static listObjectGroups(
+    public static listObjectGroups({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<ObjectGroupArray> {
+    }): CancelablePromise<ObjectGroupArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/object-groups',
@@ -127,15 +163,22 @@ export class ObjectGroupsService {
     /**
      * Get a single object group.
      * Get a single object group.
-     * @param id The ID of the object group.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns ObjectGroupSingle The requested object group
      * @throws ApiError
      */
-    public static getObjectGroup(
+    public static getObjectGroup({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the object group.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<ObjectGroupSingle> {
+    }): CancelablePromise<ObjectGroupSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/object-groups/{id}',
@@ -157,17 +200,27 @@ export class ObjectGroupsService {
     /**
      * Update existing object group.
      * Update existing object group.
-     * @param id The ID of the object group
-     * @param requestBody JSON array with updated piggy bank information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns ObjectGroupSingle Updated object group stored, result in response
      * @throws ApiError
      */
-    public static updateObjectGroup(
+    public static updateObjectGroup({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the object group
+         */
         id: string,
+        /**
+         * JSON array with updated piggy bank information. See the model for the exact specifications.
+         */
         requestBody: ObjectGroupUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<ObjectGroupSingle> {
+    }): CancelablePromise<ObjectGroupSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/object-groups/{id}',
@@ -192,15 +245,22 @@ export class ObjectGroupsService {
     /**
      * Delete a object group.
      * Delete a object group.
-     * @param id The ID of the object group.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteObjectGroup(
+    public static deleteObjectGroup({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the object group.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/object-groups/{id}',

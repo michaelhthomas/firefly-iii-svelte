@@ -16,23 +16,42 @@ export class SearchService {
     /**
      * Search for accounts
      * Search for accounts
-     * @param query The query you wish to search for.
-     * @param field The account field(s) you want to search in.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param type The type of accounts you wish to limit the search to.
      * @returns AccountArray A list of accounts.
      * @throws ApiError
      */
-    public static searchAccounts(
+    public static searchAccounts({
+        query,
+        field,
+        xTraceId,
+        limit,
+        page,
+        type,
+    }: {
+        /**
+         * The query you wish to search for.
+         */
         query: string,
+        /**
+         * The account field(s) you want to search in.
+         */
         field: AccountSearchFieldFilter,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * The type of accounts you wish to limit the search to.
+         */
         type?: AccountTypeFilter,
-    ): CancelablePromise<AccountArray> {
+    }): CancelablePromise<AccountArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/search/accounts',
@@ -58,19 +77,32 @@ export class SearchService {
     /**
      * Search for transactions
      * Searches through the users transactions.
-     * @param query The query you wish to search for.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns TransactionArray A list of transactions.
      * @throws ApiError
      */
-    public static searchTransactions(
+    public static searchTransactions({
+        query,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The query you wish to search for.
+         */
         query: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/search/transactions',

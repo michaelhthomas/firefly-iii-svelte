@@ -28,21 +28,37 @@ export class AutocompleteService {
 
     /**
      * Returns all accounts of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
-     * @param date If the account is an asset account or a liability, the autocomplete will also return the balance of the account on this date.
-     * @param types Optional filter on the account type(s) used in the autocomplete.
      * @returns AutocompleteAccountArray A list of accounts with very basic information.
      * @throws ApiError
      */
-    public static getAccountsAc(
+    public static getAccountsAc({
+        xTraceId,
+        query,
+        limit,
+        date,
+        types,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
+        /**
+         * If the account is an asset account or a liability, the autocomplete will also return the balance of the account on this date.
+         */
         date?: string,
+        /**
+         * Optional filter on the account type(s) used in the autocomplete.
+         */
         types?: Array<AccountTypeFilter>,
-    ): CancelablePromise<AutocompleteAccountArray> {
+    }): CancelablePromise<AutocompleteAccountArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/accounts',
@@ -66,17 +82,27 @@ export class AutocompleteService {
 
     /**
      * Returns all bills of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteBillArray A list of bills with very basic information.
      * @throws ApiError
      */
-    public static getBillsAc(
+    public static getBillsAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteBillArray> {
+    }): CancelablePromise<AutocompleteBillArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/bills',
@@ -98,17 +124,27 @@ export class AutocompleteService {
 
     /**
      * Returns all budgets of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteBudgetArray A list of budgets with very basic information.
      * @throws ApiError
      */
-    public static getBudgetsAc(
+    public static getBudgetsAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteBudgetArray> {
+    }): CancelablePromise<AutocompleteBudgetArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/budgets',
@@ -130,17 +166,27 @@ export class AutocompleteService {
 
     /**
      * Returns all categories of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteCategoryArray A list of categories with very basic information.
      * @throws ApiError
      */
-    public static getCategoriesAc(
+    public static getCategoriesAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteCategoryArray> {
+    }): CancelablePromise<AutocompleteCategoryArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/categories',
@@ -162,17 +208,27 @@ export class AutocompleteService {
 
     /**
      * Returns all currencies of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteCurrencyArray A list of currencies with very basic information.
      * @throws ApiError
      */
-    public static getCurrenciesAc(
+    public static getCurrenciesAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteCurrencyArray> {
+    }): CancelablePromise<AutocompleteCurrencyArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/currencies',
@@ -194,17 +250,27 @@ export class AutocompleteService {
 
     /**
      * Returns all currencies of the user returned in a basic auto-complete array. This endpoint is DEPRECATED and I suggest you DO NOT use it.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteCurrencyCodeArray A list of currencies with very basic information and the currency code between brackets. This endpoint is DEPRECATED and I suggest you DO NOT use it.
      * @throws ApiError
      */
-    public static getCurrenciesCodeAc(
+    public static getCurrenciesCodeAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteCurrencyCodeArray> {
+    }): CancelablePromise<AutocompleteCurrencyCodeArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/currencies-with-code',
@@ -226,17 +292,27 @@ export class AutocompleteService {
 
     /**
      * Returns all object groups of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteObjectGroupArray A list of object groups with very basic information.
      * @throws ApiError
      */
-    public static getObjectGroupsAc(
+    public static getObjectGroupsAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteObjectGroupArray> {
+    }): CancelablePromise<AutocompleteObjectGroupArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/object-groups',
@@ -258,17 +334,27 @@ export class AutocompleteService {
 
     /**
      * Returns all piggy banks of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompletePiggyArray A list of piggy banks with very basic information.
      * @throws ApiError
      */
-    public static getPiggiesAc(
+    public static getPiggiesAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompletePiggyArray> {
+    }): CancelablePromise<AutocompletePiggyArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/piggy-banks',
@@ -290,17 +376,27 @@ export class AutocompleteService {
 
     /**
      * Returns all piggy banks of the user returned in a basic auto-complete array complemented with balance information.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompletePiggyBalanceArray A list of piggy banks with very basic balance information.
      * @throws ApiError
      */
-    public static getPiggiesBalanceAc(
+    public static getPiggiesBalanceAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompletePiggyBalanceArray> {
+    }): CancelablePromise<AutocompletePiggyBalanceArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/piggy-banks-with-balance',
@@ -322,17 +418,27 @@ export class AutocompleteService {
 
     /**
      * Returns all recurring transactions of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteRecurrenceArray A list of recurring transactions with very basic information.
      * @throws ApiError
      */
-    public static getRecurringAc(
+    public static getRecurringAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteRecurrenceArray> {
+    }): CancelablePromise<AutocompleteRecurrenceArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/recurring',
@@ -354,17 +460,27 @@ export class AutocompleteService {
 
     /**
      * Returns all rule groups of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteRuleGroupArray A list of rule groups with very basic information.
      * @throws ApiError
      */
-    public static getRuleGroupsAc(
+    public static getRuleGroupsAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteRuleGroupArray> {
+    }): CancelablePromise<AutocompleteRuleGroupArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/rule-groups',
@@ -386,17 +502,27 @@ export class AutocompleteService {
 
     /**
      * Returns all rules of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteRuleArray A list of rules with very basic information.
      * @throws ApiError
      */
-    public static getRulesAc(
+    public static getRulesAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteRuleArray> {
+    }): CancelablePromise<AutocompleteRuleArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/rules',
@@ -418,17 +544,27 @@ export class AutocompleteService {
 
     /**
      * Returns all tags of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteTagArray A list of tags with very basic information.
      * @throws ApiError
      */
-    public static getTagAc(
+    public static getTagAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteTagArray> {
+    }): CancelablePromise<AutocompleteTagArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/tags',
@@ -450,17 +586,27 @@ export class AutocompleteService {
 
     /**
      * Returns all transaction types returned in a basic auto-complete array. English only.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteTransactionTypeArray A list of transaction types with very basic information.
      * @throws ApiError
      */
-    public static getTransactionTypesAc(
+    public static getTransactionTypesAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteTransactionTypeArray> {
+    }): CancelablePromise<AutocompleteTransactionTypeArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/transaction-types',
@@ -482,17 +628,27 @@ export class AutocompleteService {
 
     /**
      * Returns all transaction descriptions of the user returned in a basic auto-complete array.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteTransactionArray A list of transaction descriptions with very basic information.
      * @throws ApiError
      */
-    public static getTransactionsAc(
+    public static getTransactionsAc({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteTransactionArray> {
+    }): CancelablePromise<AutocompleteTransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/transactions',
@@ -514,17 +670,27 @@ export class AutocompleteService {
 
     /**
      * Returns all transactions, complemented with their ID, of the user returned in a basic auto-complete array. This endpoint is DEPRECATED and I suggest you DO NOT use it.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param query The autocomplete search query.
-     * @param limit The number of items returned.
      * @returns AutocompleteTransactionIDArray A list of transactions with very basic information. This endpoint is DEPRECATED and I suggest you DO NOT use it.
      * @throws ApiError
      */
-    public static getTransactionsIdac(
+    public static getTransactionsIdac({
+        xTraceId,
+        query,
+        limit,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The autocomplete search query.
+         */
         query?: string,
+        /**
+         * The number of items returned.
+         */
         limit?: number,
-    ): CancelablePromise<AutocompleteTransactionIDArray> {
+    }): CancelablePromise<AutocompleteTransactionIDArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/autocomplete/transactions-with-id',

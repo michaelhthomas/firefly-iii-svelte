@@ -14,22 +14,35 @@ export class SummaryService {
      * Returns basic sums of the users data.
      * Returns basic sums of the users data, like the net worth, spent and earned amounts. It is multi-currency, and is used in Firefly III to populate the dashboard.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param currencyCode A currency code like EUR or USD, to filter the result.
-     *
      * @returns BasicSummary An array of sums. It depends on the user what you can expect to get back, so please try this out on the demo site.
      * @throws ApiError
      */
-    public static getBasicSummary(
+    public static getBasicSummary({
+        start,
+        end,
+        xTraceId,
+        currencyCode,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A currency code like EUR or USD, to filter the result.
+         *
+         */
         currencyCode?: string,
-    ): CancelablePromise<BasicSummary> {
+    }): CancelablePromise<BasicSummary> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/summary/basic',

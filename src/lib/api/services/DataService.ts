@@ -15,13 +15,17 @@ export class DataService {
      * Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
      * Allows you to update transactions in bulk.
      *
-     * @param query The JSON query.
      * @returns void
      * @throws ApiError
      */
-    public static bulkUpdateTransactions(
+    public static bulkUpdateTransactions({
+        query,
+    }: {
+        /**
+         * The JSON query.
+         */
         query: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/data/bulk/transactions',
@@ -42,15 +46,22 @@ export class DataService {
      * A call to this endpoint deletes the requested data type. Use it with care and always with user permission.
      * The demo user is incapable of using this endpoint.
      *
-     * @param objects The type of data that you wish to destroy. You can only use one at a time.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static destroyData(
+    public static destroyData({
+        objects,
+        xTraceId,
+    }: {
+        /**
+         * The type of data that you wish to destroy. You can only use one at a time.
+         */
         objects: DataDestroyObject,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/data/destroy',
@@ -73,15 +84,22 @@ export class DataService {
      * Export account data from Firefly III
      * This endpoint allows you to export your accounts from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportAccounts(
+    public static exportAccounts({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/accounts',
@@ -104,15 +122,22 @@ export class DataService {
      * Export bills from Firefly III
      * This endpoint allows you to export your bills from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportBills(
+    public static exportBills({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/bills',
@@ -135,15 +160,22 @@ export class DataService {
      * Export budgets and budget amount data from Firefly III
      * This endpoint allows you to export your budgets and associated budget data from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportBudgets(
+    public static exportBudgets({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/budgets',
@@ -166,15 +198,22 @@ export class DataService {
      * Export category data from Firefly III
      * This endpoint allows you to export your categories from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportCategories(
+    public static exportCategories({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/categories',
@@ -197,15 +236,22 @@ export class DataService {
      * Export piggy banks from Firefly III
      * This endpoint allows you to export your piggy banks from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportPiggies(
+    public static exportPiggies({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/piggy-banks',
@@ -228,15 +274,22 @@ export class DataService {
      * Export recurring transaction data from Firefly III
      * This endpoint allows you to export your recurring transactions from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportRecurring(
+    public static exportRecurring({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/recurring',
@@ -259,15 +312,22 @@ export class DataService {
      * Export rule groups and rule data from Firefly III
      * This endpoint allows you to export your rules and rule groups from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportRules(
+    public static exportRules({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/rules',
@@ -290,15 +350,22 @@ export class DataService {
      * Export tag data from Firefly III
      * This endpoint allows you to export your tags from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportTags(
+    public static exportTags({
+        xTraceId,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/tags',
@@ -321,24 +388,40 @@ export class DataService {
      * Export transaction data from Firefly III
      * This endpoint allows you to export transactions from Firefly III into a file. Currently supports CSV exports only.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accounts Limit the export of transactions to these accounts only. Only asset accounts will be accepted. Other types will be silently dropped.
-     *
-     * @param type The file type the export file (CSV is currently the only option).
      * @returns binary The exported transaction in a file.
      * @throws ApiError
      */
-    public static exportTransactions(
+    public static exportTransactions({
+        start,
+        end,
+        xTraceId,
+        accounts,
+        type,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Limit the export of transactions to these accounts only. Only asset accounts will be accepted. Other types will be silently dropped.
+         *
+         */
         accounts?: string,
+        /**
+         * The file type the export file (CSV is currently the only option).
+         */
         type?: ExportFileFilter,
-    ): CancelablePromise<Blob> {
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/data/export/transactions',
@@ -365,13 +448,17 @@ export class DataService {
      * A call to this endpoint purges all previously deleted data. Use it with care and always with user permission.
      * The demo user is incapable of using this endpoint.
      *
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static purgeData(
+    public static purgeData({
+        xTraceId,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/data/purge',

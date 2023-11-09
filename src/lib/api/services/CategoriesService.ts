@@ -19,27 +19,49 @@ export class CategoriesService {
     /**
      * List all transactions in a category.
      * List all transactions in a category, optionally limited to the date ranges specified.
-     * @param id The ID of the category.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD, to limit the result list.
-     *
-     * @param end A date formatted YYYY-MM-DD, to limit the result list.
-     *
-     * @param type Optional filter on the transaction type(s) returned
      * @returns TransactionArray A list of transactions.
      * @throws ApiError
      */
-    public static listTransactionByCategory(
+    public static listTransactionByCategory({
+        id,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * The ID of the category.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the result list.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the result list.
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/categories/{id}/transactions',
@@ -68,19 +90,32 @@ export class CategoriesService {
     /**
      * Lists all attachments.
      * Lists all attachments.
-     * @param id The ID of the category.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments
      * @throws ApiError
      */
-    public static listAttachmentByCategory(
+    public static listAttachmentByCategory({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the category.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/categories/{id}/attachments',
@@ -106,17 +141,27 @@ export class CategoriesService {
     /**
      * List all categories.
      * List all categories.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns CategoryArray A list of categories.
      * @throws ApiError
      */
-    public static listCategory(
+    public static listCategory({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<CategoryArray> {
+    }): CancelablePromise<CategoryArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/categories',
@@ -139,15 +184,22 @@ export class CategoriesService {
     /**
      * Store a new category
      * Creates a new category. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary category information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CategorySingle New category stored, result in response.
      * @throws ApiError
      */
-    public static storeCategory(
+    public static storeCategory({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary category information. See the model for the exact specifications.
+         */
         requestBody: Category,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CategorySingle> {
+    }): CancelablePromise<CategorySingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/categories',
@@ -169,21 +221,34 @@ export class CategoriesService {
     /**
      * Get a single category.
      * Get a single category.
-     * @param id The ID of the category.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param start A date formatted YYYY-MM-DD, to show spent and earned info.
-     *
-     * @param end A date formatted YYYY-MM-DD, to show spent and earned info.
-     *
      * @returns CategorySingle The requested category
      * @throws ApiError
      */
-    public static getCategory(
+    public static getCategory({
+        id,
+        xTraceId,
+        start,
+        end,
+    }: {
+        /**
+         * The ID of the category.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to show spent and earned info.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to show spent and earned info.
+         *
+         */
         end?: string,
-    ): CancelablePromise<CategorySingle> {
+    }): CancelablePromise<CategorySingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/categories/{id}',
@@ -209,17 +274,27 @@ export class CategoriesService {
     /**
      * Update existing category.
      * Update existing category.
-     * @param id The ID of the category.
-     * @param requestBody JSON array with updated category information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CategorySingle Updated category stored, result in response
      * @throws ApiError
      */
-    public static updateCategory(
+    public static updateCategory({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the category.
+         */
         id: string,
+        /**
+         * JSON array with updated category information. See the model for the exact specifications.
+         */
         requestBody: CategoryUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CategorySingle> {
+    }): CancelablePromise<CategorySingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/categories/{id}',
@@ -244,15 +319,22 @@ export class CategoriesService {
     /**
      * Delete a category.
      * Delete a category. Transactions will not be removed.
-     * @param id The ID of the category.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteCategory(
+    public static deleteCategory({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the category.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/categories/{id}',

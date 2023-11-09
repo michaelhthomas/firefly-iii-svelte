@@ -18,19 +18,32 @@ export class PiggyBanksService {
     /**
      * List all events linked to a piggy bank.
      * List all events linked to a piggy bank (adding and removing money).
-     * @param id The ID of the piggy bank
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PiggyBankEventArray A list of piggy bank related events
      * @throws ApiError
      */
-    public static listEventByPiggyBank(
+    public static listEventByPiggyBank({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the piggy bank
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PiggyBankEventArray> {
+    }): CancelablePromise<PiggyBankEventArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/piggy-banks/{id}/events',
@@ -56,19 +69,32 @@ export class PiggyBanksService {
     /**
      * Lists all attachments.
      * Lists all attachments.
-     * @param id The ID of the piggy bank.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments
      * @throws ApiError
      */
-    public static listAttachmentByPiggyBank(
+    public static listAttachmentByPiggyBank({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the piggy bank.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/piggy-banks/{id}/attachments',
@@ -94,17 +120,27 @@ export class PiggyBanksService {
     /**
      * List all piggy banks.
      * List all piggy banks.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PiggyBankArray A list of piggy banks
      * @throws ApiError
      */
-    public static listPiggyBank(
+    public static listPiggyBank({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PiggyBankArray> {
+    }): CancelablePromise<PiggyBankArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/piggy-banks',
@@ -127,15 +163,22 @@ export class PiggyBanksService {
     /**
      * Store a new piggy bank
      * Creates a new piggy bank. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary piggy bank information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PiggyBankSingle New piggy bank stored, result in response.
      * @throws ApiError
      */
-    public static storePiggyBank(
+    public static storePiggyBank({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary piggy bank information. See the model for the exact specifications.
+         */
         requestBody: PiggyBankStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PiggyBankSingle> {
+    }): CancelablePromise<PiggyBankSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/piggy-banks',
@@ -157,15 +200,22 @@ export class PiggyBanksService {
     /**
      * Get a single piggy bank.
      * Get a single piggy bank.
-     * @param id The ID of the piggy bank.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PiggyBankSingle The requested piggy bank
      * @throws ApiError
      */
-    public static getPiggyBank(
+    public static getPiggyBank({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the piggy bank.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PiggyBankSingle> {
+    }): CancelablePromise<PiggyBankSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/piggy-banks/{id}',
@@ -187,17 +237,27 @@ export class PiggyBanksService {
     /**
      * Update existing piggy bank.
      * Update existing piggy bank.
-     * @param id The ID of the piggy bank
-     * @param requestBody JSON array with updated piggy bank information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PiggyBankSingle Updated piggy bank stored, result in response
      * @throws ApiError
      */
-    public static updatePiggyBank(
+    public static updatePiggyBank({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the piggy bank
+         */
         id: string,
+        /**
+         * JSON array with updated piggy bank information. See the model for the exact specifications.
+         */
         requestBody: PiggyBankUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PiggyBankSingle> {
+    }): CancelablePromise<PiggyBankSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/piggy-banks/{id}',
@@ -222,15 +282,22 @@ export class PiggyBanksService {
     /**
      * Delete a piggy bank.
      * Delete a piggy bank.
-     * @param id The ID of the piggy bank.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deletePiggyBank(
+    public static deletePiggyBank({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the piggy bank.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/piggy-banks/{id}',

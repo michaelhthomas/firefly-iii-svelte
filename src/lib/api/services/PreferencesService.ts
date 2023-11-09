@@ -16,17 +16,27 @@ export class PreferencesService {
     /**
      * List all users preferences.
      * List all of the preferences of the user.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PreferenceArray A list of preferences.
      * @throws ApiError
      */
-    public static listPreference(
+    public static listPreference({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PreferenceArray> {
+    }): CancelablePromise<PreferenceArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/preferences',
@@ -49,15 +59,22 @@ export class PreferencesService {
     /**
      * Store a new preference for this user.
      * This endpoint creates a new preference. The name and data are free-format, and entirely up to you. If the preference is not used in Firefly III itself it may not be configurable through the user interface, but you can use this endpoint to persist custom data for your own app.
-     * @param requestBody JSON array with the necessary preference information or key=value pairs. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PreferenceSingle New account stored, result in response.
      * @throws ApiError
      */
-    public static storePreference(
+    public static storePreference({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array with the necessary preference information or key=value pairs. See the model for the exact specifications.
+         */
         requestBody: Preference,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PreferenceSingle> {
+    }): CancelablePromise<PreferenceSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/preferences',
@@ -79,15 +96,22 @@ export class PreferencesService {
     /**
      * Return a single preference.
      * Return a single preference and the value.
-     * @param name The name of the preference.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PreferenceSingle A single preference.
      * @throws ApiError
      */
-    public static getPreference(
+    public static getPreference({
+        name,
+        xTraceId,
+    }: {
+        /**
+         * The name of the preference.
+         */
         name: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PreferenceSingle> {
+    }): CancelablePromise<PreferenceSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/preferences/{name}',
@@ -109,17 +133,27 @@ export class PreferencesService {
     /**
      * Update preference
      * Update a user's preference.
-     * @param name The name of the preference. Will always overwrite. Will be created if it does not exist.
-     * @param requestBody JSON array or key=value pairs with the necessary preference information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns PreferenceSingle Updated preference.
      * @throws ApiError
      */
-    public static updatePreference(
+    public static updatePreference({
+        name,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The name of the preference. Will always overwrite. Will be created if it does not exist.
+         */
         name: string,
+        /**
+         * JSON array or key=value pairs with the necessary preference information. See the model for the exact specifications.
+         */
         requestBody: PreferenceUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<PreferenceSingle> {
+    }): CancelablePromise<PreferenceSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/preferences/{name}',

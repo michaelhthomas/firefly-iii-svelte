@@ -19,19 +19,32 @@ export class TagsService {
     /**
      * Lists all attachments.
      * Lists all attachments.
-     * @param tag Either the tag itself or the tag ID.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments
      * @throws ApiError
      */
-    public static listAttachmentByTag(
+    public static listAttachmentByTag({
+        tag,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Either the tag itself or the tag ID.
+         */
         tag: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/tags/{tag}/attachments',
@@ -57,27 +70,49 @@ export class TagsService {
     /**
      * List all transactions with this tag.
      * List all transactions with this tag.
-     * @param tag Either the tag itself or the tag ID.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD. This is the start date of the selected range (inclusive).
-     *
-     * @param end A date formatted YYYY-MM-DD. This is the end date of the selected range (inclusive).
-     *
-     * @param type Optional filter on the transaction type(s) returned.
      * @returns TransactionArray A list of transactions.
      * @throws ApiError
      */
-    public static listTransactionByTag(
+    public static listTransactionByTag({
+        tag,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * Either the tag itself or the tag ID.
+         */
         tag: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD. This is the start date of the selected range (inclusive).
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD. This is the end date of the selected range (inclusive).
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned.
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/tags/{tag}/transactions',
@@ -106,17 +141,27 @@ export class TagsService {
     /**
      * List all tags.
      * List all of the user's tags.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns TagArray A list of tags
      * @throws ApiError
      */
-    public static listTag(
+    public static listTag({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<TagArray> {
+    }): CancelablePromise<TagArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/tags',
@@ -139,15 +184,22 @@ export class TagsService {
     /**
      * Store a new tag
      * Creates a new tag. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TagSingle New tag stored, result in response.
      * @throws ApiError
      */
-    public static storeTag(
+    public static storeTag({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications.
+         */
         requestBody: TagModelStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TagSingle> {
+    }): CancelablePromise<TagSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/tags',
@@ -169,19 +221,32 @@ export class TagsService {
     /**
      * Get a single tag.
      * Get a single tag.
-     * @param tag Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns TagSingle The requested tag
      * @throws ApiError
      */
-    public static getTag(
+    public static getTag({
+        tag,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
+         */
         tag: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<TagSingle> {
+    }): CancelablePromise<TagSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/tags/{tag}',
@@ -207,17 +272,27 @@ export class TagsService {
     /**
      * Update existing tag.
      * Update existing tag.
-     * @param tag Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
-     * @param requestBody JSON array with updated tag information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TagSingle Updated tag stored, result in response
      * @throws ApiError
      */
-    public static updateTag(
+    public static updateTag({
+        tag,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
+         */
         tag: string,
+        /**
+         * JSON array with updated tag information. See the model for the exact specifications.
+         */
         requestBody: TagModelUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TagSingle> {
+    }): CancelablePromise<TagSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/tags/{tag}',
@@ -242,15 +317,22 @@ export class TagsService {
     /**
      * Delete an tag.
      * Delete an tag.
-     * @param tag Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteTag(
+    public static deleteTag({
+        tag,
+        xTraceId,
+    }: {
+        /**
+         * Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary.
+         */
         tag: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/tags/{tag}',

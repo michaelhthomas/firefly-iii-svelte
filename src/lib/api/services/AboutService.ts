@@ -16,13 +16,17 @@ export class AboutService {
      * System information end point.
      * Returns general system information and versions of the (supporting) software.
      *
-     * @param xTraceId Unique identifier associated with this request.
      * @returns SystemInfo The available system information
      * @throws ApiError
      */
-    public static getAbout(
+    public static getAbout({
+        xTraceId,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<SystemInfo> {
+    }): CancelablePromise<SystemInfo> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/about',
@@ -42,13 +46,17 @@ export class AboutService {
      * Currently authenticated user endpoint.
      * Returns the currently authenticated user.
      *
-     * @param xTraceId Unique identifier associated with this request.
      * @returns UserSingle The user
      * @throws ApiError
      */
-    public static getCurrentUser(
+    public static getCurrentUser({
+        xTraceId,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<UserSingle> {
+    }): CancelablePromise<UserSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/about/user',
@@ -70,23 +78,36 @@ export class AboutService {
      * to run the cron. The cron requires the CLI token to be present. The cron job will fire for all
      * users.
      *
-     * @param cliToken The CLI token of any user in Firefly III, required to run the cron job.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param date A date formatted YYYY-MM-DD. This can be used to make the cron job pretend it's running
-     * on another day.
-     *
-     * @param force Forces the cron job to fire, regardless of whether it has fired before. This may result
-     * in double transactions or weird budgets, so be careful.
-     *
      * @returns CronResult The result of the cron job(s) firing.
      * @throws ApiError
      */
-    public static getCron(
+    public static getCron({
+        cliToken,
+        xTraceId,
+        date,
+        force,
+    }: {
+        /**
+         * The CLI token of any user in Firefly III, required to run the cron job.
+         */
         cliToken: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A date formatted YYYY-MM-DD. This can be used to make the cron job pretend it's running
+         * on another day.
+         *
+         */
         date?: string,
+        /**
+         * Forces the cron job to fire, regardless of whether it has fired before. This may result
+         * in double transactions or weird budgets, so be careful.
+         *
+         */
         force?: boolean,
-    ): CancelablePromise<CronResult> {
+    }): CancelablePromise<CronResult> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/cron/{cliToken}',

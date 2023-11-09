@@ -18,27 +18,49 @@ export class RecurrencesService {
     /**
      * List all transactions created by a recurring transaction.
      * List all transactions created by a recurring transaction, optionally limited to the date ranges specified.
-     * @param id The ID of the recurring transaction.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD. Both the start and end date must be present.
-     *
-     * @param end A date formatted YYYY-MM-DD. Both the start and end date must be present.
-     *
-     * @param type Optional filter on the transaction type(s) returned
      * @returns TransactionArray A list of transactions
      * @throws ApiError
      */
-    public static listTransactionByRecurrence(
+    public static listTransactionByRecurrence({
+        id,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * The ID of the recurring transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD. Both the start and end date must be present.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD. Both the start and end date must be present.
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/recurrences/{id}/transactions',
@@ -67,17 +89,27 @@ export class RecurrencesService {
     /**
      * List all recurring transactions.
      * List all recurring transactions.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns RecurrenceArray A list of recurring transactions.
      * @throws ApiError
      */
-    public static listRecurrence(
+    public static listRecurrence({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<RecurrenceArray> {
+    }): CancelablePromise<RecurrenceArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/recurrences',
@@ -100,15 +132,22 @@ export class RecurrencesService {
     /**
      * Store a new recurring transaction
      * Creates a new recurring transaction. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary recurring transaction information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RecurrenceSingle New recurring transaction stored, result in response.
      * @throws ApiError
      */
-    public static storeRecurrence(
+    public static storeRecurrence({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary recurring transaction information. See the model for the exact specifications.
+         */
         requestBody: RecurrenceStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RecurrenceSingle> {
+    }): CancelablePromise<RecurrenceSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/recurrences',
@@ -130,15 +169,22 @@ export class RecurrencesService {
     /**
      * Get a single recurring transaction.
      * Get a single recurring transaction.
-     * @param id The ID of the recurring transaction.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RecurrenceSingle The requested recurring transaction
      * @throws ApiError
      */
-    public static getRecurrence(
+    public static getRecurrence({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the recurring transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RecurrenceSingle> {
+    }): CancelablePromise<RecurrenceSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/recurrences/{id}',
@@ -160,17 +206,27 @@ export class RecurrencesService {
     /**
      * Update existing recurring transaction.
      * Update existing recurring transaction.
-     * @param id The ID of the recurring transaction.
-     * @param requestBody JSON array with updated recurring transaction information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RecurrenceSingle Updated recurring transaction stored, result in response
      * @throws ApiError
      */
-    public static updateRecurrence(
+    public static updateRecurrence({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the recurring transaction.
+         */
         id: string,
+        /**
+         * JSON array with updated recurring transaction information. See the model for the exact specifications.
+         */
         requestBody: RecurrenceUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RecurrenceSingle> {
+    }): CancelablePromise<RecurrenceSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/recurrences/{id}',
@@ -195,15 +251,22 @@ export class RecurrencesService {
     /**
      * Delete a recurring transaction.
      * Delete a recurring transaction. Transactions created by the recurring transaction will not be deleted.
-     * @param id The ID of the recurring transaction.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteRecurrence(
+    public static deleteRecurrence({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the recurring transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/recurrences/{id}',

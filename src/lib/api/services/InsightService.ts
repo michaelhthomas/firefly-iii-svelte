@@ -16,25 +16,38 @@ export class InsightService {
      * Insight into expenses, grouped by expense account.
      * This endpoint gives a summary of the expenses made by the user, grouped by expense account.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you add the accounts ID's of expense accounts, only those accounts
-     * are included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. You can combine both asset / liability and expense account ID's.
-     * Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of expense accounts and expense details. Each expense acccount has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseExpense(
+    public static insightExpenseExpense({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you add the accounts ID's of expense accounts, only those accounts
+         * are included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. You can combine both asset / liability and expense account ID's.
+         * Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/expense',
@@ -59,23 +72,36 @@ export class InsightService {
      * Insight into expenses, grouped by asset account.
      * This endpoint gives a summary of the expenses made by the user, grouped by asset account.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of asset accounts and expense details. Each asset account has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseAsset(
+    public static insightExpenseAsset({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/asset',
@@ -100,25 +126,38 @@ export class InsightService {
      * Insight into income, grouped by revenue account.
      * This endpoint gives a summary of the income received by the user, grouped by revenue account.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you add the accounts ID's of revenue accounts, only those accounts
-     * are included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. You can combine both asset / liability and deposit account ID's.
-     * Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of revenue accounts and income details. Each revenue acccount has one row per currency.
      * @throws ApiError
      */
-    public static insightIncomeRevenue(
+    public static insightIncomeRevenue({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you add the accounts ID's of revenue accounts, only those accounts
+         * are included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. You can combine both asset / liability and deposit account ID's.
+         * Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/revenue',
@@ -143,23 +182,36 @@ export class InsightService {
      * Insight into income, grouped by asset account.
      * This endpoint gives a summary of the income received by the user, grouped by asset account.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of asset accounts and income details. Each asset account has one row per currency.
      * @throws ApiError
      */
-    public static insightIncomeAsset(
+    public static insightIncomeAsset({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/asset',
@@ -184,23 +236,36 @@ export class InsightService {
      * Insight into transfers, grouped by account.
      * This endpoint gives a summary of the transfers made by the user, grouped by asset account or lability.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTransfer A list of asset accounts and transfer details. Each asset account has one row per currency.
      * @throws ApiError
      */
-    public static insightTransfers(
+    public static insightTransfers({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTransfer> {
+    }): CancelablePromise<InsightTransfer> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/asset',
@@ -225,26 +290,42 @@ export class InsightService {
      * Insight into expenses, grouped by bill.
      * This endpoint gives a summary of the expenses made by the user, grouped by (any) bill.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param billsArray The bills to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of budget and expense details. Each budget has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseBill(
+    public static insightExpenseBill({
+        start,
+        end,
+        xTraceId,
+        billsArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The bills to be included in the results.
+         *
+         */
         billsArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/bill',
@@ -270,23 +351,36 @@ export class InsightService {
      * Insight into expenses, without bill.
      * This endpoint gives a summary of the expenses made by the user, including only expenses with no bill.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of expense details. One row per currency.
      * @throws ApiError
      */
-    public static insightExpenseNoBill(
+    public static insightExpenseNoBill({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/no-bill',
@@ -311,26 +405,42 @@ export class InsightService {
      * Insight into expenses, grouped by budget.
      * This endpoint gives a summary of the expenses made by the user, grouped by (any) budget.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param budgetsArray The budgets to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of budget and expense details. Each budget has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseBudget(
+    public static insightExpenseBudget({
+        start,
+        end,
+        xTraceId,
+        budgetsArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The budgets to be included in the results.
+         *
+         */
         budgetsArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/budget',
@@ -356,23 +466,36 @@ export class InsightService {
      * Insight into expenses, without budget.
      * This endpoint gives a summary of the expenses made by the user, including only expenses with no budget.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of expense details. One row per currency.
      * @throws ApiError
      */
-    public static insightExpenseNoBudget(
+    public static insightExpenseNoBudget({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/no-budget',
@@ -397,26 +520,42 @@ export class InsightService {
      * Insight into expenses, grouped by category.
      * This endpoint gives a summary of the expenses made by the user, grouped by (any) category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param categoriesArray The categories to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of category and expense details. Each category has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseCategory(
+    public static insightExpenseCategory({
+        start,
+        end,
+        xTraceId,
+        categoriesArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The categories to be included in the results.
+         *
+         */
         categoriesArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/category',
@@ -442,23 +581,36 @@ export class InsightService {
      * Insight into expenses, without category.
      * This endpoint gives a summary of the expenses made by the user, including only expenses with no category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of expense details. One row per currency.
      * @throws ApiError
      */
-    public static insightExpenseNoCategory(
+    public static insightExpenseNoCategory({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/no-category',
@@ -483,26 +635,42 @@ export class InsightService {
      * Insight into income, grouped by category.
      * This endpoint gives a summary of the income received by the user, grouped by (any) category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param categoriesArray The categories to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of category and income details. Each category has one row per currency.
      * @throws ApiError
      */
-    public static insightIncomeCategory(
+    public static insightIncomeCategory({
+        start,
+        end,
+        xTraceId,
+        categoriesArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The categories to be included in the results.
+         *
+         */
         categoriesArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/category',
@@ -528,23 +696,36 @@ export class InsightService {
      * Insight into income, without category.
      * This endpoint gives a summary of the income received by the user, including only income with no category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of income details. One row per currency.
      * @throws ApiError
      */
-    public static insightIncomeNoCategory(
+    public static insightIncomeNoCategory({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/no-category',
@@ -569,26 +750,42 @@ export class InsightService {
      * Insight into transfers, grouped by category.
      * This endpoint gives a summary of the transfers made by the user, grouped by (any) category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param categoriesArray The categories to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of category and transfer details. Each category has one row per currency.
      * @throws ApiError
      */
-    public static insightTransferCategory(
+    public static insightTransferCategory({
+        start,
+        end,
+        xTraceId,
+        categoriesArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The categories to be included in the results.
+         *
+         */
         categoriesArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/category',
@@ -614,23 +811,36 @@ export class InsightService {
      * Insight into transfers, without category.
      * This endpoint gives a summary of the transfers made by the user, including only transfers with no category.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of transfer details. One row per currency.
      * @throws ApiError
      */
-    public static insightTransferNoCategory(
+    public static insightTransferNoCategory({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/no-category',
@@ -655,26 +865,42 @@ export class InsightService {
      * Insight into expenses, grouped by tag.
      * This endpoint gives a summary of the expenses made by the user, grouped by (any) tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param tagsArray The tags to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of tag and expense details. Each tag has one row per currency.
      * @throws ApiError
      */
-    public static insightExpenseTag(
+    public static insightExpenseTag({
+        start,
+        end,
+        xTraceId,
+        tagsArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The tags to be included in the results.
+         *
+         */
         tagsArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/tag',
@@ -700,23 +926,36 @@ export class InsightService {
      * Insight into expenses, without tag.
      * This endpoint gives a summary of the expenses made by the user, including only expenses with no tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of expense details. One row per currency.
      * @throws ApiError
      */
-    public static insightExpenseNoTag(
+    public static insightExpenseNoTag({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/no-tag',
@@ -741,26 +980,42 @@ export class InsightService {
      * Insight into income, grouped by tag.
      * This endpoint gives a summary of the income received by the user, grouped by (any) tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param tagsArray The tags to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of tag and income details. Each tag has one row per currency.
      * @throws ApiError
      */
-    public static insightIncomeTag(
+    public static insightIncomeTag({
+        start,
+        end,
+        xTraceId,
+        tagsArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The tags to be included in the results.
+         *
+         */
         tagsArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/tag',
@@ -786,23 +1041,36 @@ export class InsightService {
      * Insight into income, without tag.
      * This endpoint gives a summary of the income received by the user, including only income with no tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of income details. One row per currency.
      * @throws ApiError
      */
-    public static insightIncomeNoTag(
+    public static insightIncomeNoTag({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/no-tag',
@@ -827,26 +1095,42 @@ export class InsightService {
      * Insight into transfers, grouped by tag.
      * This endpoint gives a summary of the transfers created by the user, grouped by (any) tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param tagsArray The tags to be included in the results.
-     *
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightGroup A list of tag and transfer details. Each tag has one row per currency.
      * @throws ApiError
      */
-    public static insightTransferTag(
+    public static insightTransferTag({
+        start,
+        end,
+        xTraceId,
+        tagsArray,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The tags to be included in the results.
+         *
+         */
         tagsArray?: Array<number>,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightGroup> {
+    }): CancelablePromise<InsightGroup> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/tag',
@@ -872,23 +1156,36 @@ export class InsightService {
      * Insight into expenses, without tag.
      * This endpoint gives a summary of the transfers made by the user, including only transfers with no tag.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of transfer details. One row per currency.
      * @throws ApiError
      */
-    public static insightTransferNoTag(
+    public static insightTransferNoTag({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/no-tag',
@@ -913,23 +1210,36 @@ export class InsightService {
      * Insight into total expenses.
      * This endpoint gives a sum of the total expenses made by the user.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of sums in different currencies.
      * @throws ApiError
      */
-    public static insightExpenseTotal(
+    public static insightExpenseTotal({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only withdrawals from those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/expense/total',
@@ -954,23 +1264,36 @@ export class InsightService {
      * Insight into total income.
      * This endpoint gives a sum of the total income received by the user.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of sums in different currencies.
      * @throws ApiError
      */
-    public static insightIncomeTotal(
+    public static insightIncomeTotal({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only deposits to those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/income/total',
@@ -995,23 +1318,36 @@ export class InsightService {
      * Insight into total transfers.
      * This endpoint gives a sum of the total amount transfers made by the user.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param accountsArray The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
-     * asset accounts / liabilities will be included. Other account ID's will be ignored.
-     *
      * @returns InsightTotal A list of sums in different currencies.
      * @throws ApiError
      */
-    public static insightTransferTotal(
+    public static insightTransferTotal({
+        start,
+        end,
+        xTraceId,
+        accountsArray,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * The accounts to be included in the results. If you include ID's of asset accounts or liabilities, only transfers between those
+         * asset accounts / liabilities will be included. Other account ID's will be ignored.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<InsightTotal> {
+    }): CancelablePromise<InsightTotal> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/insight/transfer/total',

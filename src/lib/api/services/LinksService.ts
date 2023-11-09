@@ -23,27 +23,49 @@ export class LinksService {
      * List all transactions under this link type.
      * List all transactions under this link type, both the inward and outward transactions.
      *
-     * @param id The ID of the link type.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD, to limit the results.
-     *
-     * @param end A date formatted YYYY-MM-DD, to limit the results.
-     *
-     * @param type Optional filter on the transaction type(s) returned.
      * @returns TransactionArray A list of transactions
      * @throws ApiError
      */
-    public static listTransactionByLinkType(
+    public static listTransactionByLinkType({
+        id,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * The ID of the link type.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the results.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the results.
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned.
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/link-types/{id}/transactions',
@@ -73,17 +95,27 @@ export class LinksService {
      * List all types of links.
      * List all the link types the system has. These include the default ones as well as any new ones.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns LinkTypeArray A list of link types.
      * @throws ApiError
      */
-    public static listLinkType(
+    public static listLinkType({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<LinkTypeArray> {
+    }): CancelablePromise<LinkTypeArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/link-types',
@@ -106,15 +138,22 @@ export class LinksService {
     /**
      * Create a new link type
      * Creates a new link type. The data required can be submitted as a JSON body or as a list of parameters (in key=value pairs, like a webform).
-     * @param requestBody JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns LinkTypeSingle New link type stored, result in response.
      * @throws ApiError
      */
-    public static storeLinkType(
+    public static storeLinkType({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications.
+         */
         requestBody: LinkType,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<LinkTypeSingle> {
+    }): CancelablePromise<LinkTypeSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/link-types',
@@ -137,15 +176,22 @@ export class LinksService {
      * Get single a link type.
      * Returns a single link type by its ID.
      *
-     * @param id The ID of the link type.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns LinkTypeSingle The requested link type
      * @throws ApiError
      */
-    public static getLinkType(
+    public static getLinkType({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the link type.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<LinkTypeSingle> {
+    }): CancelablePromise<LinkTypeSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/link-types/{id}',
@@ -168,17 +214,27 @@ export class LinksService {
      * Update existing link type.
      * Used to update a single link type. All fields that are not submitted will be cleared (set to NULL). The model will tell you which fields are mandatory. You cannot update some of the system provided link types, indicated by the editable=false flag when you list it.
      *
-     * @param id The ID of the link type.
-     * @param requestBody JSON array or formdata with updated link type information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns LinkTypeSingle Updated link type stored, result in response
      * @throws ApiError
      */
-    public static updateLinkType(
+    public static updateLinkType({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the link type.
+         */
         id: string,
+        /**
+         * JSON array or formdata with updated link type information. See the model for the exact specifications.
+         */
         requestBody: LinkTypeUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<LinkTypeSingle> {
+    }): CancelablePromise<LinkTypeSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/link-types/{id}',
@@ -204,15 +260,22 @@ export class LinksService {
      * Permanently delete link type.
      * Will permanently delete a link type. The links between transactions will be removed. The transactions themselves remain. You cannot delete some of the system provided link types, indicated by the editable=false flag when you list it.
      *
-     * @param id The ID of the link type.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteLinkType(
+    public static deleteLinkType({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the link type.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/link-types/{id}',
@@ -235,17 +298,27 @@ export class LinksService {
      * List all transaction links.
      * List all the transaction links.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns TransactionLinkArray A list of transaction links
      * @throws ApiError
      */
-    public static listTransactionLink(
+    public static listTransactionLink({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<TransactionLinkArray> {
+    }): CancelablePromise<TransactionLinkArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transaction-links',
@@ -268,15 +341,22 @@ export class LinksService {
     /**
      * Create a new link between transactions
      * Store a new link between two transactions. For this end point you need the journal_id from a transaction.
-     * @param requestBody JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionLinkSingle New transaction link stored, result in response.
      * @throws ApiError
      */
-    public static storeTransactionLink(
+    public static storeTransactionLink({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications.
+         */
         requestBody: TransactionLinkStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionLinkSingle> {
+    }): CancelablePromise<TransactionLinkSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/transaction-links',
@@ -299,15 +379,22 @@ export class LinksService {
      * Get a single link.
      * Returns a single link by its ID.
      *
-     * @param id The ID of the transaction link.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionLinkSingle The requested link
      * @throws ApiError
      */
-    public static getTransactionLink(
+    public static getTransactionLink({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction link.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionLinkSingle> {
+    }): CancelablePromise<TransactionLinkSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transaction-links/{id}',
@@ -330,15 +417,22 @@ export class LinksService {
      * Permanently delete link between transactions.
      * Will permanently delete link. Transactions remain.
      *
-     * @param id The ID of the transaction link.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteTransactionLink(
+    public static deleteTransactionLink({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction link.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/transaction-links/{id}',
@@ -361,17 +455,27 @@ export class LinksService {
      * Update an existing link between transactions.
      * Used to update a single existing link.
      *
-     * @param id The ID of the transaction link.
-     * @param requestBody JSON array or formdata with updated link type information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionLinkSingle Updated link type stored, result in response
      * @throws ApiError
      */
-    public static updateTransactionLink(
+    public static updateTransactionLink({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction link.
+         */
         id: string,
+        /**
+         * JSON array or formdata with updated link type information. See the model for the exact specifications.
+         */
         requestBody: TransactionLinkUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionLinkSingle> {
+    }): CancelablePromise<TransactionLinkSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/transaction-links/{id}',

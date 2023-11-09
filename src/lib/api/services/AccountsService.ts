@@ -22,27 +22,49 @@ export class AccountsService {
      * List all transactions related to the account.
      * This endpoint returns a list of all the transactions connected to the account.
      *
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param type Optional filter on the transaction type(s) returned.
      * @returns TransactionArray A list of transactions
      * @throws ApiError
      */
-    public static listTransactionByAccount(
+    public static listTransactionByAccount({
+        id,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned.
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/accounts/{id}/transactions',
@@ -71,19 +93,32 @@ export class AccountsService {
     /**
      * Lists all attachments.
      * Lists all attachments.
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments
      * @throws ApiError
      */
-    public static listAttachmentByAccount(
+    public static listAttachmentByAccount({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/accounts/{id}/attachments',
@@ -110,19 +145,32 @@ export class AccountsService {
      * List all piggy banks related to the account.
      * This endpoint returns a list of all the piggy banks connected to the account.
      *
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PiggyBankArray A list of piggy banks
      * @throws ApiError
      */
-    public static listPiggyBankByAccount(
+    public static listPiggyBankByAccount({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PiggyBankArray> {
+    }): CancelablePromise<PiggyBankArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/accounts/{id}/piggy-banks',
@@ -149,22 +197,38 @@ export class AccountsService {
      * List all accounts.
      * This endpoint returns a list of all the accounts owned by the authenticated user.
      *
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param date A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
-     *
-     * @param type Optional filter on the account type(s) returned
      * @returns AccountArray A list of accounts
      * @throws ApiError
      */
-    public static listAccount(
+    public static listAccount({
+        xTraceId,
+        limit,
+        page,
+        date,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
+         *
+         */
         date?: string,
+        /**
+         * Optional filter on the account type(s) returned
+         */
         type?: AccountTypeFilter,
-    ): CancelablePromise<AccountArray> {
+    }): CancelablePromise<AccountArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/accounts',
@@ -189,15 +253,22 @@ export class AccountsService {
     /**
      * Create new account.
      * Creates a new account. The data required can be submitted as a JSON body or as a list of parameters (in key=value pairs, like a webform).
-     * @param requestBody JSON array with the necessary account information or key=value pairs. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns AccountSingle New account stored, result in response.
      * @throws ApiError
      */
-    public static storeAccount(
+    public static storeAccount({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array with the necessary account information or key=value pairs. See the model for the exact specifications.
+         */
         requestBody: AccountStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<AccountSingle> {
+    }): CancelablePromise<AccountSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/accounts',
@@ -220,18 +291,28 @@ export class AccountsService {
      * Get single account.
      * Returns a single account by its ID.
      *
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param date A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
-     *
      * @returns AccountSingle The requested account
      * @throws ApiError
      */
-    public static getAccount(
+    public static getAccount({
+        id,
+        xTraceId,
+        date,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
+         *
+         */
         date?: string,
-    ): CancelablePromise<AccountSingle> {
+    }): CancelablePromise<AccountSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/accounts/{id}',
@@ -257,17 +338,27 @@ export class AccountsService {
      * Update existing account.
      * Used to update a single account. All fields that are not submitted will be cleared (set to NULL). The model will tell you which fields are mandatory.
      *
-     * @param id The ID of the account.
-     * @param requestBody JSON array or formdata with updated account information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns AccountSingle Updated account stored, result in response
      * @throws ApiError
      */
-    public static updateAccount(
+    public static updateAccount({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * JSON array or formdata with updated account information. See the model for the exact specifications.
+         */
         requestBody: AccountUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<AccountSingle> {
+    }): CancelablePromise<AccountSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/accounts/{id}',
@@ -293,15 +384,22 @@ export class AccountsService {
      * Permanently delete account.
      * Will permanently delete an account. Any associated transactions and piggy banks are ALSO deleted. Cannot be recovered from.
      *
-     * @param id The ID of the account.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteAccount(
+    public static deleteAccount({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the account.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/accounts/{id}',

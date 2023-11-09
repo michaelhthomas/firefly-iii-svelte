@@ -12,7 +12,7 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"api:generate": "openapi -i ./src/lib/api/firefly-iii-2.0.10-v1.yaml -o ./src/lib/api --request ./src/lib/api/request.ts"
+		"api:generate": "openapi -i ./src/lib/api/firefly-iii-2.0.10-v1.yaml -o ./src/lib/api --request ./src/lib/api/request.ts --useOptions"
 	},
 	"dependencies": {
 		"@iconify/svelte": "^3.1.4",

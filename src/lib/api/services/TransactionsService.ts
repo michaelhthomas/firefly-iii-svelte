@@ -20,19 +20,32 @@ export class TransactionsService {
     /**
      * Lists all the transaction links for an individual journal (individual split).
      * Lists all the transaction links for an individual journal (a split). Don't use the group ID, you need the actual underlying journal (the split).
-     * @param id The ID of the transaction journal / the split.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns TransactionLinkArray A list of transaction links.
      * @throws ApiError
      */
-    public static listLinksByJournal(
+    public static listLinksByJournal({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the transaction journal / the split.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<TransactionLinkArray> {
+    }): CancelablePromise<TransactionLinkArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transaction-journals/{id}/links',
@@ -58,15 +71,22 @@ export class TransactionsService {
     /**
      * Get a single transaction, based on one of the underlying transaction journals (transaction splits).
      * Get a single transaction by underlying journal (split).
-     * @param id The ID of the transaction journal (split).
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionSingle The requested transaction.
      * @throws ApiError
      */
-    public static getTransactionByJournal(
+    public static getTransactionByJournal({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction journal (split).
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionSingle> {
+    }): CancelablePromise<TransactionSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transaction-journals/{id}',
@@ -88,15 +108,22 @@ export class TransactionsService {
     /**
      * Delete split from transaction
      * Delete an individual journal (split) from a transaction.
-     * @param id The ID of the transaction journal (the split) you wish to delete.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteTransactionJournal(
+    public static deleteTransactionJournal({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction journal (the split) you wish to delete.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/transaction-journals/{id}',
@@ -118,19 +145,32 @@ export class TransactionsService {
     /**
      * Lists all attachments.
      * Lists all attachments.
-     * @param id The ID of the transaction.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AttachmentArray A list of attachments
      * @throws ApiError
      */
-    public static listAttachmentByTransaction(
+    public static listAttachmentByTransaction({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AttachmentArray> {
+    }): CancelablePromise<AttachmentArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transactions/{id}/attachments',
@@ -156,19 +196,32 @@ export class TransactionsService {
     /**
      * Lists all piggy bank events.
      * Lists all piggy bank events.
-     * @param id The ID of the transaction.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns PiggyBankEventArray A list of piggy bank events.
      * @throws ApiError
      */
-    public static listEventByTransaction(
+    public static listEventByTransaction({
+        id,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The ID of the transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<PiggyBankEventArray> {
+    }): CancelablePromise<PiggyBankEventArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transactions/{id}/piggy-bank-events',
@@ -195,25 +248,44 @@ export class TransactionsService {
      * List all the user's transactions.
      *
      * List all the user's transactions.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD. This is the start date of the selected range (inclusive).
-     *
-     * @param end A date formatted YYYY-MM-DD. This is the end date of the selected range (inclusive).
-     *
-     * @param type Optional filter on the transaction type(s) returned.
      * @returns TransactionArray A list of transactions.
      * @throws ApiError
      */
-    public static listTransaction(
+    public static listTransaction({
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD. This is the start date of the selected range (inclusive).
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD. This is the end date of the selected range (inclusive).
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned.
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transactions',
@@ -239,15 +311,22 @@ export class TransactionsService {
     /**
      * Store a new transaction
      * Creates a new transaction. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary transaction information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionSingle New transaction stored(s), result in response.
      * @throws ApiError
      */
-    public static storeTransaction(
+    public static storeTransaction({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary transaction information. See the model for the exact specifications.
+         */
         requestBody: TransactionStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionSingle> {
+    }): CancelablePromise<TransactionSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/transactions',
@@ -269,15 +348,22 @@ export class TransactionsService {
     /**
      * Get a single transaction.
      * Get a single transaction.
-     * @param id The ID of the transaction.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionSingle The requested transaction.
      * @throws ApiError
      */
-    public static getTransaction(
+    public static getTransaction({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionSingle> {
+    }): CancelablePromise<TransactionSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/transactions/{id}',
@@ -299,17 +385,27 @@ export class TransactionsService {
     /**
      * Update existing transaction. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
      * Update an existing transaction.
-     * @param id The ID of the transaction.
-     * @param requestBody JSON array with updated transaction information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns TransactionSingle Updated transaction stored, result in response
      * @throws ApiError
      */
-    public static updateTransaction(
+    public static updateTransaction({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction.
+         */
         id: string,
+        /**
+         * JSON array with updated transaction information. See the model for the exact specifications.
+         */
         requestBody: TransactionUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<TransactionSingle> {
+    }): CancelablePromise<TransactionSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/transactions/{id}',
@@ -334,15 +430,22 @@ export class TransactionsService {
     /**
      * Delete a transaction.
      * Delete a transaction.
-     * @param id The ID of the transaction.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteTransaction(
+    public static deleteTransaction({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the transaction.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/transactions/{id}',

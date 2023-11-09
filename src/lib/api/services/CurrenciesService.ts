@@ -25,24 +25,43 @@ export class CurrenciesService {
     /**
      * List all accounts with this currency.
      * List all accounts with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param date A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
-     *
-     * @param type Optional filter on the account type(s) returned
      * @returns AccountArray A list of accounts
      * @throws ApiError
      */
-    public static listAccountByCurrency(
+    public static listAccountByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+        date,
+        type,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.
+         *
+         */
         date?: string,
+        /**
+         * Optional filter on the account type(s) returned
+         */
         type?: AccountTypeFilter,
-    ): CancelablePromise<AccountArray> {
+    }): CancelablePromise<AccountArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/accounts',
@@ -70,19 +89,32 @@ export class CurrenciesService {
     /**
      * List all available budgets with this currency.
      * List all available budgets with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns AvailableBudgetArray A list of available budgets
      * @throws ApiError
      */
-    public static listAvailableBudgetByCurrency(
+    public static listAvailableBudgetByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<AvailableBudgetArray> {
+    }): CancelablePromise<AvailableBudgetArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/available-budgets',
@@ -108,19 +140,32 @@ export class CurrenciesService {
     /**
      * List all bills with this currency.
      * List all bills with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns BillArray A list of bills.
      * @throws ApiError
      */
-    public static listBillByCurrency(
+    public static listBillByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<BillArray> {
+    }): CancelablePromise<BillArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/bills',
@@ -146,23 +191,42 @@ export class CurrenciesService {
     /**
      * List all budget limits with this currency
      * List all budget limits with this currency
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start Start date for the budget limit list.
-     * @param end End date for the budget limit list.
      * @returns BudgetLimitArray A list of budget limits.
      * @throws ApiError
      */
-    public static listBudgetLimitByCurrency(
+    public static listBudgetLimitByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * Start date for the budget limit list.
+         */
         start?: string,
+        /**
+         * End date for the budget limit list.
+         */
         end?: string,
-    ): CancelablePromise<BudgetLimitArray> {
+    }): CancelablePromise<BudgetLimitArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/budget_limits',
@@ -190,19 +254,32 @@ export class CurrenciesService {
     /**
      * List all recurring transactions with this currency.
      * List all recurring transactions with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns RecurrenceArray A list of recurring transactions
      * @throws ApiError
      */
-    public static listRecurrenceByCurrency(
+    public static listRecurrenceByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<RecurrenceArray> {
+    }): CancelablePromise<RecurrenceArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/recurrences',
@@ -228,19 +305,32 @@ export class CurrenciesService {
     /**
      * List all rules with this currency.
      * List all rules with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns RuleArray A list of rules
      * @throws ApiError
      */
-    public static listRuleByCurrency(
+    public static listRuleByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<RuleArray> {
+    }): CancelablePromise<RuleArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/rules',
@@ -266,27 +356,49 @@ export class CurrenciesService {
     /**
      * List all transactions with this currency.
      * List all transactions with this currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
-     * @param start A date formatted YYYY-MM-DD, to limit the list of transactions.
-     *
-     * @param end A date formatted YYYY-MM-DD, to limit the list of transactions.
-     *
-     * @param type Optional filter on the transaction type(s) returned
      * @returns TransactionArray A list of transactions.
      * @throws ApiError
      */
-    public static listTransactionByCurrency(
+    public static listTransactionByCurrency({
+        code,
+        xTraceId,
+        limit,
+        page,
+        start,
+        end,
+        type,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the list of transactions.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the list of transactions.
+         *
+         */
         end?: string,
+        /**
+         * Optional filter on the transaction type(s) returned
+         */
         type?: TransactionTypeFilter,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}/transactions',
@@ -315,17 +427,27 @@ export class CurrenciesService {
     /**
      * List all currencies.
      * List all currencies.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns CurrencyArray A list of currencies.
      * @throws ApiError
      */
-    public static listCurrency(
+    public static listCurrency({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<CurrencyArray> {
+    }): CancelablePromise<CurrencyArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies',
@@ -348,15 +470,22 @@ export class CurrenciesService {
     /**
      * Store a new currency
      * Creates a new currency. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary currency information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CurrencySingle New currency stored, result in response.
      * @throws ApiError
      */
-    public static storeCurrency(
+    public static storeCurrency({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary currency information. See the model for the exact specifications.
+         */
         requestBody: CurrencyStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CurrencySingle> {
+    }): CancelablePromise<CurrencySingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/currencies',
@@ -378,15 +507,22 @@ export class CurrenciesService {
     /**
      * Enable a single currency.
      * Enable a single currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static enableCurrency(
+    public static enableCurrency({
+        code,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/currencies/{code}/enable',
@@ -408,15 +544,22 @@ export class CurrenciesService {
     /**
      * Disable a currency.
      * Disable a currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static disableCurrency(
+    public static disableCurrency({
+        code,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/currencies/{code}/disable',
@@ -439,15 +582,22 @@ export class CurrenciesService {
     /**
      * Make currency default currency.
      * Make this currency the default currency for the user. If the currency is not enabled, it will be enabled as well.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static defaultCurrency(
+    public static defaultCurrency({
+        code,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/currencies/{code}/default',
@@ -469,15 +619,22 @@ export class CurrenciesService {
     /**
      * Get a single currency.
      * Get a single currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CurrencySingle The requested currency
      * @throws ApiError
      */
-    public static getCurrency(
+    public static getCurrency({
+        code,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CurrencySingle> {
+    }): CancelablePromise<CurrencySingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/{code}',
@@ -499,17 +656,27 @@ export class CurrenciesService {
     /**
      * Update existing currency.
      * Update existing currency.
-     * @param code The currency code.
-     * @param formData JSON array with updated currency information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CurrencySingle Updated currency stored, result in response
      * @throws ApiError
      */
-    public static updateCurrency(
+    public static updateCurrency({
+        code,
+        formData,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * JSON array with updated currency information. See the model for the exact specifications.
+         */
         formData: CurrencyUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CurrencySingle> {
+    }): CancelablePromise<CurrencySingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/currencies/{code}',
@@ -534,15 +701,22 @@ export class CurrenciesService {
     /**
      * Delete a currency.
      * Delete a currency.
-     * @param code The currency code.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteCurrency(
+    public static deleteCurrency({
+        code,
+        xTraceId,
+    }: {
+        /**
+         * The currency code.
+         */
         code: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/currencies/{code}',
@@ -564,13 +738,17 @@ export class CurrenciesService {
     /**
      * Get the user's default currency.
      * Get the user's default currency.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns CurrencySingle The default currency
      * @throws ApiError
      */
-    public static getDefaultCurrency(
+    public static getDefaultCurrency({
+        xTraceId,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<CurrencySingle> {
+    }): CancelablePromise<CurrencySingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/currencies/default',

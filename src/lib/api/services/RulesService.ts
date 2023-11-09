@@ -17,24 +17,40 @@ export class RulesService {
     /**
      * Test which transactions would be hit by the rule. No changes will be made.
      * Test which transactions would be hit by the rule. No changes will be made. Limit the result if you want to.
-     * @param id The ID of the rule.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param start A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.
-     *
-     * @param end A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.
-     *
-     * @param accountsArray Limit the testing of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.
-     *
      * @returns TransactionArray A list of transactions that would be changed by the rule. No changes will be made.
      * @throws ApiError
      */
-    public static testRule(
+    public static testRule({
+        id,
+        xTraceId,
+        start,
+        end,
+        accountsArray,
+    }: {
+        /**
+         * The ID of the rule.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.
+         *
+         */
         end?: string,
+        /**
+         * Limit the testing of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<TransactionArray> {
+    }): CancelablePromise<TransactionArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/rules/{id}/test',
@@ -61,24 +77,40 @@ export class RulesService {
     /**
      * Fire the rule on your transactions.
      * Fire the rule group on your transactions. Changes will be made by the rules in the group! Limit the result if you want to.
-     * @param id The ID of the rule.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param start A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the start date is not present, it will be set to one year ago. If you use this field, both the start date and the end date must be present.
-     *
-     * @param end A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the end date is not present, it will be set to today. If you use this field, both the start date and the end date must be present.
-     *
-     * @param accountsArray Limit the triggering of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.
-     *
      * @returns void
      * @throws ApiError
      */
-    public static fireRule(
+    public static fireRule({
+        id,
+        xTraceId,
+        start,
+        end,
+        accountsArray,
+    }: {
+        /**
+         * The ID of the rule.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the start date is not present, it will be set to one year ago. If you use this field, both the start date and the end date must be present.
+         *
+         */
         start?: string,
+        /**
+         * A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the end date is not present, it will be set to today. If you use this field, both the start date and the end date must be present.
+         *
+         */
         end?: string,
+        /**
+         * Limit the triggering of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.
+         *
+         */
         accountsArray?: Array<number>,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/rules/{id}/trigger',
@@ -105,17 +137,27 @@ export class RulesService {
     /**
      * List all rules.
      * List all rules.
-     * @param xTraceId Unique identifier associated with this request.
-     * @param limit Number of items per page. The default pagination is per 50 items.
-     * @param page Page number. The default pagination is per 50 items.
      * @returns RuleArray A list of rules
      * @throws ApiError
      */
-    public static listRule(
+    public static listRule({
+        xTraceId,
+        limit,
+        page,
+    }: {
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
+        /**
+         * Number of items per page. The default pagination is per 50 items.
+         */
         limit?: number,
+        /**
+         * Page number. The default pagination is per 50 items.
+         */
         page?: number,
-    ): CancelablePromise<RuleArray> {
+    }): CancelablePromise<RuleArray> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/rules',
@@ -138,15 +180,22 @@ export class RulesService {
     /**
      * Store a new rule
      * Creates a new rule. The data required can be submitted as a JSON body or as a list of parameters.
-     * @param requestBody JSON array or key=value pairs with the necessary rule information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RuleSingle New rule stored, result in response.
      * @throws ApiError
      */
-    public static storeRule(
+    public static storeRule({
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * JSON array or key=value pairs with the necessary rule information. See the model for the exact specifications.
+         */
         requestBody: RuleStore,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RuleSingle> {
+    }): CancelablePromise<RuleSingle> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/v1/rules',
@@ -168,15 +217,22 @@ export class RulesService {
     /**
      * Get a single rule.
      * Get a single rule.
-     * @param id The ID of the object.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RuleSingle The requested rule
      * @throws ApiError
      */
-    public static getRule(
+    public static getRule({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the object.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RuleSingle> {
+    }): CancelablePromise<RuleSingle> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/rules/{id}',
@@ -198,17 +254,27 @@ export class RulesService {
     /**
      * Update existing rule.
      * Update existing rule.
-     * @param id The ID of the object.
-     * @param requestBody JSON array with updated rule information. See the model for the exact specifications.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns RuleSingle Updated rule stored, result in response
      * @throws ApiError
      */
-    public static updateRule(
+    public static updateRule({
+        id,
+        requestBody,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the object.
+         */
         id: string,
+        /**
+         * JSON array with updated rule information. See the model for the exact specifications.
+         */
         requestBody: RuleUpdate,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<RuleSingle> {
+    }): CancelablePromise<RuleSingle> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/v1/rules/{id}',
@@ -233,15 +299,22 @@ export class RulesService {
     /**
      * Delete an rule.
      * Delete an rule.
-     * @param id The ID of the rule.
-     * @param xTraceId Unique identifier associated with this request.
      * @returns void
      * @throws ApiError
      */
-    public static deleteRule(
+    public static deleteRule({
+        id,
+        xTraceId,
+    }: {
+        /**
+         * The ID of the rule.
+         */
         id: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<void> {
+    }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'DELETE',
             url: '/v1/rules/{id}',

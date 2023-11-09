@@ -14,19 +14,29 @@ export class ChartsService {
      * Dashboard chart with asset account balance information.
      * This endpoint returns the data required to generate a chart with basic asset account balance information.
      *
-     * @param start A date formatted YYYY-MM-DD.
-     *
-     * @param end A date formatted YYYY-MM-DD.
-     *
-     * @param xTraceId Unique identifier associated with this request.
      * @returns ChartLine Line chart oriented chart information. Check out the model for more details. Each entry is a line (or bar) in the chart.
      * @throws ApiError
      */
-    public static getChartAccountOverview(
+    public static getChartAccountOverview({
+        start,
+        end,
+        xTraceId,
+    }: {
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         start: string,
+        /**
+         * A date formatted YYYY-MM-DD.
+         *
+         */
         end: string,
+        /**
+         * Unique identifier associated with this request.
+         */
         xTraceId?: string,
-    ): CancelablePromise<ChartLine> {
+    }): CancelablePromise<ChartLine> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v1/chart/account/overview',
