@@ -28,7 +28,6 @@
 </script>
 
 <script lang="ts">
-	import Alert from '../Alert.svelte';
 	import Drawer from './Drawer.svelte';
 	import Button from '../Button.svelte';
 	import { closeModal } from 'svelte-modals';
@@ -52,8 +51,6 @@
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import SelectField from '../form/SelectField.svelte';
 	import { createMutation } from '@tanstack/svelte-query';
-	import { prettyPrintError } from '$lib/api/errors';
-	import { scale } from 'svelte/transition';
 	import StatusButton from '../StatusButton.svelte';
 	import ToggleField from '../form/ToggleField.svelte';
 	import { queryClient } from '$lib/client';
@@ -122,87 +119,82 @@
 	const title = fields.title.value;
 </script>
 
-{#if isOpen}
-	<Drawer title={type === 'create' ? 'New Webhook' : `Edit ${$title}`} icon="bxs:bolt">
-		<form use:enhance method="POST" id="webhook_update_form">
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-500 dark:text-gray-400"
-			>
-				<TextField {form} field="title" label="Title" placeholder="Webhook Title" />
+<Drawer
+	title={type === 'create' ? 'New Webhook' : `Edit ${$title}`}
+	icon="bxs:bolt"
+	{isOpen}
+>
+	<form use:enhance method="POST" id="webhook_update_form">
+		<div
+			class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-500 dark:text-gray-400"
+		>
+			<TextField {form} field="title" label="Title" placeholder="Webhook Title" />
 
-				<SelectField
-					{form}
-					field="trigger"
-					label="Trigger"
-					items={triggerItems}
-					helpText="Indicate on what event the webhook will trigger"
-				/>
+			<SelectField
+				{form}
+				field="trigger"
+				label="Trigger"
+				items={triggerItems}
+				helpText="Indicate on what event the webhook will trigger"
+			/>
 
-				<SelectField
-					{form}
-					field="response"
-					label="Response"
-					items={responseItems}
-					helpText="Indicate what the webhook must submit to the URL."
-				/>
+			<SelectField
+				{form}
+				field="response"
+				label="Response"
+				items={responseItems}
+				helpText="Indicate what the webhook must submit to the URL."
+			/>
 
-				<SelectField
-					{form}
-					field="delivery"
-					label="Delivery"
-					items={deliveryItems}
-					helpText="Which format the webhook must deliver data in."
-				/>
+			<SelectField
+				{form}
+				field="delivery"
+				label="Delivery"
+				items={deliveryItems}
+				helpText="Which format the webhook must deliver data in."
+			/>
 
-				<TextField {form} field="url" label="URL" placeholder="Webhook URL" />
+			<TextField {form} field="url" label="URL" placeholder="Webhook URL" />
 
-				<ToggleField
-					{form}
-					field="active"
-					label="Active"
-					helpText="The webhook must be active or it won't be called."
-				/>
-			</div>
-		</form>
-
-		<div slot="footer" class="space-y-4">
-			{#if $updateWebhookMutation.isError}
-				<div transition:scale={{ duration: 100 }}>
-					<Alert color="red" icon="bxs:error-circle" label="Error:">
-						{prettyPrintError($updateWebhookMutation.error)}
-					</Alert>
-				</div>
-			{/if}
-
-			<MutationError mutation={deleteWebhookMutation} />
-
-			<div class="flex flex-row gap-4">
-				{#if type === 'update'}
-					<StatusButton
-						on:click={() => $deleteWebhookMutation.mutate(id)}
-						color="red"
-						outline
-						status={$deleteWebhookMutation.status}
-						icon="bxs:trash"
-					>
-						<span class="hidden sm:inline">Delete</span>
-					</StatusButton>
-				{/if}
-				<div class="flex-grow hidden sm:block" />
-				<Button color="alternative" on:click={closeModal} class="hidden sm:block"
-					>Cancel</Button
-				>
-				<StatusButton
-					status={$updateWebhookMutation.status}
-					color="primary"
-					type="submit"
-					form="webhook_update_form"
-					icon="bxs:save"
-					class="px-4 flex-grow sm:flex-grow-0"
-				>
-					Save Webhook
-				</StatusButton>
-			</div>
+			<ToggleField
+				{form}
+				field="active"
+				label="Active"
+				helpText="The webhook must be active or it won't be called."
+			/>
 		</div>
-	</Drawer>
-{/if}
+	</form>
+
+	<div slot="footer" class="space-y-4">
+		<MutationError mutation={updateWebhookMutation} />
+		<MutationError mutation={deleteWebhookMutation} />
+
+		<div class="flex flex-row gap-4">
+			{#if type === 'update'}
+				<StatusButton
+					on:click={() => $deleteWebhookMutation.mutate(id)}
+					color="red"
+					outline
+					status={$deleteWebhookMutation.status}
+					icon="bxs:trash"
+				>
+					<span class="hidden sm:inline">Delete</span>
+				</StatusButton>
+			{/if}
+			<div class="flex-grow hidden sm:block" />
+			<Button color="alternative" on:click={closeModal} class="hidden sm:block">
+				Cancel
+			</Button>
+			<StatusButton
+				status={$updateWebhookMutation.status}
+				color="primary"
+				type="submit"
+				form="webhook_update_form"
+				icon="bxs:save"
+				class="px-4 flex-grow sm:flex-grow-0"
+			>
+				Save Webhook
+			</StatusButton>
+		</div>
+	</div>
+</Drawer>
