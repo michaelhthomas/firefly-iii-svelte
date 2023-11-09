@@ -10,7 +10,7 @@
 	import {
 		TransactionTypeFilter,
 		TransactionsApi
-	} from 'firefly-iii-typescript-sdk-fetch';
+	} from '$lib/api';
 	import dayjs from 'dayjs';
 	import { DateFormat } from '$lib/models/DateFormat';
 	import { useFormat } from '$lib/utils/format';

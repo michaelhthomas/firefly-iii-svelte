@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useService } from '$lib/services';
-	import { DataApi } from 'firefly-iii-typescript-sdk-fetch';
+	import { DataApi } from '$lib/api';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import DashboardPage from '$lib/components/layout/DashboardPage.svelte';

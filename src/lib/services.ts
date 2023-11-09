@@ -1,14 +1,10 @@
-import { Configuration, type BaseAPI } from 'firefly-iii-typescript-sdk-fetch';
-import { OpenAPI } from './api';
-
-OpenAPI.BASE = window.location.origin + '/api';
-OpenAPI.TOKEN = import.meta.env.FIREFLY_III_BEARER_TOKEN;
+import { Configuration, type BaseAPI } from '$lib/api';
 
 const serviceRepository = new Map<string, BaseAPI>();
 
 const configuration = new Configuration({
-	basePath: '',
-	accessToken: `Bearer ${import.meta.env.FIREFLY_III_BEARER_TOKEN}`,
+	basePath: '/api',
+	accessToken: import.meta.env.FIREFLY_III_BEARER_TOKEN,
 	headers: {
 		'Content-Type': 'application/json',
 		accept: 'application/vnd.api+json'

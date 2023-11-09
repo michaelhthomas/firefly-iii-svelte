@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BasicSummaryEntry } from 'firefly-iii-typescript-sdk-fetch';
+	import type { BasicSummaryEntry } from '$lib/api';
 	import { Card } from 'flowbite-svelte';
 
 	export let data: BasicSummaryEntry;

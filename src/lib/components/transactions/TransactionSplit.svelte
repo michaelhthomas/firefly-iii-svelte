@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { TransactionMeta } from '$lib/models/TransactionMeta';
-	import { TransactionTypeProperty } from 'firefly-iii-typescript-sdk-fetch';
+	import { TransactionTypeProperty } from '$lib/api';
 	import Currency from '../format/Currency.svelte';
 
 	export let data: TransactionMeta & { isGroup: true };

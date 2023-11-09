@@ -12,7 +12,7 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"api:generate": "openapi -i ./src/lib/api/firefly-iii-2.0.10-v1.yaml -o ./src/lib/api --request ./src/lib/api/request.ts --useOptions"
+		"api:generate": "openapi-generator-cli generate -g typescript-fetch -i ./src/lib/api/firefly-iii-2.0.10-v1.yaml -o ./src/lib/api"
 	},
 	"dependencies": {
 		"@iconify/svelte": "^3.1.4",
@@ -23,7 +23,6 @@
 		"chart.js": "^4.4.0",
 		"d3-scale-chromatic": "^3.0.0",
 		"dayjs": "^1.11.10",
-		"firefly-iii-typescript-sdk-fetch": "github:michaelhthomas/firefly-iii-typescript-sdk-fetch#main",
 		"flowbite": "^2.0.0",
 		"flowbite-svelte": "^0.44.19",
 		"svelte-chartjs": "^3.1.2",
@@ -32,6 +31,7 @@
 		"ts-pattern": "^5.0.5"
 	},
 	"devDependencies": {
+		"@openapitools/openapi-generator-cli": "^2.7.0",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.25.2",
@@ -47,7 +47,6 @@
 		"eslint-config-prettier": "^8.10.0",
 		"eslint-plugin-svelte": "^2.34.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
-		"openapi-typescript-codegen": "^0.25.0",
 		"postcss": "8.4.31",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",

@@ -1,7 +1,7 @@
 import { queryClient } from '$lib/client';
 import { useService } from '$lib/services';
 import { createQuery } from '@tanstack/svelte-query';
-import { AboutApi } from 'firefly-iii-typescript-sdk-fetch';
+import { AboutApi } from '$lib/api';
 
 const aboutService = useService(AboutApi);
 

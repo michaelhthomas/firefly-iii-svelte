@@ -6,7 +6,7 @@
 		TransactionsApi,
 		type ListTransactionRequest,
 		InsightApi
-	} from 'firefly-iii-typescript-sdk-fetch';
+	} from '$lib/api';
 	import Section from '../layout/Section.svelte';
 	import dayjs from 'dayjs';
 	import Currency from '../format/Currency.svelte';

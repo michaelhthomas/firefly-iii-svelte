@@ -1,4 +1,4 @@
-import type { Transaction, TransactionSplit } from 'firefly-iii-typescript-sdk-fetch';
+import type { Transaction, TransactionSplit } from '$lib/api';
 
 export type TransactionMeta =
 	| (TransactionSplit & { isGroup: false; group?: Transaction })

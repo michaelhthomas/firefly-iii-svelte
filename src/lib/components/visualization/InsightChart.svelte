@@ -6,7 +6,7 @@
 	import { useService } from '$lib/services';
 	import { usePreferencesStore } from '$lib/stores/preferences';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { InsightApi } from 'firefly-iii-typescript-sdk-fetch';
+	import { InsightApi } from '$lib/api';
 	import type { ChartData } from 'chart.js';
 	import { Pie } from 'svelte-chartjs';
 	import { useFormat } from '$lib/utils/format';

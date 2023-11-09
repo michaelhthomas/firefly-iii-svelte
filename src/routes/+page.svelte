@@ -4,7 +4,7 @@
 
 	import { createQuery } from '@tanstack/svelte-query';
 	import { useService } from '$lib/services';
-	import { SummaryApi } from 'firefly-iii-typescript-sdk-fetch';
+	import { SummaryApi } from '$lib/api';
 	import { usePreferencesStore } from '$lib/stores/preferences';
 
 	const summaryService = useService(SummaryApi);
@@ -12,7 +12,10 @@
 
 	$: query = createQuery({
 		queryKey: ['summary', $preferences.range],
-		queryFn: () => summaryService.getBasicSummary({ ...$preferences.range })
+		queryFn: () =>
+			summaryService
+				.getBasicSummary({ ...$preferences.range })
+				.then((res) => Object.values(res))
 	});
 </script>
 
