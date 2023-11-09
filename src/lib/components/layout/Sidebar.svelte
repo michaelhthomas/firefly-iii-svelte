@@ -205,9 +205,6 @@
 
 		return item.href === $page.url.pathname;
 	};
-
-	$: classesActive = (item: SidebarItem | NestedSidebarItem) =>
-		isActive(item) ? '!bg-primary-500' : '';
 </script>
 
 <Sidebar asideClass="w-auto" activeUrl={$page.url.pathname}>

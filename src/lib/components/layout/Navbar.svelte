@@ -3,12 +3,10 @@
 
 	const dispatch = createEventDispatcher();
 
-	import { DateFormat } from '$lib/models/DateFormat';
 	import { userQuery } from '$lib/queries';
 	import { usePreferencesStore } from '$lib/stores/preferences';
 	import Icon from '@iconify/svelte';
 	import { createQuery } from '@tanstack/svelte-query';
-	import dayjs from 'dayjs';
 	import DateDropdown from './DateDropdown.svelte';
 	import { Button, NavHamburger, DarkMode } from 'flowbite-svelte';
 	import { formatDateRange } from '$lib/models/DateRange';
