@@ -24,7 +24,8 @@ module.exports = {
 		'unused-imports/no-unused-vars': [
 			'error',
 			{ vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
-		]
+		],
+		'no-undef': 'off'
 	},
 	overrides: [
 		{
