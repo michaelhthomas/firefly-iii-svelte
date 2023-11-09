@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import { openModal } from 'svelte-modals';
 	import { superValidate } from 'sveltekit-superforms/client';
-	import EditDrawer from './EditDrawer.svelte';
+	import EditDrawer from './WebhooksEditDrawer.svelte';
 
 	type EditDrawerType = 'create' | 'update';
 
@@ -28,7 +28,7 @@
 </script>
 
 <script lang="ts">
-	import Drawer from './Drawer.svelte';
+	import Drawer from '../drawer/Drawer.svelte';
 	import Button from '../Button.svelte';
 	import { closeModal } from 'svelte-modals';
 	import {

@@ -12,11 +12,12 @@
 	import { get, writable } from 'svelte/store';
 	import SecretTableCell from '$lib/components/table/SecretTableCell.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import { openEditDrawer } from '$lib/components/drawer/EditDrawer.svelte';
 	import HtmlCell from '$lib/components/table/HtmlCell.svelte';
 	import { htmlEscape } from '$lib/utils/html';
 	import type { ReadOrWritable } from 'svelte-headless-table/lib/utils/store';
-	import WebhookTitleCell from '$lib/components/table/WebhookTitleCell.svelte';
+
+	import { openEditDrawer } from './WebhooksEditDrawer.svelte';
+	import WebhookTitleCell from './WebhookTitleCell.svelte';
 
 	export let data: WebhookArray;
 

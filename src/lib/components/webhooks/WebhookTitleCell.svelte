@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { openEditDrawer } from '../drawer/EditDrawer.svelte';
+	import { openEditDrawer } from './WebhooksEditDrawer.svelte';
 
 	export let value: string;
 	export let dataId: string;

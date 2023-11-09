@@ -2,7 +2,7 @@
 	import DashboardPage from '$lib/components/layout/DashboardPage.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
-	import WebhooksTable from './WebhooksTable.svelte';
+	import WebhooksTable from '$lib/components/webhooks/WebhooksTable.svelte';
 	import { WebhooksService } from '$lib/api';
 
 	$: webhooksResult = createQuery({
