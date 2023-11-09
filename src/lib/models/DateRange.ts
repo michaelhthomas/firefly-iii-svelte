@@ -23,7 +23,6 @@ export enum DateRangeChoice {
 }
 
 export function getDateRange(choice: DateRangeChoice): DateRange {
-	console.log(choice);
 	switch (choice) {
 		case DateRangeChoice.Last365:
 			return {
