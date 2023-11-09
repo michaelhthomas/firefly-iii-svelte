@@ -16,7 +16,7 @@
 	import { htmlEscape } from '$lib/utils/html';
 	import type { ReadOrWritable } from 'svelte-headless-table/lib/utils/store';
 
-	import { openEditDrawer } from './WebhooksEditDrawer.svelte';
+	import { openEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookTitleCell from './WebhookTitleCell.svelte';
 
 	export let data: WebhookArray;
