@@ -120,7 +120,6 @@ export const getFormData = (options: ApiRequestOptions): FormData | undefined =>
 		};
 
 		Object.entries(options.formData)
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			.filter(([_, value]) => isDefined(value))
 			.forEach(([key, value]) => {
 				if (Array.isArray(value)) {
@@ -161,7 +160,6 @@ export const getHeaders = async (
 		...additionalHeaders,
 		...options.headers
 	})
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		.filter(([_, value]) => isDefined(value))
 		.reduce(
 			(headers, [key, value]) => ({
