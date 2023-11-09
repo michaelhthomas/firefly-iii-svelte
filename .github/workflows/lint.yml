@@ -36,8 +36,4 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-          prettier_args: '--plugin-search-dir'
+        run: pnpm lint
