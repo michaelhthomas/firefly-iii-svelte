@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { openEditDrawer } from './WebhookEditDrawer.svelte';
+	import type { WebhookRead } from '$lib/api';
+	import { openWebhookInfoDrawer } from './WebhookInfoDrawer.svelte';
 
 	export let value: string;
-	export let dataId: string;
+	export let webhook: WebhookRead;
 
-	$: handler = () => openEditDrawer(dataId);
+	$: handler = () => openWebhookInfoDrawer(webhook);
 </script>
 
 <span

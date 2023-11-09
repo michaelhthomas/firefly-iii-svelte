@@ -13,39 +13,39 @@ export const webhookSchema = z.object({
 
 export type WebhookSchema = typeof webhookSchema;
 
-export const triggerItems: SelectOptionType<WebhookTrigger>[] = [
-	{
-		name: 'After transaction creation',
-		value: WebhookTrigger.STORE_TRANSACTION
-	},
-	{
-		name: 'After transaction update',
-		value: WebhookTrigger.UPDATE_TRANSACTION
-	},
-	{
-		name: 'After transaction delete',
-		value: WebhookTrigger.DESTROY_TRANSACTION
-	}
-];
+export const triggerMap: { [key in WebhookTrigger]: string } = {
+	[WebhookTrigger.STORE_TRANSACTION]: 'After transaction creation',
+	[WebhookTrigger.UPDATE_TRANSACTION]: 'After transaction update',
+	[WebhookTrigger.DESTROY_TRANSACTION]: 'After transaction delete'
+};
 
-export const responseItems: SelectOptionType<WebhookResponse>[] = [
-	{
-		name: 'Transaction details',
-		value: WebhookResponse.TRANSACTIONS
-	},
-	{
-		name: 'Account details',
-		value: WebhookResponse.ACCOUNTS
-	},
-	{
-		name: 'No details',
-		value: WebhookResponse.NONE
-	}
-];
+export const responseMap: { [key in WebhookResponse]: string } = {
+	[WebhookResponse.TRANSACTIONS]: 'Transaction details',
+	[WebhookResponse.ACCOUNTS]: 'Account details',
+	[WebhookResponse.NONE]: 'No details'
+};
 
-export const deliveryItems: SelectOptionType<WebhookDelivery>[] = [
-	{
-		name: 'JSON',
-		value: WebhookDelivery.JSON
-	}
-];
+export const deliveryMap: { [key in WebhookDelivery]: string } = {
+	[WebhookDelivery.JSON]: 'JSON'
+};
+
+export const triggerItems: SelectOptionType<WebhookTrigger>[] = Object.entries(
+	triggerMap
+).map((entry) => ({
+	name: entry[1],
+	value: entry[0] as WebhookTrigger
+}));
+
+export const responseItems: SelectOptionType<WebhookResponse>[] = Object.entries(
+	responseMap
+).map((entry) => ({
+	name: entry[1],
+	value: entry[0] as WebhookResponse
+}));
+
+export const deliveryItems: SelectOptionType<WebhookDelivery>[] = Object.entries(
+	deliveryMap
+).map((entry) => ({
+	name: entry[1],
+	value: entry[0] as WebhookDelivery
+}));

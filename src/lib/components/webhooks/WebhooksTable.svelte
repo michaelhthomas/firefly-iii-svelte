@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { match } from 'ts-pattern';
-	import {
-		WebhookTrigger,
-		type WebhookArray,
+	import type {
+		WebhookArray,
 		WebhookDelivery,
 		WebhookResponse,
-		type WebhookRead
+		WebhookRead
 	} from '$lib/api';
 	import CrudTable from '$lib/components/table/DataTable.svelte';
 	import { createRender, createTable } from 'svelte-headless-table';
@@ -16,8 +14,9 @@
 	import { htmlEscape } from '$lib/utils/html';
 	import type { ReadOrWritable } from 'svelte-headless-table/lib/utils/store';
 
-	import { openEditDrawer } from './WebhookEditDrawer.svelte';
+	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookTitleCell from './WebhookTitleCell.svelte';
+	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 
 	export let data: WebhookArray;
 
@@ -27,30 +26,13 @@
 
 	const table = createTable(webhooks);
 
-	function mapTrigger(trigger: WebhookTrigger): string {
-		switch (trigger) {
-			case WebhookTrigger.STORE_TRANSACTION:
-				return 'After transaction creation';
-			case WebhookTrigger.UPDATE_TRANSACTION:
-				return 'After transaction update';
-			case WebhookTrigger.DESTROY_TRANSACTION:
-				return 'After transaction delete';
-		}
-	}
-
 	function mapResponseDelivery(
 		response: WebhookResponse,
 		delivery: WebhookDelivery
 	): string {
-		const responseName = match(response)
-			.with(WebhookResponse.ACCOUNTS, () => 'Account details')
-			.with(WebhookResponse.TRANSACTIONS, () => 'Transactions details')
-			.with(WebhookResponse.NONE, () => 'No details')
-			.exhaustive();
+		const responseName = responseMap[response];
 
-		const deliveryName = match(delivery)
-			.with(WebhookDelivery.JSON, () => 'JSON')
-			.exhaustive();
+		const deliveryName = deliveryMap[delivery];
 
 		return `${responseName} (${deliveryName})`;
 	}
@@ -65,28 +47,16 @@
 			accessor: (item) => item.attributes.title,
 			cell: ({ value, row }, { data }) => {
 				if (!row.isData()) return value;
-				console.log(
-					'cell renderer called for row ' +
-						getRowFromData(data, row.dataId).attributes.title
-				);
 				return createRender(WebhookTitleCell, {
 					value,
-					dataId: row.dataId
+					webhook: getRowFromData(data, row.dataId)
 				});
-
-				// A, {})
-				// 	.slot(value + ': ' + row.dataId)
-				// 	.on('click', () => {
-				// 		console.log(value);
-				// 		console.log(row.dataId);
-				// 		openEditDrawer(row.dataId);
-				// 	});
 			}
 		}),
 		table.column({
 			header: 'Responds when',
 			id: 'trigger',
-			accessor: (item) => mapTrigger(item.attributes.trigger),
+			accessor: (item) => triggerMap[item.attributes.trigger],
 			cell: ({ value, row }, { data }) => {
 				if (!row.isData() || getRowFromData(data, row.dataId).attributes.active)
 					return value;
@@ -124,7 +94,7 @@
 		}
 	});
 
-	const newWebhook = () => openEditDrawer();
+	const newWebhook = () => openWebhookEditDrawer();
 </script>
 
 <CrudTable {vm}>

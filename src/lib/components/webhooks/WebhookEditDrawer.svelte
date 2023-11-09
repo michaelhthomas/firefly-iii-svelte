@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
 	import { openModal } from 'svelte-modals';
 	import { superValidate } from 'sveltekit-superforms/client';
-	import EditDrawer from './WebhookEditDrawer.svelte';
+	import WebhookEditDrawer from './WebhookEditDrawer.svelte';
 
 	type EditDrawerType = 'create' | 'update';
 
-	export const openEditDrawer = async (id?: string) => {
+	export const openWebhookEditDrawer = async (id?: string) => {
 		const webhook =
 			id != null
 				? await WebhooksService.getWebhook(id).then((w) => w.data.attributes)
@@ -19,7 +19,7 @@
 				  };
 
 		const validated = await superValidate(webhook, webhookSchema);
-		openModal(EditDrawer, {
+		openModal(WebhookEditDrawer, {
 			webhook: validated,
 			type: id != null ? 'update' : 'create',
 			webhookId: id
@@ -46,7 +46,7 @@
 		triggerItems,
 		webhookSchema,
 		type WebhookSchema
-	} from '$lib/schemas';
+	} from '$lib/schemas/webhook';
 	import TextField from '../form/TextField.svelte';
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import SelectField from '../form/SelectField.svelte';
