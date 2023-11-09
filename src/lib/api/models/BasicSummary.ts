@@ -3,4 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BasicSummary = Record<string, any>;
+import type { BasicSummaryEntry } from './BasicSummaryEntry';
+
+export type BasicSummary = Record<string, BasicSummaryEntry>;

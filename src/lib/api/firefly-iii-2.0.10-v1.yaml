@@ -19434,7 +19434,7 @@ components:
         - DESTROY_TRANSACTION
     BasicSummary:
       type: object
-      items:
+      additionalProperties:
         $ref: '#/components/schemas/BasicSummaryEntry'
     BasicSummaryEntry:
       type: object
