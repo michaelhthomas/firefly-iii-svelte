@@ -21,10 +21,8 @@ function isValidationResponseError(e: ResponseError): e is ValidationResponseErr
 }
 
 export function prettyPrintError(e: unknown): string {
-  if (!isResponseError(e)) return String(e);
-
-  if (isValidationResponseError(e)) {
-    return e.response.body.message ?? "Validation error";
+  if (isResponseError(e) && isValidationResponseError(e)) {
+    return e.response.body.message ?? "The given data was invalid.";
   }
 
   return String(e);
