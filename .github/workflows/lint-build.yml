@@ -1,4 +1,4 @@
-name: Lint
+name: Lint & Test Build
 
 on:
   push:
@@ -37,3 +37,9 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm check
+
+      - name: Test Build
+        run: pnpm build
