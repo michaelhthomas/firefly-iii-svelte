@@ -1,0 +1,33 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  run-linters:
+    name: Run lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install packages
+        run: pnpm install
+
+      - name: Lint
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          prettier: true
+          prettier_args: '--plugin-search-dir'
