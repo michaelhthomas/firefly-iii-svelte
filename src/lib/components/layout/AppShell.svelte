@@ -2,7 +2,10 @@
 	export let sidebarActive = true;
 </script>
 
-<div class="layout h-full max-h-full w-full grid transition-all" class:sidebar-full={sidebarActive}>
+<div
+	class="layout h-full max-h-full w-full grid transition-all"
+	class:sidebar-full={sidebarActive}
+>
 	<aside class="sidebar overflow-x-hidden transition-all bg-gray-50 dark:bg-gray-800">
 		<div class="h-14">
 			<slot name="brand" />

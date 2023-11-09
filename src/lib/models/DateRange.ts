@@ -100,5 +100,7 @@ export function getDateRange(choice: DateRangeChoice): DateRange {
 }
 
 export function formatDateRange({ start, end }: DateRange) {
-	return `${dayjs(start).format(DateFormat.Full)} - ${dayjs(end).format(DateFormat.Full)}`;
+	return `${dayjs(start).format(DateFormat.Full)} - ${dayjs(end).format(
+		DateFormat.Full
+	)}`;
 }

@@ -16,10 +16,16 @@
 			/>
 		</Section>
 		<Section title="Source accounts" class="col-span-4">
-			<InsightChart category={InsightCategory.TransferSourceAccount} class="max-h-[15em]" />
+			<InsightChart
+				category={InsightCategory.TransferSourceAccount}
+				class="max-h-[15em]"
+			/>
 		</Section>
 		<Section title="Destination accounts" class="col-span-4">
-			<InsightChart category={InsightCategory.TransferDestinationAccount} class="max-h-[15em]" />
+			<InsightChart
+				category={InsightCategory.TransferDestinationAccount}
+				class="max-h-[15em]"
+			/>
 		</Section>
 	</svelte:fragment>
 </TransactionsPage>

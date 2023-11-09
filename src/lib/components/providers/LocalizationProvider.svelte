@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { type LocalizationInfo, getLocalizationInfo } from '$lib/queries/localization';
+	import {
+		type LocalizationInfo,
+		getLocalizationInfo
+	} from '$lib/queries/localization';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 

@@ -14,9 +14,14 @@
 	$: exportTransactions = createMutation({
 		mutationFn: async () => {
 			const today = new Date(Date.now());
-			const blob = await exportService.exportTransactions({ start: new Date(0), end: today });
+			const blob = await exportService.exportTransactions({
+				start: new Date(0),
+				end: today
+			});
 
-			const dateString = `${today.getFullYear()}_${today.getMonth() + 1}_${today.getDate()}`;
+			const dateString = `${today.getFullYear()}_${
+				today.getMonth() + 1
+			}_${today.getDate()}`;
 
 			downloadBlob(blob, `${dateString}_transaction_export.csv`);
 		}
@@ -26,8 +31,9 @@
 <DashboardPage>
 	<Section>
 		<p>
-			This link allows you to export all transactions + meta data from Firefly III. Please refer to
-			the help (top right (?)-icon) for more information about the process.
+			This link allows you to export all transactions + meta data from Firefly III.
+			Please refer to the help (top right (?)-icon) for more information about the
+			process.
 		</p>
 
 		<Button
@@ -48,9 +54,8 @@
 		</Button>
 
 		<p>
-			If you need a more advanced or specific type of export, read the help on how to use the
-			console command
-			<code>php artisan help firefly-iii:export-data</code>.
+			If you need a more advanced or specific type of export, read the help on how to
+			use the console command <code>php artisan help firefly-iii:export-data</code>.
 		</p>
 	</Section>
 </DashboardPage>

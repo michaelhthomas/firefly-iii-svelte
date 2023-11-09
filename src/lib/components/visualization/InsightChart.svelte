@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { insightCategoryQuery, type InsightCategory } from '$lib/models/InsightCategory';
+	import {
+		insightCategoryQuery,
+		type InsightCategory
+	} from '$lib/models/InsightCategory';
 	import { useService } from '$lib/services';
 	import { usePreferencesStore } from '$lib/stores/preferences';
 	import { createQuery } from '@tanstack/svelte-query';
@@ -22,7 +25,8 @@
 
 	$: insights = createQuery({
 		queryKey: ['insights', category, range],
-		queryFn: () => asyncGeneratorToList(insightCategoryQuery(insightService, category, range))
+		queryFn: () =>
+			asyncGeneratorToList(insightCategoryQuery(insightService, category, range))
 	});
 
 	$: insightsSorted = $insights.data?.toSorted(
@@ -40,7 +44,10 @@
 					datasets: [
 						{
 							label: 'Expenses',
-							backgroundColor: interpolateColors(insightsSorted.length, interpolateViridis),
+							backgroundColor: interpolateColors(
+								insightsSorted.length,
+								interpolateViridis
+							),
 							data: insightsSorted.map((insight) => ({
 								amount: insight.differenceFloat!,
 								currency: insight.currencyCode

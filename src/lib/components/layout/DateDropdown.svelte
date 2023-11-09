@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { DateRangeChoice, formatDateRange, getDateRange } from '$lib/models/DateRange';
+	import {
+		DateRangeChoice,
+		formatDateRange,
+		getDateRange
+	} from '$lib/models/DateRange';
 	import { DropdownItem } from 'flowbite-svelte';
 	import Dropdown from '../Dropdown.svelte';
 	import { usePreferencesStore } from '$lib/stores/preferences';

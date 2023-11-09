@@ -51,7 +51,9 @@
 >
 	{#if internalStatus !== 'idle'}
 		<div class="grid grid-cols-1" in:fade={{ duration: 100 }}>
-			<div class="col-start-1 col-end-1 row-start-1 row-end-1 flex items-center justify-center">
+			<div
+				class="col-start-1 col-end-1 row-start-1 row-end-1 flex items-center justify-center"
+			>
 				{#if internalStatus === 'loading'}
 					<Spinner size="4" color="white" />
 				{:else if internalStatus === 'success'}

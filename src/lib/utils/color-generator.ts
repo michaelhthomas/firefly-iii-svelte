@@ -6,7 +6,11 @@ export interface ColorRangeInfo {
 
 export type D3ColorScale = (t: number) => string;
 
-function calculatePoint(i: number, intervalSize: number, colorRangeInfo: ColorRangeInfo) {
+function calculatePoint(
+	i: number,
+	intervalSize: number,
+	colorRangeInfo: ColorRangeInfo
+) {
 	const { colorStart, colorEnd, useEndAsStart } = colorRangeInfo;
 	return useEndAsStart ? colorEnd - i * intervalSize : colorStart + i * intervalSize;
 }
@@ -23,7 +27,11 @@ export function interpolateColors(
 	const colorArray = [];
 
 	for (i = 0; i < dataLength; i++) {
-		colorPoint = calculatePoint(i, intervalSize, { colorStart, colorEnd, useEndAsStart });
+		colorPoint = calculatePoint(i, intervalSize, {
+			colorStart,
+			colorEnd,
+			useEndAsStart
+		});
 		colorArray.push(colorScale(colorPoint));
 	}
 

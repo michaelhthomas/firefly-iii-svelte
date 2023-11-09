@@ -7,7 +7,10 @@
 	import type { ColDef, GridReadyEvent, IsFullWidthRowParams } from 'ag-grid-community';
 
 	import AgGrid from 'ag-grid-svelte';
-	import { TransactionTypeFilter, TransactionsApi } from 'firefly-iii-typescript-sdk-fetch';
+	import {
+		TransactionTypeFilter,
+		TransactionsApi
+	} from 'firefly-iii-typescript-sdk-fetch';
 	import dayjs from 'dayjs';
 	import { DateFormat } from '$lib/models/DateFormat';
 	import { useFormat } from '$lib/utils/format';
@@ -34,21 +37,24 @@
 		}
 	});
 
-	$: transactionMeta = $transactionQuery.data?.data.flatMap((transaction): TransactionMeta[] => {
-		const splits = transaction.attributes.transactions;
-		if (splits.length < 2) return splits.map((split) => ({ ...split, isGroup: false }));
+	$: transactionMeta = $transactionQuery.data?.data.flatMap(
+		(transaction): TransactionMeta[] => {
+			const splits = transaction.attributes.transactions;
+			if (splits.length < 2)
+				return splits.map((split) => ({ ...split, isGroup: false }));
 
-		return [
-			// main group
-			{ isGroup: true, group: transaction.attributes },
-			// splits
-			...splits.map((split) => ({
-				...split,
-				isGroup: false as const,
-				group: transaction.attributes
-			}))
-		];
-	});
+			return [
+				// main group
+				{ isGroup: true, group: transaction.attributes },
+				// splits
+				...splits.map((split) => ({
+					...split,
+					isGroup: false as const,
+					group: transaction.attributes
+				}))
+			];
+		}
+	);
 
 	let columnDefs: ColDef<TransactionMeta>[] = [
 		{ valueGetter: (row) => !!row.data?.group },
@@ -85,7 +91,10 @@
 			domLayout="autoHeight"
 			{onGridReady}
 			{isFullWidthRow}
-			fullWidthCellRenderer={createSvelteCellRenderer(TransactionSplitComponent, getAllContexts())}
+			fullWidthCellRenderer={createSvelteCellRenderer(
+				TransactionSplitComponent,
+				getAllContexts()
+			)}
 		/>
 	{/if}
 </div>
