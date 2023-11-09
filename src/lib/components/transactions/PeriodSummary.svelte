@@ -70,9 +70,9 @@
 
 	{#if $summary.isSuccess}
 		{@const tdClass = 'px-4 py-2 whitespace-nowrap font-medium !text-inherit'}
-		<div class="table-container w-full pb-2">
+		<div class="period-summary table-container w-full pb-2">
 			<Table class="table w-full" color="custom">
-				<TableBody>
+				<TableBody tableBodyClass="table-body">
 					<TableBodyRow>
 						<TableBodyCell {tdClass}>Transactions</TableBodyCell>
 						<TableBodyCell tdClass={`${tdClass} text-right`}>
@@ -92,7 +92,11 @@
 </Section>
 
 <style lang="postcss">
-	.table tbody tr {
-		@apply border-b-gray-50 dark:border-b-gray-900;
+	:global(.period-summary table tbody tr) {
+		@apply border-b-gray-200;
+	}
+
+	:global(.dark .period-summary table tbody tr) {
+		@apply border-b-gray-700;
 	}
 </style>
