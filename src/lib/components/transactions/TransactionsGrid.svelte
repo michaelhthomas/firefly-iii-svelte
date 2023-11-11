@@ -1,23 +1,23 @@
 <script lang="ts">
+	import { createQuery } from '@tanstack/svelte-query';
+	// Optional theme CSS
+	import type { ColDef, GridReadyEvent, IsFullWidthRowParams } from 'ag-grid-community';
+	import 'ag-grid-community/styles/ag-grid.css';
+	// Core grid CSS, always needed
+	import 'ag-grid-community/styles/ag-theme-alpine.css';
+	import AgGrid from 'ag-grid-svelte';
+	import dayjs from 'dayjs';
+	import { getAllContexts } from 'svelte';
+
+	import { TransactionTypeFilter, TransactionsApi } from '$lib/api';
+	import { DateFormat } from '$lib/models/DateFormat';
+	import type { TransactionMeta } from '$lib/models/TransactionMeta';
 	import { useService } from '$lib/services';
 	import { usePreferencesStore } from '$lib/stores/preferences';
-	import { createQuery } from '@tanstack/svelte-query';
-	import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
-	import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-	import type { ColDef, GridReadyEvent, IsFullWidthRowParams } from 'ag-grid-community';
-
-	import AgGrid from 'ag-grid-svelte';
-	import {
-		TransactionTypeFilter,
-		TransactionsApi
-	} from '$lib/api';
-	import dayjs from 'dayjs';
-	import { DateFormat } from '$lib/models/DateFormat';
 	import { useFormat } from '$lib/utils/format';
-	import TransactionSplitComponent from './TransactionSplit.svelte';
 	import { createSvelteCellRenderer } from '$lib/utils/grid/cell-renderer';
-	import type { TransactionMeta } from '$lib/models/TransactionMeta';
-	import { getAllContexts } from 'svelte';
+
+	import TransactionSplitComponent from './TransactionSplit.svelte';
 
 	let preferences = usePreferencesStore();
 	let formatter = useFormat();

@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+
 	import {
 		type LocalizationInfo,
 		getLocalizationInfo
 	} from '$lib/queries/localization';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 
 	const localizationStore = writable<LocalizationInfo>({
 		language: 'en_US',

@@ -1,8 +1,9 @@
 import dayjs from 'dayjs';
+import { writable } from 'svelte/store';
 
 import type { DateRange } from '$lib/models/DateRange';
-import { writable } from 'svelte/store';
 import { deserialize, serialize } from '$lib/utils/serializer';
+
 import { createUseWrapper } from './store-helpers';
 
 interface PreferencesStoreProps {

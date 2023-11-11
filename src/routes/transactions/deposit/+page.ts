@@ -1,8 +1,9 @@
+import dayjs from 'dayjs';
+import { get } from 'svelte/store';
+
 import { DateFormat } from '$lib/models/DateFormat';
 import type { PageMeta } from '$lib/models/PageMeta';
 import { usePreferencesStore } from '$lib/stores/preferences';
-import dayjs from 'dayjs';
-import { get } from 'svelte/store';
 
 export function load() {
 	const PreferencesStore = usePreferencesStore();

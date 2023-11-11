@@ -1,7 +1,8 @@
+import { createQuery } from '@tanstack/svelte-query';
+
+import { AboutApi } from '$lib/api';
 import { queryClient } from '$lib/client';
 import { useService } from '$lib/services';
-import { createQuery } from '@tanstack/svelte-query';
-import { AboutApi } from '$lib/api';
 
 const aboutService = useService(AboutApi);
 

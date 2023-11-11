@@ -1,20 +1,18 @@
 <script lang="ts">
-	import type { DateRange } from '$lib/models/DateRange';
-	import { useService } from '$lib/services';
 	import { createQuery } from '@tanstack/svelte-query';
-	import {
-		TransactionsApi,
-		type ListTransactionRequest,
-		InsightApi
-	} from '$lib/api';
-	import Section from '../layout/Section.svelte';
 	import dayjs from 'dayjs';
-	import Currency from '../format/Currency.svelte';
+	import { Table, TableBody, TableBodyCell, TableBodyRow } from 'flowbite-svelte';
+
+	import { InsightApi, type ListTransactionRequest, TransactionsApi } from '$lib/api';
+	import type { DateRange } from '$lib/models/DateRange';
 	import {
 		TransactionCategory,
 		getTransactionCategoryTypeFilter
 	} from '$lib/models/TransactionCategory';
-	import { Table, TableBody, TableBodyCell, TableBodyRow } from 'flowbite-svelte';
+	import { useService } from '$lib/services';
+
+	import Currency from '../format/Currency.svelte';
+	import Section from '../layout/Section.svelte';
 
 	export let range: DateRange;
 	export let category: TransactionCategory;

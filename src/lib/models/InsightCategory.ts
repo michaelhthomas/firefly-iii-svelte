@@ -1,4 +1,5 @@
 import type { InsightApi, InsightTotalEntry } from '$lib/api';
+
 import type { DateRange } from './DateRange';
 
 export enum InsightCategory {

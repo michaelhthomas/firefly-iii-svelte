@@ -1,18 +1,19 @@
 <script lang="ts">
+	import { createQuery } from '@tanstack/svelte-query';
+	import type { ChartData } from 'chart.js';
+	import { interpolateViridis } from 'd3-scale-chromatic';
+	import { Pie } from 'svelte-chartjs';
+
+	import { InsightApi } from '$lib/api';
 	import {
-		insightCategoryQuery,
-		type InsightCategory
+		type InsightCategory,
+		insightCategoryQuery
 	} from '$lib/models/InsightCategory';
 	import { useService } from '$lib/services';
 	import { usePreferencesStore } from '$lib/stores/preferences';
-	import { createQuery } from '@tanstack/svelte-query';
-	import { InsightApi } from '$lib/api';
-	import type { ChartData } from 'chart.js';
-	import { Pie } from 'svelte-chartjs';
-	import { useFormat } from '$lib/utils/format';
 	import { asyncGeneratorToList } from '$lib/utils/async-generator';
 	import { interpolateColors } from '$lib/utils/color-generator';
-	import { interpolateViridis } from 'd3-scale-chromatic';
+	import { useFormat } from '$lib/utils/format';
 
 	export let category: InsightCategory;
 	export let emptyLabel = '(no name)';

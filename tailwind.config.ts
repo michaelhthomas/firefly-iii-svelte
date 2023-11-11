@@ -1,9 +1,10 @@
 import { join } from 'path';
-import resolve from 'resolve/sync';
-import type { Config } from 'tailwindcss';
+
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import flowbite from 'flowbite/plugin';
+import resolve from 'resolve/sync';
+import type { Config } from 'tailwindcss';
 
 export default {
 	darkMode: 'class',

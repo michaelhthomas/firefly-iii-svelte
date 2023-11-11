@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { MutationStatus } from '@tanstack/svelte-query';
+	import { Spinner } from 'flowbite-svelte';
+	import type { ButtonProps } from 'flowbite-svelte/dist/buttons/Button.svelte';
+	import { fade } from 'svelte/transition';
+
 	import Button from './Button.svelte';
 	import Icon from './Icon.svelte';
-	import type { ButtonProps } from 'flowbite-svelte/dist/buttons/Button.svelte';
-	import { Spinner } from 'flowbite-svelte';
-	import { fade } from 'svelte/transition';
 
 	export let status: MutationStatus;
 	export let icon: string | undefined = undefined;
