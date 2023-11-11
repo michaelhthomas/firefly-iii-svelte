@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-
-	import Icon from '$lib/components/Icon.svelte';
 	import {
 		Sidebar,
 		SidebarDropdownItem,
@@ -10,6 +8,9 @@
 		SidebarItem,
 		SidebarWrapper
 	} from 'flowbite-svelte';
+
+	import Icon from '$lib/components/Icon.svelte';
+
 	import Search from './Search.svelte';
 
 	type NestedSidebarItem = {

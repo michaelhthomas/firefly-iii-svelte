@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { Alert } from 'flowbite-svelte';
-	import Icon from './Icon.svelte';
 	import type { AlertProps } from 'flowbite-svelte/dist/alert/Alert.svelte';
 	import { twMerge } from 'tailwind-merge';
+
+	import Icon from './Icon.svelte';
 
 	export let color: AlertProps['color'] = undefined;
 	export let icon: string | undefined = undefined;

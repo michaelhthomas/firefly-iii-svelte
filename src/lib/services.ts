@@ -1,4 +1,4 @@
-import { Configuration, type BaseAPI } from '$lib/api';
+import { type BaseAPI, Configuration } from '$lib/api';
 
 const serviceRepository = new Map<string, BaseAPI>();
 

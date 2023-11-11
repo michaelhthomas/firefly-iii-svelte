@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon.svelte';
 	import { ButtonGroup, Input, InputAddon } from 'flowbite-svelte';
+
+	import Icon from '$lib/components/Icon.svelte';
 </script>
 
 <form class="search-form">

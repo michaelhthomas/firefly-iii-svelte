@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
-	import { userQuery } from '$lib/queries';
-	import { usePreferencesStore } from '$lib/stores/preferences';
 	import Icon from '@iconify/svelte';
 	import { createQuery } from '@tanstack/svelte-query';
-	import DateDropdown from './DateDropdown.svelte';
-	import { Button, NavHamburger, DarkMode } from 'flowbite-svelte';
+	import { Button, DarkMode, NavHamburger } from 'flowbite-svelte';
+	import { createEventDispatcher } from 'svelte';
+
 	import { formatDateRange } from '$lib/models/DateRange';
+	import { userQuery } from '$lib/queries';
+	import { usePreferencesStore } from '$lib/stores/preferences';
+
+	import DateDropdown from './DateDropdown.svelte';
+
+	const dispatch = createEventDispatcher();
 
 	const preferences = usePreferencesStore();
 

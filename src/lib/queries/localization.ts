@@ -1,5 +1,5 @@
-import { useService } from '$lib/services';
 import { PreferencesApi } from '$lib/api';
+import { useService } from '$lib/services';
 
 const preferencesService = useService(PreferencesApi);
 

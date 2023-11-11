@@ -1,8 +1,10 @@
 <script lang="ts">
-	import Alert from './Alert.svelte';
-	import { prettyPrintError } from '$lib/api/errors';
 	import type { CreateMutationResult } from '@tanstack/svelte-query';
 	import { scale } from 'svelte/transition';
+
+	import { prettyPrintError } from '$lib/api/errors';
+
+	import Alert from './Alert.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	export let mutation: CreateMutationResult<any, any, any, any>;

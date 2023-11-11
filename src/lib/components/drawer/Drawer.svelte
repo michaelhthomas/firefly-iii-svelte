@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { closeModal } from 'svelte-modals';
 	import { CloseButton } from 'flowbite-svelte';
+	import { closeModal } from 'svelte-modals';
 	import { sineIn } from 'svelte/easing';
-	import Icon from '$lib/components/Icon.svelte';
 	import { fly } from 'svelte/transition';
+
+	import Icon from '$lib/components/Icon.svelte';
 
 	export let isOpen: boolean;
 	export let title: string;

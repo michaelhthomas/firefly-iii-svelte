@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type { BasicSummaryEntry } from '$lib/api';
 	import { Card } from 'flowbite-svelte';
+
+	import type { BasicSummaryEntry } from '$lib/api';
 
 	export let data: BasicSummaryEntry;
 </script>

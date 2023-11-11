@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+
 	import DashboardPage from '$lib/components/layout/DashboardPage.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import TransactionsGrid from '$lib/components/transactions/TransactionsGrid.svelte';

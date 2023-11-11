@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+
 	import Icon from '$lib/components/Icon.svelte';
 </script>
 

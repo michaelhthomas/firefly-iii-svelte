@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from 'flowbite-svelte';
+
 	import Icon from './Icon.svelte';
 
 	export let icon: string | null = null;

@@ -1,6 +1,7 @@
-import type { LocalizationInfo } from '$lib/queries/localization';
 import { getContext } from 'svelte';
-import { get, type Writable } from 'svelte/store';
+import { type Writable, get } from 'svelte/store';
+
+import type { LocalizationInfo } from '$lib/queries/localization';
 
 export function useFormat() {
 	const localization = getContext<Writable<LocalizationInfo>>('localization');

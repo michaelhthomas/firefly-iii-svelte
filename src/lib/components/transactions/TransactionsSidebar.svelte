@@ -1,8 +1,10 @@
 <script lang="ts">
 	import dayjs from 'dayjs';
-	import PeriodSummary from './PeriodSummary.svelte';
+
 	import type { DateRange } from '$lib/models/DateRange';
 	import type { TransactionCategory } from '$lib/models/TransactionCategory';
+
+	import PeriodSummary from './PeriodSummary.svelte';
 
 	const periods = [...Array(5).keys()].map((offset) => {
 		const start = dayjs().startOf('month').subtract(offset, 'months');
