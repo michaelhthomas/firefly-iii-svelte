@@ -1,5 +1,5 @@
 import { useService } from '$lib/services';
-import { AboutApi } from 'firefly-iii-typescript-sdk-fetch';
+import { AboutApi } from '$lib/api';
 
 const aboutService = useService(AboutApi);
 

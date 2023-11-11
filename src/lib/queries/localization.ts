@@ -1,5 +1,5 @@
 import { useService } from '$lib/services';
-import { PreferencesApi } from 'firefly-iii-typescript-sdk-fetch';
+import { PreferencesApi } from '$lib/api';
 
 const preferencesService = useService(PreferencesApi);
 

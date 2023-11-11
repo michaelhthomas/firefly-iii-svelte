@@ -1,4 +1,4 @@
-import { TransactionTypeFilter } from 'firefly-iii-typescript-sdk-fetch';
+import { TransactionTypeFilter } from '$lib/api';
 
 export enum TransactionCategory {
 	Expenses,

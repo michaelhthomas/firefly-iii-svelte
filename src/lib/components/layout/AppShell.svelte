@@ -17,7 +17,7 @@
 		<slot name="header" />
 	</header>
 
-	<main class="main transition-all overflow-y-scroll">
+	<main class="main transition-all overflow-y-auto">
 		<slot />
 	</main>
 </div>

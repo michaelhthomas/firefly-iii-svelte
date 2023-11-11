@@ -17,7 +17,7 @@
 				<TransactionsGrid />
 			</div>
 		</Section>
-		<div class="col-span-12 2xl:col-span-2 overflow-y-scroll">
+		<div class="col-span-12 2xl:col-span-2 overflow-y-auto">
 			<TransactionsSidebar {category} />
 		</div>
 	</div>
