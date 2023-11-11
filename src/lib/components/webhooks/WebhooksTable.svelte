@@ -1,22 +1,23 @@
 <script lang="ts">
+	import { createRender, createTable } from 'svelte-headless-table';
+	import type { ReadOrWritable } from 'svelte-headless-table/lib/utils/store';
+	import { get, writable } from 'svelte/store';
+
 	import type {
 		WebhookArray,
 		WebhookDelivery,
-		WebhookResponse,
-		WebhookRead
+		WebhookRead,
+		WebhookResponse
 	} from '$lib/api';
-	import CrudTable from '$lib/components/table/DataTable.svelte';
-	import { createRender, createTable } from 'svelte-headless-table';
-	import { get, writable } from 'svelte/store';
-	import SecretTableCell from '$lib/components/table/SecretTableCell.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import CrudTable from '$lib/components/table/DataTable.svelte';
 	import HtmlCell from '$lib/components/table/HtmlCell.svelte';
+	import SecretTableCell from '$lib/components/table/SecretTableCell.svelte';
+	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 	import { htmlEscape } from '$lib/utils/html';
-	import type { ReadOrWritable } from 'svelte-headless-table/lib/utils/store';
 
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookTitleCell from './WebhookTitleCell.svelte';
-	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 
 	export let data: WebhookArray;
 

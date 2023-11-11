@@ -1,6 +1,7 @@
-import { WebhookTrigger, WebhookResponse, WebhookDelivery } from '$lib/api';
 import type { SelectOptionType } from 'flowbite-svelte';
 import { z } from 'zod';
+
+import { WebhookDelivery, WebhookResponse, WebhookTrigger } from '$lib/api';
 
 export const webhookSchema = z.object({
 	title: z.string(),

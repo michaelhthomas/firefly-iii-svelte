@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
 	import { openModal } from 'svelte-modals';
+
 	import WebhookInfoDrawer from './WebhookInfoDrawer.svelte';
 
 	export const openWebhookInfoDrawer = async (webhook: WebhookRead) => {
@@ -11,14 +12,14 @@
 
 <script lang="ts">
 	import type { WebhookRead } from '$lib/api';
-
 	import Button from '$lib/components/Button.svelte';
 	import Drawer from '$lib/components/drawer/Drawer.svelte';
-	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
-	import DetailsGrid from '../details/DetailsGrid.svelte';
-	import DetailCard from '../details/DetailCard.svelte';
-	import Icon from '../Icon.svelte';
 	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
+
+	import Icon from '../Icon.svelte';
+	import DetailCard from '../details/DetailCard.svelte';
+	import DetailsGrid from '../details/DetailsGrid.svelte';
+	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 
 	export let isOpen: boolean;
 	export let webhook: WebhookRead;

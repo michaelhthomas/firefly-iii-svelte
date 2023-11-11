@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Render, Subscribe, type TableViewModel } from 'svelte-headless-table';
 	import {
 		Table,
 		TableBody,
@@ -8,6 +7,7 @@
 		TableHead,
 		TableHeadCell
 	} from 'flowbite-svelte';
+	import { Render, Subscribe, type TableViewModel } from 'svelte-headless-table';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	export let vm: TableViewModel<any>;
