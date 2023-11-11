@@ -2,11 +2,7 @@
 	import type { DateRange } from '$lib/models/DateRange';
 	import { useService } from '$lib/services';
 	import { createQuery } from '@tanstack/svelte-query';
-	import {
-		TransactionsApi,
-		type ListTransactionRequest,
-		InsightApi
-	} from '$lib/api';
+	import { TransactionsApi, type ListTransactionRequest, InsightApi } from '$lib/api';
 	import Section from '../layout/Section.svelte';
 	import dayjs from 'dayjs';
 	import Currency from '../format/Currency.svelte';

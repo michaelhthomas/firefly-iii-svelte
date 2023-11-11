@@ -7,10 +7,7 @@
 	import type { ColDef, GridReadyEvent, IsFullWidthRowParams } from 'ag-grid-community';
 
 	import AgGrid from 'ag-grid-svelte';
-	import {
-		TransactionTypeFilter,
-		TransactionsApi
-	} from '$lib/api';
+	import { TransactionTypeFilter, TransactionsApi } from '$lib/api';
 	import dayjs from 'dayjs';
 	import { DateFormat } from '$lib/models/DateFormat';
 	import { useFormat } from '$lib/utils/format';
