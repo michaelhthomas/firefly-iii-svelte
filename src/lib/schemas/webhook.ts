@@ -14,19 +14,19 @@ export const webhookSchema = z.object({
 export type WebhookSchema = typeof webhookSchema;
 
 export const triggerMap: { [key in WebhookTrigger]: string } = {
-	[WebhookTrigger.STORE_TRANSACTION]: 'After transaction creation',
-	[WebhookTrigger.UPDATE_TRANSACTION]: 'After transaction update',
-	[WebhookTrigger.DESTROY_TRANSACTION]: 'After transaction delete'
+	[WebhookTrigger.StoreTransaction]: 'After transaction creation',
+	[WebhookTrigger.UpdateTransaction]: 'After transaction update',
+	[WebhookTrigger.DestroyTransaction]: 'After transaction delete'
 };
 
 export const responseMap: { [key in WebhookResponse]: string } = {
-	[WebhookResponse.TRANSACTIONS]: 'Transaction details',
-	[WebhookResponse.ACCOUNTS]: 'Account details',
-	[WebhookResponse.NONE]: 'No details'
+	[WebhookResponse.Transactions]: 'Transaction details',
+	[WebhookResponse.Accounts]: 'Account details',
+	[WebhookResponse.None]: 'No details'
 };
 
 export const deliveryMap: { [key in WebhookDelivery]: string } = {
-	[WebhookDelivery.JSON]: 'JSON'
+	[WebhookDelivery.Json]: 'JSON'
 };
 
 export const triggerItems: SelectOptionType<WebhookTrigger>[] = Object.entries(

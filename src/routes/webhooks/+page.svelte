@@ -3,11 +3,14 @@
 	import Section from '$lib/components/layout/Section.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 	import WebhooksTable from '$lib/components/webhooks/WebhooksTable.svelte';
-	import { WebhooksService } from '$lib/api';
+	import { WebhooksApi } from '$lib/api';
+	import { useService } from '$lib/services';
+
+	const webhooksService = useService(WebhooksApi);
 
 	$: webhooksResult = createQuery({
 		queryKey: ['webhooks'],
-		queryFn: () => WebhooksService.listWebhook()
+		queryFn: () => webhooksService.listWebhook()
 	});
 </script>
 

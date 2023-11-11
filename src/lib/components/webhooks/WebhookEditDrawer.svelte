@@ -2,18 +2,21 @@
 	import { openModal } from 'svelte-modals';
 	import { superValidate } from 'sveltekit-superforms/client';
 	import WebhookEditDrawer from './WebhookEditDrawer.svelte';
+	import { WebhooksApi } from '$lib/api';
+
+	const webhooksService = useService(WebhooksApi);
 
 	type EditDrawerType = 'create' | 'update';
 
 	export const openWebhookEditDrawer = async (id?: string) => {
 		const webhook =
 			id != null
-				? await WebhooksService.getWebhook(id).then((w) => w.data.attributes)
+				? await webhooksService.getWebhook({ id }).then((w) => w.data.attributes)
 				: {
 						title: '',
-						trigger: WebhookTrigger.STORE_TRANSACTION,
-						response: WebhookResponse.TRANSACTIONS,
-						delivery: WebhookDelivery.JSON,
+						trigger: WebhookTrigger.StoreTransaction,
+						response: WebhookResponse.Transactions,
+						delivery: WebhookDelivery.Json,
 						url: '',
 						active: true
 				  };
@@ -32,7 +35,6 @@
 	import Button from '../Button.svelte';
 	import { closeModal } from 'svelte-modals';
 	import {
-		WebhooksService,
 		WebhookTrigger,
 		WebhookResponse,
 		WebhookDelivery,
@@ -55,6 +57,7 @@
 	import ToggleField from '../form/ToggleField.svelte';
 	import { queryClient } from '$lib/client';
 	import MutationError from '../MutationError.svelte';
+	import { useService } from '$lib/services';
 
 	export let isOpen: boolean;
 	export let type: EditDrawerType;
@@ -80,8 +83,11 @@
 	const updateWebhookMutation = createMutation({
 		mutationFn: (options: MutationOptions) =>
 			options.type === 'create'
-				? WebhooksService.storeWebhook(options.webhook)
-				: WebhooksService.updateWebhook(options.id, options.webhook),
+				? webhooksService.storeWebhook({ webhookStore: options.webhook })
+				: webhooksService.updateWebhook({
+						id: options.id,
+						webhookUpdate: options.webhook
+				  }),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['webhooks']
@@ -91,7 +97,7 @@
 	});
 
 	const deleteWebhookMutation = createMutation({
-		mutationFn: (id: string) => WebhooksService.deleteWebhook(id),
+		mutationFn: (id: string) => webhooksService.deleteWebhook({ id }),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['webhooks']
