@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 
+	import type { TransactionCategory } from '$lib/models/TransactionCategory';
+
 	import DashboardPage from '$lib/components/layout/DashboardPage.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
 	import TransactionsGrid from '$lib/components/transactions/TransactionsGrid.svelte';
 	import TransactionsSidebar from '$lib/components/transactions/TransactionsSidebar.svelte';
-	import type { TransactionCategory } from '$lib/models/TransactionCategory';
 
 	export let category: TransactionCategory;
 </script>

@@ -4,14 +4,15 @@
 	import { Table, TableBody, TableBodyCell, TableBodyRow } from 'flowbite-svelte';
 
 	import { InsightApi, type ListTransactionRequest, TransactionsApi } from '$lib/api';
-	import Currency from '$lib/components/format/Currency.svelte';
-	import Section from '$lib/components/layout/Section.svelte';
 	import type { DateRange } from '$lib/models/DateRange';
 	import {
 		TransactionCategory,
 		getTransactionCategoryTypeFilter
 	} from '$lib/models/TransactionCategory';
 	import { useService } from '$lib/services';
+
+	import Currency from '$lib/components/format/Currency.svelte';
+	import Section from '$lib/components/layout/Section.svelte';
 
 	export let range: DateRange;
 	export let category: TransactionCategory;

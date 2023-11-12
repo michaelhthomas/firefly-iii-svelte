@@ -3,12 +3,13 @@
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 
 	import { queryClient } from '$lib/client';
+	import type { PageMeta } from '$lib/models/PageMeta';
+
 	import AppModals from '$lib/components/layout/AppModals.svelte';
 	import AppShell from '$lib/components/layout/AppShell.svelte';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import Sidebar from '$lib/components/layout/Sidebar.svelte';
 	import LocalizationProvider from '$lib/components/providers/LocalizationProvider.svelte';
-	import type { PageMeta } from '$lib/models/PageMeta';
 
 	import '../app.postcss';
 

@@ -3,11 +3,12 @@
 	import { Button, Spinner } from 'flowbite-svelte';
 
 	import { DataApi } from '$lib/api';
+	import { useService } from '$lib/services';
+	import { downloadBlob } from '$lib/utils/download';
+
 	import Icon from '$lib/components/Icon.svelte';
 	import DashboardPage from '$lib/components/layout/DashboardPage.svelte';
 	import Section from '$lib/components/layout/Section.svelte';
-	import { useService } from '$lib/services';
-	import { downloadBlob } from '$lib/utils/download';
 
 	const exportService = useService(DataApi);
 

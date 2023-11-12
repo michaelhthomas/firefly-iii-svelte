@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Section from '$lib/components/layout/Section.svelte';
-	import InsightChart from '$lib/components/visualization/InsightChart.svelte';
 	import { InsightCategory } from '$lib/models/InsightCategory';
 	import { TransactionCategory } from '$lib/models/TransactionCategory';
+
+	import Section from '$lib/components/layout/Section.svelte';
+	import InsightChart from '$lib/components/visualization/InsightChart.svelte';
 
 	import TransactionsPage from '../TransactionsPage.svelte';
 </script>

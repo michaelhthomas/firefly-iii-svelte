@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { TransactionTypeProperty } from '$lib/api';
-	import Currency from '$lib/components/format/Currency.svelte';
 	import type { TransactionMeta } from '$lib/models/TransactionMeta';
+
+	import Currency from '$lib/components/format/Currency.svelte';
 
 	export let data: TransactionMeta & { isGroup: true };
 
