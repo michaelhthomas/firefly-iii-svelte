@@ -2,10 +2,11 @@
 	import { createQuery } from '@tanstack/svelte-query';
 
 	import { SummaryApi } from '$lib/api';
-	import Icon from '$lib/components/Icon.svelte';
-	import BasicSummary from '$lib/components/dashboard/BasicSummary.svelte';
 	import { useService } from '$lib/services';
 	import { usePreferencesStore } from '$lib/stores/preferences';
+
+	import Icon from '$lib/components/Icon.svelte';
+	import BasicSummary from '$lib/components/dashboard/BasicSummary.svelte';
 
 	const summaryService = useService(SummaryApi);
 	$: preferences = usePreferencesStore();

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { DropdownItem } from 'flowbite-svelte';
 
-	import Dropdown from '$lib/components/Dropdown.svelte';
 	import {
 		DateRangeChoice,
 		formatDateRange,
 		getDateRange
 	} from '$lib/models/DateRange';
 	import { usePreferencesStore } from '$lib/stores/preferences';
+
+	import Dropdown from '$lib/components/Dropdown.svelte';
 
 	const choices = Object.keys(DateRangeChoice)
 		.filter((k) => !isNaN(Number(k)))
