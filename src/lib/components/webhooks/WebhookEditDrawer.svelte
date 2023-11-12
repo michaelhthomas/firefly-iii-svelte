@@ -46,6 +46,13 @@
 		type WebhookUpdate
 	} from '$lib/api';
 	import { queryClient } from '$lib/client';
+	import Button from '$lib/components/Button.svelte';
+	import MutationError from '$lib/components/MutationError.svelte';
+	import StatusButton from '$lib/components/StatusButton.svelte';
+	import Drawer from '$lib/components/drawer/Drawer.svelte';
+	import SelectField from '$lib/components/form/SelectField.svelte';
+	import TextField from '$lib/components/form/TextField.svelte';
+	import ToggleField from '$lib/components/form/ToggleField.svelte';
 	import {
 		type WebhookSchema,
 		deliveryItems,
@@ -54,14 +61,6 @@
 		webhookSchema
 	} from '$lib/schemas/webhook';
 	import { useService } from '$lib/services';
-
-	import Button from '../Button.svelte';
-	import MutationError from '../MutationError.svelte';
-	import StatusButton from '../StatusButton.svelte';
-	import Drawer from '../drawer/Drawer.svelte';
-	import SelectField from '../form/SelectField.svelte';
-	import TextField from '../form/TextField.svelte';
-	import ToggleField from '../form/ToggleField.svelte';
 
 	export let isOpen: boolean;
 	export let type: EditDrawerType;

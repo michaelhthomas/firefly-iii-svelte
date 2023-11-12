@@ -13,12 +13,12 @@
 <script lang="ts">
 	import type { WebhookRead } from '$lib/api';
 	import Button from '$lib/components/Button.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import DetailCard from '$lib/components/details/DetailCard.svelte';
+	import DetailsGrid from '$lib/components/details/DetailsGrid.svelte';
 	import Drawer from '$lib/components/drawer/Drawer.svelte';
 	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 
-	import Icon from '../Icon.svelte';
-	import DetailCard from '../details/DetailCard.svelte';
-	import DetailsGrid from '../details/DetailsGrid.svelte';
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 
 	export let isOpen: boolean;
