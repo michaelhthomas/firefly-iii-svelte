@@ -100,6 +100,9 @@ devDependencies:
   eslint-config-prettier:
     specifier: ^8.10.0
     version: 8.10.0(eslint@8.51.0)
+  eslint-plugin-no-relative-import-paths:
+    specifier: ^1.5.3
+    version: 1.5.3
   eslint-plugin-svelte:
     specifier: ^2.34.0
     version: 2.34.0(eslint@8.51.0)(svelte@4.2.1)
@@ -1713,6 +1716,10 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.51.0
+    dev: true
+
+  /eslint-plugin-no-relative-import-paths@1.5.3:
+    resolution: {integrity: sha512-z7c7Km1U0zdLyPziWeRKSsN2mPaGaBHDjfXn98B8XjRIhFi2bPqduRYcxWih1kI5al5tQtiChXVmspLkB0wNsQ==}
     dev: true
 
   /eslint-plugin-svelte@2.34.0(eslint@8.51.0)(svelte@4.2.1):
