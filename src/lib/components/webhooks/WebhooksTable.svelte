@@ -9,12 +9,13 @@
 		WebhookRead,
 		WebhookResponse
 	} from '$lib/api';
-	import Button from '$lib/components/Button.svelte';
-	import CrudTable from '$lib/components/table/DataTable.svelte';
-	import HtmlCell from '$lib/components/table/HtmlCell.svelte';
-	import SecretTableCell from '$lib/components/table/SecretTableCell.svelte';
 	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 	import { htmlEscape } from '$lib/utils/html';
+
+	import Button from '$lib/components/Button.svelte';
+	import SecretText from '$lib/components/SecretText.svelte';
+	import CrudTable from '$lib/components/table/DataTable.svelte';
+	import HtmlCell from '$lib/components/table/HtmlCell.svelte';
 
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookTitleCell from './WebhookTitleCell.svelte';
@@ -79,7 +80,7 @@
 			header: 'Secret',
 			accessor: (item) => item.attributes.secret,
 			cell: ({ value }) =>
-				createRender(SecretTableCell, {
+				createRender(SecretText, {
 					text: value
 				})
 		}),

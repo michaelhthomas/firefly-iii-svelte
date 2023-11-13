@@ -16,6 +16,7 @@
 
 	import Button from '$lib/components/Button.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import SecretTableCell from '$lib/components/SecretText.svelte';
 	import DetailCard from '$lib/components/details/DetailCard.svelte';
 	import DetailsGrid from '$lib/components/details/DetailsGrid.svelte';
 	import Drawer from '$lib/components/drawer/Drawer.svelte';
@@ -60,7 +61,7 @@
 					{webhook.attributes.url}
 				</DetailCard>
 				<DetailCard label="Secret">
-					{webhook.attributes.secret}
+					<SecretTableCell text={webhook.attributes.secret} />
 				</DetailCard>
 			</DetailsGrid>
 		</div>
