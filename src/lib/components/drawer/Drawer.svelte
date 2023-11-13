@@ -21,7 +21,8 @@
 	<div
 		transition:fly|global={transitionParams}
 		id="edit-drawer"
-		class="overflow-y-auto z-50 p-4 bg-white dark:bg-gray-800 w-[50rem] max-w-full ma-0 fixed top-0 right-0 h-full space-y-4 flex flex-col text-gray-500 dark:text-gray-400"
+		class="overflow-y-auto z-50 p-4 bg-white dark:bg-gray-800 max-w-full ma-0 fixed top-0 right-0 h-full space-y-4 flex flex-col text-gray-500 dark:text-gray-400"
+		style:width="clamp(50rem, 50vw, 80rem)"
 	>
 		<div class="flex items-center">
 			<h5
