@@ -10,14 +10,14 @@
 	<span>
 		{#if show}
 			<button on:click={() => (show = !show)}>
-				<Icon icon="bxs:show" class="mr-2" />
+				<Icon icon="bxs:show" inline class="mr-1.5 w-4 h-4" />
 			</button>
 			<code>
 				{text}
 			</code>
 		{:else}
 			<button on:click={() => (show = !show)}>
-				<Icon icon="bxs:hide" class="mr-2" />
+				<Icon icon="bxs:hide" inline class="mr-1.5 w-4 h-4" />
 			</button>
 			<!-- Maintain full width of secret even when hidden -->
 			<code class="inline-block" style:width={`${text.length}ch`}>********</code>
