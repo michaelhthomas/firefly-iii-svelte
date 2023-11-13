@@ -12,14 +12,16 @@
 
 <script lang="ts">
 	import type { WebhookRead } from '$lib/api';
+	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
+
 	import Button from '$lib/components/Button.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import DetailCard from '$lib/components/details/DetailCard.svelte';
 	import DetailsGrid from '$lib/components/details/DetailsGrid.svelte';
 	import Drawer from '$lib/components/drawer/Drawer.svelte';
-	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
 
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
+	import WebhookMessages from './WebhookMessages.svelte';
 
 	export let isOpen: boolean;
 	export let webhook: WebhookRead;
@@ -64,8 +66,10 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="space-y-2">
 		<h5 class="h5">Messages</h5>
+
+		<WebhookMessages webhookId={webhook.id} />
 	</div>
 
 	<div slot="footer" class="flex flex-row gap-4 justify-between">
