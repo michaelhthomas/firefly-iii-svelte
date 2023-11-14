@@ -52,7 +52,7 @@
 			id: 'more-info',
 			accessor: 'id',
 			header: 'Details',
-			cell: (cell) => createRender(WebhookMessagesMoreCell, { id: '' })
+			cell: (cell) => createRender(WebhookMessagesMoreCell, { id: cell.value })
 		})
 	]);
 
