@@ -63,10 +63,11 @@
 	import Button from '$lib/components/Button.svelte';
 	import MutationError from '$lib/components/MutationError.svelte';
 	import StatusButton from '$lib/components/StatusButton.svelte';
-	import Drawer from '$lib/components/drawer/Drawer.svelte';
 	import SelectField from '$lib/components/form/SelectField.svelte';
 	import TextField from '$lib/components/form/TextField.svelte';
 	import ToggleField from '$lib/components/form/ToggleField.svelte';
+	import { openConfirmationDialog } from '$lib/components/modals/ConfirmationDialog.svelte';
+	import Drawer from '$lib/components/modals/Drawer.svelte';
 
 	export let isOpen: boolean;
 	export let type: EditDrawerType;
@@ -114,6 +115,15 @@
 			closeModal();
 		}
 	});
+
+	function handleDelete() {
+		openConfirmationDialog({
+			text: `Are you sure you want to delete "${webhook.data.title}"?`,
+			onConfirm() {
+				$deleteWebhookMutation.mutate(id);
+			}
+		});
+	}
 
 	const form = superForm(webhook, {
 		SPA: true,
@@ -187,7 +197,7 @@
 		<div class="flex flex-row gap-4">
 			{#if type === 'update'}
 				<StatusButton
-					on:click={() => $deleteWebhookMutation.mutate(id)}
+					on:click={handleDelete}
 					color="red"
 					outline
 					status={$deleteWebhookMutation.status}
