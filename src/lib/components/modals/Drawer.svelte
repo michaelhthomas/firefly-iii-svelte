@@ -7,6 +7,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 
 	export let isOpen: boolean;
+	export let persist: boolean = false;
 	export let title: string;
 	export let icon: string;
 
@@ -17,7 +18,7 @@
 	};
 </script>
 
-{#if isOpen}
+{#if isOpen || persist}
 	<div
 		transition:fly|global={transitionParams}
 		id="edit-drawer"
