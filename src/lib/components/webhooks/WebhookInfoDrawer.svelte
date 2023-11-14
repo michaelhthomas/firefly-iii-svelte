@@ -3,30 +3,53 @@
 
 	import WebhookInfoDrawer from './WebhookInfoDrawer.svelte';
 
-	export const openWebhookInfoDrawer = async (webhook: WebhookRead) => {
+	const webhooksService = useService(WebhooksApi);
+
+	export const openWebhookInfoDrawer = async (id: string) => {
+		const initialWebhookData = await queryClient.fetchQuery({
+			queryKey: ['webhooks', id],
+			queryFn: () => webhooksService.getWebhook({ id })
+		});
+
 		openModal(WebhookInfoDrawer, {
-			webhook
+			id,
+			initialWebhookData
 		});
 	};
 </script>
 
 <script lang="ts">
-	import type { WebhookRead } from '$lib/api';
+	import { createQuery } from '@tanstack/svelte-query';
+
+	import { type WebhookSingle, WebhooksApi } from '$lib/api';
+	import { queryClient } from '$lib/client';
 	import { deliveryMap, responseMap, triggerMap } from '$lib/schemas/webhook';
+	import { useService } from '$lib/services';
 
 	import Button from '$lib/components/Button.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import SecretTableCell from '$lib/components/SecretText.svelte';
 	import DetailCard from '$lib/components/details/DetailCard.svelte';
 	import DetailsGrid from '$lib/components/details/DetailsGrid.svelte';
-	import Drawer from '$lib/components/drawer/Drawer.svelte';
+	import Drawer from '$lib/components/modals/Drawer.svelte';
 
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookMessages from './WebhookMessages.svelte';
 	import WebhookResetSecretButton from './WebhookResetSecretButton.svelte';
 
 	export let isOpen: boolean;
-	export let webhook: WebhookRead;
+	export let id: string;
+	export let initialWebhookData: WebhookSingle;
+
+	const webhooksService = useService(WebhooksApi);
+
+	const webhookQuery = createQuery({
+		queryKey: ['webhooks', id],
+		queryFn: () => webhooksService.getWebhook({ id }),
+		initialData: initialWebhookData
+	});
+
+	$: webhook = $webhookQuery.data.data;
 
 	const editWebhook = () => openWebhookEditDrawer(webhook.id);
 </script>

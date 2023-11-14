@@ -47,11 +47,11 @@
 		table.column({
 			header: 'Title',
 			accessor: (item) => item.attributes.title,
-			cell: ({ value, row }, { data }) => {
+			cell: ({ value, row }) => {
 				if (!row.isData()) return value;
 				return createRender(WebhookTitleCell, {
 					value,
-					webhook: getRowFromData(data, row.dataId)
+					webhookId: row.dataId
 				});
 			}
 		}),
