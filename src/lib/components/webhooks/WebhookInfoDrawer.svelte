@@ -23,6 +23,7 @@
 
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookMessages from './WebhookMessages.svelte';
+	import WebhookResetSecretButton from './WebhookResetSecretButton.svelte';
 
 	export let isOpen: boolean;
 	export let webhook: WebhookRead;
@@ -61,7 +62,9 @@
 					{webhook.attributes.url}
 				</DetailCard>
 				<DetailCard label="Secret">
-					<SecretTableCell text={webhook.attributes.secret} />
+					<SecretTableCell text={webhook.attributes.secret} class="text-sm" />
+					<div class="flex-grow" />
+					<WebhookResetSecretButton id={webhook.id} />
 				</DetailCard>
 			</DetailsGrid>
 		</div>

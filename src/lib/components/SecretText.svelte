@@ -7,7 +7,7 @@
 </script>
 
 {#if text}
-	<span>
+	<span {...$$restProps}>
 		{#if show}
 			<button on:click={() => (show = !show)}>
 				<Icon icon="bxs:show" inline class="mr-1.5 w-4 h-4" />
