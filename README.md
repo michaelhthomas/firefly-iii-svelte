@@ -14,7 +14,7 @@
     A modern user interface for <a href="https://www.firefly-iii.org/">Firefly III</a>, built with Svelte and SvelteKit.
     <br />
     <br />
-    <a href="https://demo.firefly-iii.org/">View the demo</a>
+    <a href="https://demo.firefly-iii-svelte.michaelt.xyz/">View the demo</a>
     ·
     <a href="https://github.com/michaelhthomas/firefly-iii-svelte/issues">Report a bug</a>
     ·
@@ -23,9 +23,9 @@
     <a href="https://github.com/michaelhthomas/firefly-iii-svelte/discussions">Ask questions</a>
   </p>
 
-# Getting Started
+## Getting Started
 
-## Node.js
+### Node.js
 
 1. [Install Firefly III](https://docs.firefly-iii.org/firefly-iii/installation/docker/)
 
@@ -58,7 +58,7 @@
    pnpm preview
    ```
 
-# Development
+## Development
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
