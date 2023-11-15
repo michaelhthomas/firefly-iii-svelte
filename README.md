@@ -1,4 +1,3 @@
-[![Packagist][packagist-shield]][packagist-url]
 [![License][license-shield]][license-url]
 [![Stargazers][stars-shield]][stars-url]
 
@@ -88,3 +87,8 @@ Once you've created a project and installed dependencies with `npm install` (or 
    # or start the server and open the app in a new browser tab
    pnpm run dev -- --open
    ```
+
+[license-shield]: https://img.shields.io/github/license/michaelhthomas/firefly-iii-svelte.svg?style=flat-square
+[license-url]: https://www.gnu.org/licenses/agpl-3.0.html
+[stars-shield]: https://img.shields.io/github/stars/michaelhthomas/firefly-iii-svelte.svg?style=flat-square
+[stars-url]: https://github.com/michaelhthomas/firefly-iii-svelte/stargazers
