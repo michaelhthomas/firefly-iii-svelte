@@ -6,6 +6,13 @@ import GithubActionsReporter from 'vitest-github-actions-reporter';
 
 dotenv.config();
 
+const proxySettings = {
+	'/api': {
+		target: process.env.FIREFLY_III_BASE_URL,
+		changeOrigin: true
+	}
+};
+
 export default defineConfig({
 	plugins: [sveltekit(), purgeCss()],
 	test: {
@@ -15,12 +22,10 @@ export default defineConfig({
 			: 'default'
 	},
 	server: {
-		proxy: {
-			'/api': {
-				target: process.env.FIREFLY_III_BASE_URL,
-				changeOrigin: true
-			}
-		}
+		proxy: proxySettings
+	},
+	preview: {
+		proxy: proxySettings
 	},
 	envPrefix: 'FIREFLY_III_'
 });
