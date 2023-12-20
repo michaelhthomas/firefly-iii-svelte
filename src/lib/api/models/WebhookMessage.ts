@@ -60,7 +60,7 @@ export interface WebhookMessage {
      * @type {string}
      * @memberof WebhookMessage
      */
-    string?: string | null;
+    message?: string | null;
 }
 
 /**
@@ -88,7 +88,7 @@ export function WebhookMessageFromJSONTyped(json: any, ignoreDiscriminator: bool
         'errored': !exists(json, 'errored') ? undefined : json['errored'],
         'webhookId': !exists(json, 'webhook_id') ? undefined : json['webhook_id'],
         'uuid': !exists(json, 'uuid') ? undefined : json['uuid'],
-        'string': !exists(json, 'string') ? undefined : json['string'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
@@ -105,7 +105,7 @@ export function WebhookMessageToJSON(value?: WebhookMessage | null): any {
         'errored': value.errored,
         'webhook_id': value.webhookId,
         'uuid': value.uuid,
-        'string': value.string,
+        'message': value.message,
     };
 }
 
