@@ -6,7 +6,7 @@
 	export let data: BasicSummaryEntry;
 </script>
 
-<Card class="shadow-sm !p-4">
+<Card class="summary-card shadow-sm !p-4">
 	<div class="space-y-2">
 		<h4 class="h4">{data.title}</h4>
 		<h3 class="h3">{data.valueParsed}</h3>
