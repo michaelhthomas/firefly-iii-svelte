@@ -1,9 +1,15 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 
-	export let id: string;
+	import { openWebhookMessageDialog } from './WebhookMessageDialog.svelte';
+
+	export let webhookId: string;
+	export let messageId: number;
 </script>
 
-<Button icon="bxs:envelope" />
+<Button
+	icon="bxs:envelope"
+	on:click={() => openWebhookMessageDialog(webhookId, messageId)}
+/>
 
 <Button icon="bxs:cloud" />

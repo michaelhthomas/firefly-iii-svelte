@@ -23,8 +23,9 @@
 	export let bodyClass: string = '';
 
 	const DEFAULT_DIALOG_CLASS =
-		'fixed top-0 left-0 right-0 h-modal md:inset-0 md:h-full z-50 w-full p-4 flex';
-	const DEFAULT_FRAME_CLASS = 'relative flex flex-col mx-auto w-full divide-y';
+		'fixed top-0 left-0 right-0 h-modal md:inset-0 md:h-full z-50 w-full p-4 flex pointer-events-none';
+	const DEFAULT_FRAME_CLASS =
+		'relative flex flex-col mx-auto w-full divide-y pointer-events-auto';
 	const DEFAULT_BODY_CLASS = 'p-6 space-y-6 flex-1 overflow-y-auto overscroll-contain';
 
 	const getPlacementClasses = () => {
