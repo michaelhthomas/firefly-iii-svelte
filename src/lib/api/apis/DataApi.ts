@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Firefly III API v2.0.10
- * This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the \"Authorize\" button to try the API below. This file was last generated on 2023-10-15T12:13:25+00:00  Please keep in mind that the demo site does not accept requests from curl, colly, wget, etc. You must use a browser or a tool like Postman to make requests. Too many script kiddies out there, sorry about that. 
+ * This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the \"Authorize\" button to try the API below. This file was last generated on 2023-12-21T01:54:06+00:00  Please keep in mind that the demo site does not accept requests from curl, colly, wget, etc. You must use a browser or a tool like Postman to make requests. Too many script kiddies out there, sorry about that. 
  *
  * The version of the OpenAPI document: 2.0.10
  * Contact: james@firefly-iii.org
@@ -105,7 +105,7 @@ export class DataApi extends runtime.BaseAPI {
 
     /**
      * Allows you to update transactions in bulk. 
-     * Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
+     * Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/references/firefly-iii/api/specials/
      */
     async bulkUpdateTransactionsRaw(requestParameters: BulkUpdateTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.query === null || requestParameters.query === undefined) {
@@ -145,7 +145,7 @@ export class DataApi extends runtime.BaseAPI {
 
     /**
      * Allows you to update transactions in bulk. 
-     * Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
+     * Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/references/firefly-iii/api/specials/
      */
     async bulkUpdateTransactions(requestParameters: BulkUpdateTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.bulkUpdateTransactionsRaw(requestParameters, initOverrides);
