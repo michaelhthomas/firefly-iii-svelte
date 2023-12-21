@@ -123,6 +123,12 @@ export interface SubmitWebookRequest {
     xTraceId?: string;
 }
 
+export interface TriggerTransactionWebhookRequest {
+    id: string;
+    transactionId: string;
+    xTraceId?: string;
+}
+
 export interface UpdateWebhookRequest {
     id: string;
     webhookUpdate: WebhookUpdate;
@@ -710,6 +716,58 @@ export class WebhooksApi extends runtime.BaseAPI {
      */
     async submitWebook(requestParameters: SubmitWebookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.submitWebookRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * This endpoint will execute this webhook for a given transaction ID. This is an asynchronous operation, so you can\'t see the result. Refresh the webhook message and/or the webhook message attempts to see the results. This may take some time if the webhook receiver is slow.
+     * Trigger webhook for a given transaction.
+     */
+    async triggerTransactionWebhookRaw(requestParameters: TriggerTransactionWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling triggerTransactionWebhook.');
+        }
+
+        if (requestParameters.transactionId === null || requestParameters.transactionId === undefined) {
+            throw new runtime.RequiredError('transactionId','Required parameter requestParameters.transactionId was null or undefined when calling triggerTransactionWebhook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xTraceId !== undefined && requestParameters.xTraceId !== null) {
+            headerParameters['X-Trace-Id'] = String(requestParameters.xTraceId);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("firefly_iii_auth", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("local_bearer_auth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/{id}/trigger-transaction/{transactionId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"transactionId"}}`, encodeURIComponent(String(requestParameters.transactionId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * This endpoint will execute this webhook for a given transaction ID. This is an asynchronous operation, so you can\'t see the result. Refresh the webhook message and/or the webhook message attempts to see the results. This may take some time if the webhook receiver is slow.
+     * Trigger webhook for a given transaction.
+     */
+    async triggerTransactionWebhook(requestParameters: TriggerTransactionWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.triggerTransactionWebhookRaw(requestParameters, initOverrides);
     }
 
     /**
