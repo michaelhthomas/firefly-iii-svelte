@@ -60,10 +60,10 @@
 	}
 </script>
 
-<Modal title="Webhook message content" {isOpen}>
+<Modal title="Webhook message content" {isOpen} size="lg">
 	<p>This is the content of the message that was sent (or tried) using this webhook.</p>
 	<textarea
-		rows="10"
+		rows="20"
 		readonly
 		class="resize-y w-full bg-gray-100 border-gray-300 dark:bg-gray-800 dark:border-gray-700 rounded"
 		>{message.message ? tryPrettyPrint(message.message) : ''}</textarea
