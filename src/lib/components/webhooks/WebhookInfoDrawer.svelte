@@ -36,6 +36,7 @@
 	import { openWebhookEditDrawer } from './WebhookEditDrawer.svelte';
 	import WebhookMessages from './WebhookMessages.svelte';
 	import WebhookResetSecretButton from './WebhookResetSecretButton.svelte';
+	import { openWebhookTestDialog } from './WebhookTestDialog.svelte';
 
 	export let isOpen: boolean;
 	export let id: string;
@@ -100,7 +101,11 @@
 	</div>
 
 	<div slot="footer" class="flex flex-row gap-4 justify-between">
-		<Button color="alternative" on:click={editWebhook} icon="bx:test-tube">Test</Button>
+		<Button
+			color="alternative"
+			on:click={() => openWebhookTestDialog({ id })}
+			icon="bx:test-tube">Test</Button
+		>
 
 		<Button color="primary" on:click={editWebhook} icon="bxs:pencil">
 			Edit Webhook
