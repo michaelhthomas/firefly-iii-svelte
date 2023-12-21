@@ -5,7 +5,7 @@ servers:
 info:
   title: Firefly III API v2.0.10
   description: |
-    This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the "Authorize" button to try the API below. This file was last generated on 2023-10-15T12:13:25+00:00
+    This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the "Authorize" button to try the API below. This file was last generated on 2023-12-21T01:54:06+00:00
 
     Please keep in mind that the demo site does not accept requests from curl, colly, wget, etc. You must use a browser or a tool like Postman to make requests. Too many script kiddies out there, sorry about that.
   version: "2.0.10"
@@ -1156,7 +1156,7 @@ paths:
                 $ref: '#/components/schemas/ChartLine'
   /v1/data/bulk/transactions:
     post:
-      summary: Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
+      summary: Bulk update transaction properties. For more information, see https://docs.firefly-iii.org/references/firefly-iii/api/specials/
       description: |
         Allows you to update transactions in bulk.
       operationId: bulkUpdateTransactions
@@ -11807,7 +11807,7 @@ paths:
       tags:
         - transactions
       description: Update an existing transaction.
-      summary: Update existing transaction. For more information, see https://docs.firefly-iii.org/firefly-iii/api/specials
+      summary: Update existing transaction. For more information, see https://docs.firefly-iii.org/references/firefly-iii/api/specials/
       parameters:
         - name: X-Trace-Id
           in: header
@@ -12007,7 +12007,7 @@ paths:
       description: Searches through the users transactions.
       externalDocs:
         description: Search Documentation
-        url: https://docs.firefly-iii.org/firefly-iii/pages-and-features/search/
+        url: https://docs.firefly-iii.org/how-to/firefly-iii/features/search/
       operationId: searchTransactions
       tags:
         - search
@@ -15832,6 +15832,7 @@ components:
           type: string
           format: string
           example: "Some PDF file"
+          nullable: true
         notes:
           type: string
           format: string
@@ -16011,11 +16012,13 @@ components:
           format: date-time
           example: "2018-09-17T12:46:47+01:00"
           description: "The date after which this bill is no longer valid or applicable"
+          nullable: true
         extension_date:
           type: string
           format: date-time
           example: "2018-09-17T12:46:47+01:00"
           description: "The date before which the bill must be renewed (or cancelled)"
+          nullable: true
         repeat_freq:
           $ref: '#/components/schemas/BillRepeatFrequency'
         skip:
@@ -16970,11 +16973,13 @@ components:
           format: string
           example: "4291"
           description: The journal associated with the event.
+          nullable: true
         transaction_group_id:
           type: string
           format: string
           example: "4291"
           description: The transaction group associated with the event.
+          nullable: true
     Preference:
       type: object
       required:
@@ -18287,8 +18292,8 @@ components:
         default:
           type: boolean
           format: boolean
-          example: false
-          description: Make this currency the default currency.
+          example: true
+          description: Make this currency the default currency. You can set this value to FALSE, in which case nothing will change to the default currency. If you set it to TRUE, the current default currency will no longer be the default currency.
         code:
           type: string
           format: string
@@ -18318,7 +18323,7 @@ components:
           type: boolean
           format: boolean
           example: true
-          description: "If the currency must be the default for the user. You can only submit TRUE."
+          description: "If the currency must be the default for the user. You can only submit TRUE. Submitting FALSE will not drop this currency as the default currency, because then the system would be without one."
           enum:
             - true
         code:
@@ -18666,11 +18671,13 @@ components:
           format: int32
           description: Optional. Use either this or the piggy_bank_name
           writeOnly: true
+          nullable: true
         piggy_bank_name:
           type: string
           format: string
           description: Optional. Use either this or the piggy_bank_id
           writeOnly: true
+          nullable: true
         bill_id:
           type: string
           format: string
@@ -19712,10 +19719,12 @@ components:
           type: string
           format: uri
           example: "https://demo.firefly-iii.org/api/v1/OBJECT?&page=3"
+          nullable: true
         prev:
           type: string
           format: uri
           example: "https://demo.firefly-iii.org/api/v1/OBJECT?&page=2"
+          nullable: true
         last:
           type: string
           format: uri
@@ -19977,9 +19986,9 @@ components:
           description: System generated identifier for original creator of transaction.
           readOnly: true
         recurrence_id:
-          type: integer
+          type: string
           nullable: true
-          format: int32
+          format: string
           description: Reference to recurrence that made the transaction.
           readOnly: true
         recurrence_total:
@@ -20355,4 +20364,4 @@ components:
 security:
   - firefly_iii_auth: []
   - local_bearer_auth: []
-    
+

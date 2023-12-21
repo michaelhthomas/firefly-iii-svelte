@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Firefly III API v2.0.10
- * This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the \"Authorize\" button to try the API below. This file was last generated on 2023-10-15T12:13:25+00:00  Please keep in mind that the demo site does not accept requests from curl, colly, wget, etc. You must use a browser or a tool like Postman to make requests. Too many script kiddies out there, sorry about that. 
+ * This is the documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. You may use the \"Authorize\" button to try the API below. This file was last generated on 2023-12-21T01:54:06+00:00  Please keep in mind that the demo site does not accept requests from curl, colly, wget, etc. You must use a browser or a tool like Postman to make requests. Too many script kiddies out there, sorry about that. 
  *
  * The version of the OpenAPI document: 2.0.10
  * Contact: james@firefly-iii.org
@@ -97,13 +97,13 @@ export interface Bill {
      * @type {Date}
      * @memberof Bill
      */
-    endDate?: Date;
+    endDate?: Date | null;
     /**
      * The date before which the bill must be renewed (or cancelled)
      * @type {Date}
      * @memberof Bill
      */
-    extensionDate?: Date;
+    extensionDate?: Date | null;
     /**
      * 
      * @type {BillRepeatFrequency}
@@ -212,8 +212,8 @@ export function BillFromJSONTyped(json: any, ignoreDiscriminator: boolean): Bill
         'amountMin': json['amount_min'],
         'amountMax': json['amount_max'],
         'date': (new Date(json['date'])),
-        'endDate': !exists(json, 'end_date') ? undefined : (new Date(json['end_date'])),
-        'extensionDate': !exists(json, 'extension_date') ? undefined : (new Date(json['extension_date'])),
+        'endDate': !exists(json, 'end_date') ? undefined : (json['end_date'] === null ? null : new Date(json['end_date'])),
+        'extensionDate': !exists(json, 'extension_date') ? undefined : (json['extension_date'] === null ? null : new Date(json['extension_date'])),
         'repeatFreq': BillRepeatFrequencyFromJSON(json['repeat_freq']),
         'skip': !exists(json, 'skip') ? undefined : json['skip'],
         'active': !exists(json, 'active') ? undefined : json['active'],
@@ -244,8 +244,8 @@ export function BillToJSON(value?: Bill | null): any {
         'amount_min': value.amountMin,
         'amount_max': value.amountMax,
         'date': (value.date.toISOString()),
-        'end_date': value.endDate === undefined ? undefined : (value.endDate.toISOString()),
-        'extension_date': value.extensionDate === undefined ? undefined : (value.extensionDate.toISOString()),
+        'end_date': value.endDate === undefined ? undefined : (value.endDate === null ? null : value.endDate.toISOString()),
+        'extension_date': value.extensionDate === undefined ? undefined : (value.extensionDate === null ? null : value.extensionDate.toISOString()),
         'repeat_freq': BillRepeatFrequencyToJSON(value.repeatFreq),
         'skip': value.skip,
         'active': value.active,
